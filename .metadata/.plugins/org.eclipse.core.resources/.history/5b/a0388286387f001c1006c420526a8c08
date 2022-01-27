@@ -1,0 +1,7 @@
+package dao;
+
+import db.DB;
+
+public class ReviewBoardDAO {
+	DB db = new DB();
+}

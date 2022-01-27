@@ -1,0 +1,28 @@
+package db;
+
+public class DB {
+private DataSource ds;
+	
+	public DB(){
+		try {
+			Context init = new InitialContext();
+			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+		}catch(Exception e) {
+			System.out.println("DB연결 실패");
+			e.printStackTrace();
+		}
+	}
+	private Connection getConnect() {
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return conn;
+	}
+	
+	
+	
+}

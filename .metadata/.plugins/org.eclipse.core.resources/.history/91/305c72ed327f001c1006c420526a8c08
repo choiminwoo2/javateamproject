@@ -1,0 +1,21 @@
+package DB;
+
+import java.sql.Connection;
+
+public class GetConnection {
+	private static GetConnection instance = new GetConnection();
+	private DataSource ds;
+	
+
+	private GetConnection() {}
+	
+	public static GetConnection getInstanse() {
+		try {
+			Context init = new InitialContext();
+			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+		}catch(Exception e) {
+			System.out.println("DB연결 실패");
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,13 @@
+package db;
+
+public class DB {
+	private static DB instance;
+	
+	private DB() {
+	}
+	
+	public static DB getInstance() {
+			inf(instanece == null)
+				instance = new DB();
+	}
+}
