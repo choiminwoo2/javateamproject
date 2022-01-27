@@ -20,6 +20,7 @@
     <link href="css/template.css" rel="stylesheet">
 </head>
 <body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
             <a class="navbar-brand mr-1 mb-1 mt-0" href="../">Bootstrap 4</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
@@ -78,5 +79,6 @@
                 </ul>
             </div>
         </div>
+      </nav>
 </body>
 </html>
