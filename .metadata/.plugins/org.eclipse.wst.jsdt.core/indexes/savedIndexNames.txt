@@ -1,4 +1,0 @@
-INDEX VERSION 1.4+C:\Users\choi\Desktop\Pet\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3353589697.index
-2210491249.index
-241578462.index

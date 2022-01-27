@@ -1,7 +1,0 @@
-package dao;
-
-import db.DB;
-
-public class HotelDAO {
-	DB db = new DB();
-}
