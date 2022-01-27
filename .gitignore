@@ -79,7 +79,8 @@ local.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
+#서버 db정보 제거
+context.xml
 # Package Files #
 *.jar
 *.war

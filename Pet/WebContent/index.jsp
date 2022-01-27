@@ -6,20 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fresca Bootstrap 4 Theme Full Screen</title>
-    <meta name="description" content="Fresca is a free, open source Bootstrap 4 theme" />
-    <meta name="generator" content="Themestr.app">
-    <link rel="icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
-    <meta property="og:image" name="twitter:image" content="http://bootstrap.themes.guide/assets/ss_fresca.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@ThemesGuide">
-    <meta name="twitter:creator" content="@ThemesGuide">
-    <meta name="twitter:title" content="Open-source Bootstrap 4 Themes">
-    <meta name="twitter:description" content="Download Fresca - free, open source Bootstrap 4 theme by Themes.guide">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">
-    <link href="./theme.css" rel="stylesheet">
-    <link href="./template.css" rel="stylesheet">
     <Style>
     </Style>
   </head>
@@ -30,7 +16,7 @@
             <div class="row h-100">
                 <div class="col-12">
                     <div class="text-center m-0 vh-100 d-flex flex-column justify-content-center text-light">
-                        <h1 class="display-4">Fresca</h1>
+                        <h1 class="display-4">PetCozi</h1>
                         <p class="lead">Like a sunny summer day in Northern Italy.</p>
                         <div class="row">
                             <div class="col-lg-4 col-sm-6 mx-auto">
@@ -65,48 +51,9 @@
             </div>
         </div>
     </header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
-        <div class="container">
-            <a class="navbar-brand mr-1 mb-1 mt-0" href="../">PetCozi</a>
-            <div class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#buttons">호텔 등록</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#navs">마이페이지</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#cards">Cards</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#modals">Modals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#typography">Typography</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#forms">Forms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#grid">Grid</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          More
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
-                            <a class="dropdown-item px-2" href="#more">Badges</a>
-                            <a class="dropdown-item px-2" href="#more">Tooltips &amp; Popups</a>
-                            <a class="dropdown-item px-2" href="#more">Progress &amp; Alerts</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item px-2" href="#more">All</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> 
+       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
+       <jsp:include page="template/nav.jsp"/>
+       </nav>
     <main>
         <section class="container">
             <div class="row vh-100">
