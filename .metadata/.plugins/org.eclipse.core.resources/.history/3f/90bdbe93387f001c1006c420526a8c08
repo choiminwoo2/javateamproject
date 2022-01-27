@@ -1,7 +1,0 @@
-package dao;
-
-import db.DB;
-
-public class UserDAO {
-	DB db = new DB();
-}
