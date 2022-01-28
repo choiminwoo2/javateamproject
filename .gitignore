@@ -48,7 +48,10 @@ local.properties
 
 # External tool builders
 .externalToolBuilders/
-
+#JDT-specific (Ecipse Java Developer Tools)
+.classpath
+#Eclipse Core
+.project
 # Locally stored "Eclipse launch configurations"
 *.launch
 
