@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.ActionForward;
 import dao.UserDAO;
-import db.User;
+import vo.User;
+
 
 
 public class UserJoinProcessAction implements Action {
