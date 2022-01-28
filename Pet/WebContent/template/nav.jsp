@@ -80,5 +80,8 @@
             </div>
         </div>
       </nav>
+      <section class="categori wrap">
+      
+      </section>
 </body>
 </html>
