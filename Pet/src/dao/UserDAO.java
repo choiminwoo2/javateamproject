@@ -3,7 +3,7 @@ package dao;
 import java.sql.Connection;
 
 import db.DB;
-import db.User;
+import vo.User;
 
 public class UserDAO {
 	DB db = new DB();
