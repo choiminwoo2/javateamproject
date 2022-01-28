@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fresca Bootstrap 4 Theme Full Screen</title>
     <Style>
-
     .photoTitle{
     margin-bottom:30px;
     }
