@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#footer{
+		
+	}
+</style>
 </head>
 <body>
   <footer id="footer" class="bg-dark text-light py-5">

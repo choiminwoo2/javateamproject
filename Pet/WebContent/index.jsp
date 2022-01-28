@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fresca Bootstrap 4 Theme Full Screen</title>
     <Style>
+
     .photoTitle{
-    margin-bottom:30px;
+    margin-bottom:0.7em;
     }
     #selectPhoto{
     	justify-self: center;
@@ -17,9 +18,17 @@
     box-shadow: 10px 5px 5px rgba(0,0,0,0.3);
     }
     .btn-more{
-    margin-top:20px;
- 		height:100px;
+    margin-top:2em;
+ 		height:2em;
     }
+    .col-centered {
+	  float: none;
+	  margin-right: auto;
+	  margin-left: auto;
+	}
+	.photoSection{
+		margin-bottom: 12em;
+	}
     </Style>
   </head>
   
@@ -45,32 +54,31 @@
     </header>
        <jsp:include page="template/nav.jsp"/>
     <main>
-        <section class="container">
-            <div class="row vh-100">
+        <section class="container vh-10">
+            <div class="row vh-auto photoSection">
                 <div class="col-12 my-auto">
-                    <div class="row text-center">
+                    <div class="row">
                     <h1 class="text-center w-100  h-25 photoTitle">PhtoGralley</h1>
                      <span class="text-center w-100  h-25 photoTitle">여러분의 반려동물의 정보를 나눌 수 있습니다.</span>
-                        <div class="col-lg-3 mb-3">
-                          	<div class="card" style="width: 15rem;">
+                        <div class="col-lg-3 mb-3 ">
+                          	<div class="card col-centered" style="width: 15rem;">
+							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
+							</div>
+                        </div>
+                        <div class="col-lg-3 mb-3 ">
+                           	<div class="card col-centered" style="width: 15rem;">
 							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
 
 							</div>
                         </div>
                         <div class="col-lg-3 mb-3">
-                           	<div class="card" style="width: 15rem;">
-							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
-
-							</div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                           	<div class="card" style="width: 15rem;">
+                           	<div class="card col-centered" style="width: 15rem;">
 							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
 
 							</div>
                         </div>
                          <div class="col-lg-3 mb-3">
-                           	<div class="card" style="width: 15rem;">
+                           	<div class="card col-centered" style="width: 15rem;">
 							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
 
 							</div>
