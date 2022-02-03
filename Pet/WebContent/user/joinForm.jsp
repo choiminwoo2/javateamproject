@@ -8,25 +8,6 @@
 <link href="css/join.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script>
-$(function (){
-	 
-	$('input[type="radio"][id="channel"]').on('click', function(){
-	  var chkValue = $('input[type=radio][id="channel"]:checked').val();
-	  if(chkValue='1'){
-		  $('#etc_view').hide();
-	   } 
-	  else{
-		  $('#etc_view').show();
-	            
-	  }
-	 
-	});
-	 
-	});
-	 
-</script>
-
 <style>
 span {
 	font-size:15px;
