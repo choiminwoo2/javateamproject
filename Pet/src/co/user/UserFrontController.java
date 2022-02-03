@@ -65,8 +65,6 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 		case "/index.co":
 			action = new UserInfoAction();
 			break;	
-		
-			
 		}
 		
 		forward = action.execute(request, response);
