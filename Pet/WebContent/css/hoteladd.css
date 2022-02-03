@@ -1,1 +1,70 @@
 @charset "UTF-8";
+html,body {
+    margin:0;
+    width:100%;
+    height:90%;
+}
+.section-form-container{
+    top:200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(226,226,226,0.4);
+}
+label{
+    margin-left: 7px;
+}
+.joinform-container{
+    width: 900px;
+    border : 0px 1px 0px 1px solid blue;
+    padding:50px 50px;
+    background-color: white;
+    height: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.weight-grid{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+}
+.form-control{
+    margin-bottom: 10px;
+}
+.post-grid{
+    display: grid;
+    grid-template-columns: 5em 4em;
+    align-items: center;
+    margin: 10px 0;
+}
+.post-grid label{
+    margin:0;
+}
+
+.post-flex{
+    display:flex;
+    flex-wrap: row wrap;
+    margin: 10px 0;
+}
+.post-flex input:nth-child(1){
+    width:7em;
+    margin-right: 15px;
+}
+.post-flex input:last-child{
+    width:33em;
+}
+img[src="attach.png"]{
+    width: 2em;
+    height: 2em;
+}
+.file-container{
+    margin-top:40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.file-container label{
+    margin:0;
+}

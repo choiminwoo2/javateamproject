@@ -20,9 +20,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/template.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+<div style="height: 60px;">
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
             <a class="navbar-brand mr-1 mb-1 mt-0" href="../">Bootstrap 4</a>
@@ -92,5 +94,6 @@
             </div>
         </div>
       </nav>
+      </div>
 </body>
 </html>
