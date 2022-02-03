@@ -15,6 +15,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import action.Action;
 import action.ActionForward;
 import dao.PhotoDAO;
+import vo.PhotoBean;
 
 public class PhotoAddAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -44,18 +45,18 @@ public class PhotoAddAction implements Action{
 					new DefaultFileRenamePolicy());
 		
 		//BoardBean 객체에 글 등록 폼에서 입력받은 정보들을 저장합니다.
-		boarddata.setBoard_name(multi.getParameter("board_name"));
-		boarddata.setBoard_pass(multi.getParameter("board_pass"));
-		boarddata.setBoard_subject(multi.getParameter("board_subject"));
-		boarddata.setBoard_content(multi.getParameter("board_content"));
-		
-		//시스템상에 업로드된 실제 파일명을 얻어옵니다.
-		String filename=multi.getFilesystemName("board_file");
-		boarddata.setBoard_file(filename);
-		
-		//글 등록 처리를 위해 DAO의 boardInsert()메서드를 호출합니다.
-		//글 등록 폼에서 입력한 정보가 저장되어 있는 boarddata객체를 전달합니다.
-		result=boarddao.boardInsert(boarddata);
+//		boarddata.setBoard_name(multi.getParameter("board_name"));
+//		boarddata.setBoard_pass(multi.getParameter("board_pass"));
+//		boarddata.setBoard_subject(multi.getParameter("board_subject"));
+//		boarddata.setBoard_content(multi.getParameter("board_content"));
+//		
+//		//시스템상에 업로드된 실제 파일명을 얻어옵니다.
+//		String filename=multi.getFilesystemName("board_file");
+//		boarddata.setBoard_file(filename);
+//		
+//		//글 등록 처리를 위해 DAO의 boardInsert()메서드를 호출합니다.
+//		//글 등록 폼에서 입력한 정보가 저장되어 있는 boarddata객체를 전달합니다.
+//		result=boarddao.boardInsert(boarddata);
 		
 		//글 등록에 실패할 경우 false를 반환합니다.
 		if(result==false) {
