@@ -15,16 +15,16 @@
         <form action="hotelAddOk.net" method="post" enctype="multipart/form-data">
                 <h3>당신의 호텔을 등록하세요.</h3>
                 <label for ="">호텔명</label>
-                <input class="form-control" id="hotel_name" type="text" placeholder="호텔명">
+                <input class="form-control" id="hotel_name" name="hotel_name" type="text" placeholder="호텔명">
                 <label for ="">1박 기준 호텔 이용 요금</label>
                 <div class="weight-grid">
-                    <input class="form-control " type="text" placeholder="5kg 미만">
-                    <input class="form-control " type="text" placeholder="5kg이상 8kg미만">
-                    <input class="form-control " type="text" placeholder="8kg 이상 12kg미만">
-                    <input class="form-control " type="text" placeholder="12kg 이상">
+                    <input class="form-control " name="hotel_weight_5lt" type="text" placeholder="5kg 미만">
+                    <input class="form-control " name="hotel_weight_5ge8lt" type="text" placeholder="5kg이상 8kg미만">
+                    <input class="form-control " name="hotel_weight_8ge12lt" type="text" placeholder="8kg 이상 12kg미만">
+                    <input class="form-control " name="hotel_weight_12ge" type="text" placeholder="12kg 이상">
                 </div>
                 <label for ="">전화번호</label>
-                <input class="form-control " type="text" placeholder="호텔명">
+                <input class="form-control " name="hotel_tel" type="text" placeholder="호텔명">
                 <div class="post-grid">
                     <label for="post1">우편번호</label>
                     <input type="button" value="검색" id="postbtn" class="btn btn-primary align-center btn-sm mr-1">
@@ -39,11 +39,10 @@
                         <label for="mainfile">호텔프로필사진
                         <img src="attach.png" alt="사진을 찾아주세요">
                         </label>
-                        <input type="file" name="filelist" id="mainfile">
+                        <input type="file" name="hotel_file" id="mainfile">
                     </div>
                     <input type="submit" value="다음으로" id="postbtn" class="btn btn-primary align-center btn-lg">
                 </div>
-            
             
 
         </form>

@@ -18,7 +18,7 @@ public class UserNicknameCheckAction implements Action {
 		UserDAO dao = new UserDAO();
 		int result = dao.isNickname(request.getParameter("nickname"));
 		response.getWriter().append(Integer.toString(result));
-		System.out.println(result);
+		System.out.print(result);
 		return null;
 	}
 
