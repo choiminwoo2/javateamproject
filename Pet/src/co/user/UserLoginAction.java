@@ -1,5 +1,6 @@
 package co.user;
 
+
 import java.io.IOException;
 
 
@@ -19,6 +20,7 @@ public class UserLoginAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = "";
+		
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(int i=0; i<cookies.length; i++) {
@@ -33,5 +35,4 @@ public class UserLoginAction implements Action {
 		forward.setPath("user/loginForm.jsp");
 		return forward;
 	}
-
 }

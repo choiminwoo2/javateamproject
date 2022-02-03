@@ -2,6 +2,7 @@ package co.user;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.ActionForward;
 
+
 @WebServlet("*.co")
 public class UserFrontController extends javax.servlet.http.HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
+	
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,10 +41,34 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 		case "/join.co":
 			action = new UserJoinAction();
 			break;
+		case "/joinProcess.co":
+			action = new UserJoinProcessAction();
+			break;	
 		case "/login.co":
 			action = new UserLoginAction();
 			break;	
+		case "/loginProcess.co":
+			action = new UserLoginProcessAction();
+			break;
+		case "/idcheck.co":
+			action = new UserIdCheckAction();
+			break;
+		case "/nicknamecheck.co":
+			action = new UserNicknameCheckAction();
+			break;	
+		case "/logout.co":
+			action = new UserLogOutAction();
+			break;		
+		case "/mypage.co":
+			action = new UserMyPageAction();
+			break;
+		case "/index.co":
+			action = new UserInfoAction();
+			break;	
+		
+			
 		}
+		
 		forward = action.execute(request, response);
 		
 		if (forward != null) {
@@ -65,6 +92,7 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		
 		doProcess(request, response);
 	}
 }

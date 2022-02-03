@@ -1,16 +1,27 @@
 package vo;
 
+import java.util.Date;
+
 public class User {
+	private int user_no;
 	private String id;
 	private String password;
 	private String nickname;
-	private int tel1;
-	private int tel2;
-	private int tel3;
+	private String tel;
+	private int user_grant;
+	private Date regdate;
+	private int animal_no;
 	private String kind;
 	private int kg;
-	private int user_grant;
 	
+	
+	
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
 	public String getId() {
 		return id;
 	}
@@ -29,6 +40,30 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public int getUser_grant() {
+		return user_grant;
+	}
+	public void setUser_grant(int user_grant) {
+		this.user_grant = user_grant;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+	public int getAnimal_no() {
+		return animal_no;
+	}
+	public void setAnimal_no(int animal_no) {
+		this.animal_no = animal_no;
+	}
 	public String getKind() {
 		return kind;
 	}
@@ -41,30 +76,12 @@ public class User {
 	public void setKg(int kg) {
 		this.kg = kg;
 	}
-	public int getTel1() {
-		return tel1;
-	}
-	public void setTel1(int tel1) {
-		this.tel1 = tel1;
-	}
-	public int getTel2() {
-		return tel2;
-	}
-	public void setTel2(int tel2) {
-		this.tel2 = tel2;
-	}
-	public int getTel3() {
-		return tel3;
-	}
-	public void setTel3(int tel3) {
-		this.tel3 = tel3;
-	}
-	public int getUser_grant() {
-		return user_grant;
-	}
-	public void setUser_grant(int user_grant) {
-		this.user_grant = user_grant;
-	}
+
+	
+	
+	
+	
+	
 	
 	
 	

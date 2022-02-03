@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +21,9 @@
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/template.css" rel="stylesheet">
 </head>
+
 <body>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
+ <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
             <a class="navbar-brand mr-1 mb-1 mt-0" href="../">Bootstrap 4</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
@@ -31,39 +34,48 @@
                    
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#buttons">유저 로그인</a>
+                
+                 
+                    <c:if test="${!empty id}">			
+                    		<span style="color:white">${id}님 반갑습니다.</span>
+                    </c:if>
+                    
+                    <c:if test="${empty id}">
+                      <li class="nav-item">
+                        <a class="nav-link" href="login.co">로그인</a>
                     </li>
+                   </c:if>
+                    <c:if test="${empty id}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#navs">유저 회원가입</a>
+                        <a class="nav-link" href="join.co">회원가입</a>
                     </li>
+                   	</c:if>
                     <li class="nav-item">
                         <a class="nav-link" href="#cards">호텔 유저 호텔등록</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#modals">호텔유저 마이페이지</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#typography">호텔유저 로그아웃</a>
-                    </li>
+                    
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="#forms">관리자 회원 정보</a>
                     </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#forms">관리자 마이페이지</a>
                     </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#forms">관리자 로그아웃</a>
-                    </li>
+                   			
                        <li class="nav-item">
                         <a class="nav-link" href="#forms">일반유저 마이페이지</a>
                     </li>
+                   
                           <li class="nav-item">
                         <a class="nav-link" href="#forms">일반유저 찜목록</a>
+                       
                     </li>
+                     
+                    <c:if test="${!empty id}">
                           <li class="nav-item">
-                        <a class="nav-link" href="#forms">일반유저  로그아웃</a>
+                        <a class="nav-link" href="logout.co">로그아웃</a>
                     </li>
+                    </c:if>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           More

@@ -54,7 +54,7 @@
             </div>
         </div>
     </header>
-       <jsp:include page="template/nav.jsp"/>
+       <jsp:include page="../template/nav.jsp"/>
     <main>
         <section class="container vh-10">
             <div class="row vh-auto photoSection">
@@ -92,9 +92,15 @@
                 </div>
             </div>
         </section>
-            
+               <div>
+              
+              <br><b>${id}</b>
+              	<br><b>${userdata.id}</b>
+              	<br><b>${userdata.password}</b>
+              	<br><b>${userdata.user_grant}</b>
+              </div>
     </main>
-      <jsp:include page="template/footer.jsp"/>
+      <jsp:include page="../template/footer.jsp"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
