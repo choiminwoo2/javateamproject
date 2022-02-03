@@ -211,8 +211,6 @@ public class UserDAO {
 			pstmt.setString(1, nickname);
 			rs = pstmt.executeQuery();
 			
-			
-			
 			if(rs.next()) { 
 				result = 0;
 				
@@ -247,51 +245,101 @@ public class UserDAO {
 		return result;
 	}
 
-	public User getDetail(String id) {
-		User user = null;
+	public User nickname(String id) {
+		User nickname = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+	
 		try {
 			con = ds.getConnection();
+			
 			String sql = "select * from userdata where id = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				user = new User();
-				user.setId(rs.getString(1));
-				user.setPassword(rs.getString(2));
-				user.setNickname(rs.getString(3));
-				user.setTel(rs.getString(4));
-				user.setUser_grant(rs.getInt(5));
-				user.setRegdate(rs.getDate(6));
+			if(rs.next()) {
+				nickname = new User();
+				nickname.setUser_no(rs.getInt(1));
+				nickname.setId(rs.getString(2));
+				nickname.setPassword(rs.getString(3));
+				nickname.setNickname(rs.getString(4));
+				nickname.setTel(rs.getString(5));
+				nickname.setUser_grant(rs.getInt(6));
+	
 			}
-		} catch (SQLException ex) {
-			 ex.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}  finally {
 			try {
 				if (rs != null)
 					rs.close();
 			} catch (SQLException ex) {
-				ex.printStackTrace();
+				System.out.println(ex.getMessage());
 			}
-			
 			try {
 				if (pstmt != null)
-				pstmt.close();
+					pstmt.close();
 			} catch (SQLException ex) {
-				ex.printStackTrace();
+				System.out.println(ex.getMessage());
 			}
 			try {
 				if (con != null)
 					con.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
 		}
-		return user;
-	} // getDetail end
+		return nickname;
+	} //Member_info end
 
+	public User UserSession(String id) {
+		User temp = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			con = ds.getConnection();
+			
+			String sql = "select * from userdata where id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				temp = new User();
+				temp.setUser_no(rs.getInt(1));
+				temp.setId(rs.getString(2));
+				temp.setPassword(rs.getString(3));
+				temp.setNickname(rs.getString(4));
+				temp.setTel(rs.getString(5));
+				temp.setUser_grant(rs.getInt(6));
+				temp.setRegdate(rs.getDate(7));
+	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return temp;
+	} //Member_info end
 	
 }

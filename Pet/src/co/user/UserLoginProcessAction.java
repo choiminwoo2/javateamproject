@@ -21,12 +21,14 @@ public class UserLoginProcessAction implements Action {
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
+		
+		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 	
-		
-	
 		UserDAO mdao = new UserDAO();
+		User temp = mdao.UserSession(id);
+		
 		int result = mdao.isId(id, password);
 		System.out.println("결과는" + result);
 		
@@ -35,6 +37,9 @@ public class UserLoginProcessAction implements Action {
 		if (result == 1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
+			session.setAttribute("password", password);
+			session.setAttribute("temp", temp); //로그인한 유저 정보 
+		
 			
 			String IDStore = request.getParameter("remember");
 			Cookie cookie = new Cookie("id", id);
@@ -50,7 +55,7 @@ public class UserLoginProcessAction implements Action {
 				cookie.setMaxAge(0);
 				response.addCookie(cookie);
 			}
-			
+		
 			forward.setRedirect(true);
 			forward.setPath("index.jsp"); //로그인 성공시 메인 페이지로 이동
 			return forward;

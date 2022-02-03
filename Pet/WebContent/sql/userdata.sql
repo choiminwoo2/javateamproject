@@ -11,3 +11,4 @@ create table UserData (
 );
 
 
+insert into userdata values (1, 'admin', 1234, '관리자', '010-1234-1234', 2 , sysdate);

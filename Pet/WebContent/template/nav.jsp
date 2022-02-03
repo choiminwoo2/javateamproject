@@ -37,7 +37,7 @@
                 
                  
                     <c:if test="${!empty id}">			
-                    		<span style="color:white">${id}님 반갑습니다.</span>
+                    		<span style="color:white">${temp.nickname}님 반갑습니다./${temp.user_grant}/${temp.regdate}</span>
                     </c:if>
                     
                     <c:if test="${empty id}">
