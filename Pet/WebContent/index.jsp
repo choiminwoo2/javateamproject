@@ -42,7 +42,7 @@
                         <p class="lead">당신의 호텔을 등록하세요!.</p>
                         <div class="mt-2 mx-auto">
                                               
-                                  <a href="theme.css" class="btn btn-outline-light btn-lg .text-primary">
+                                  <a href="hotelAdd.net" class="btn btn-outline-light btn-lg .text-primary">
                                 		호텔 등록
                                   </a>
   
