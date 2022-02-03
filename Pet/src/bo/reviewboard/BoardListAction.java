@@ -34,8 +34,13 @@ public class BoardListAction implements Action {
 		}
 		System.out.println("넘어온 limit =" + limit);
 		
+		int no=Integer.parseInt(request.getParameter("hotel_no"));
+		
 		//총 리스트 수를 받아옵니다.
 		int listcount = boarddao.getListCount();
+		
+		
+		
 		
 		//리스트를 받아옵니다.
 		boardlist = boarddao.getBoardList(page, limit);

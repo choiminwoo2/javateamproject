@@ -76,7 +76,7 @@ div.gallery {
 </svg><br>찜하기</button>
 
 <hr>
-<p>펫 호텔명 호텔 주소</p>
+<p>${hotelinfo.hotel_name}</p>
 <a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
 <button type="button" class="btn btn-primary mr-1 review" style="position: absolute;
     right: 30px; top:250px" >이용 후기</button>
@@ -118,7 +118,7 @@ div.gallery {
 <%-- <jsp:include page="template/footer.jsp"/> --%>
 <script>
 $("button.review").click(function(){
-	location.href="BoardList.bo";
+	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}";
 })
 </script>
 </body>

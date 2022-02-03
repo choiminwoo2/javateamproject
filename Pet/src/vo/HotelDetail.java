@@ -7,6 +7,14 @@ public class HotelDetail {
 	private String hi_url;
 	private String hi_date;
 	private int map_no;
+	private String hotel_name;
+	
+	public String getHotel_name() {
+		return hotel_name;
+	}
+	public void setHotel_name(String hotel_name) {
+		this.hotel_name = hotel_name;
+	}
 	public int getHi_no() {
 		return hi_no;
 	}

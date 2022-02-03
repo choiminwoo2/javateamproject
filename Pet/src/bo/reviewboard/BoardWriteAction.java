@@ -11,10 +11,12 @@ import action.ActionForward;
 
 public class BoardWriteAction implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false); //포워딩 방식으로 주소가 바뀌지 않아요.
+		forward.setPath("reviewboard/boardWrite.jsp");
+		return forward;
 	}
 
 }

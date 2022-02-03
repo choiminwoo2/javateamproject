@@ -17,6 +17,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(4){width:17%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 </style>
 <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/jquery-3.6.0.js"></script>
 <script src="../js/list.js"></script>
 <title>이용후기 게시판</title>
 </head>
@@ -29,9 +30,9 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 <table class="table table-striped">
 <thead>
 <tr>
-<!-- <th colspan="3">이용후기 게시판 </th> -->
+
 <th>
-<font size=3 style="text-align:right">글 개수 : ${listcount}</font>
+<font size=3>글 개수 : ${listcount}</font>
 </th>
 </tr>
 <tr>
@@ -118,7 +119,12 @@ class="page-link">이전&nbsp;</a>
 <font size=5>등록된 글이 없습니다.</font>
 </c:if>
 
-<button type="button" class="btn btn-info float-right">글 쓰 기</button>
+<button type="button" class="btn btn-info float-right write">글 쓰 기</button>
 </div>
+<script>
+$("button.write").click(function(){
+	location.href="BoardWrite.bo";
+})
+</script>
 </body>
 </html>
