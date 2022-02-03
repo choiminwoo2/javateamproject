@@ -8,7 +8,6 @@
 <link href="css/join.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원가입</title>
-
 <style>
 span {
 	font-size:15px;
