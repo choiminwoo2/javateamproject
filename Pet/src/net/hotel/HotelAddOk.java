@@ -40,10 +40,37 @@ public class HotelAddOk implements Action{
 		try {
 			MultipartRequest multi = new MultipartRequest(req, readFolder,size, "utf-8",
 					new DefaultFileRenamePolicy());
-		
+			String hotel_name = multi.getParameter("hotel_name");
+			System.out.println("호텔 이름:" +hotel_name);
+			String[] hotel_weight = {multi.getParameter("hotel_weight_5lt"),
+					multi.getParameter("hotel_weight_5ge8lt"),
+					multi.getParameter("hotel_weight_8ge12lt"),
+					multi.getParameter("hotel_weight_12ge")};
+			for(String s : hotel_weight) {
+				System.out.println("호텔 무게 5~12까지 순서대로"+s);
+			}
+			String hotel_tel = multi.getParameter("hotel_tel");
+			System.out.println("호텔 전화번호= "+ hotel_tel);
+			String[] postcode = multi.getParameterValues("post1");
+			for(String s : postcode) {
+				System.out.println("주소 순서순대로"+ s);
+			}
+			String file_name = multi.getOriginalFileName("hotel_file");
+			System.out.println("파일이름= "+file_name);
+			hotel.setHotel_name(hotel_name);
+			hotel.setHotel_price_5lt(Integer.parseInt(hotel_weight[0]));
+			hotel.setHotel_price_5ge8lt(Integer.parseInt(hotel_weight[1]));
+			hotel.setHotel_price_8ge12lt(Integer.parseInt(hotel_weight[2]));
+			hotel.setHotel_price_12gt(Integer.parseInt(hotel_weight[3]));
+			hotel.setHotel_tel(hotel_tel);
+			hotel.setHotel_postcode(postcode[0]);
+			hotel.setHotel_addr(postcode[1]);
+			hotel.setHotel_addrdetail(postcode[2]);
+			hotel.setHotel_pthtofile(file_name);
+			result = dao.insertHotel(hotel);
 		}catch(Exception e) {
 			forward.setPath("error/error.jsp");
-			req.setAttribute("message", "회원가입 실패입니다.");
+			req.setAttribute("message", "호텔 등록 실패입니다.");
 			forward.setRedirect(false);
 		}
 		
