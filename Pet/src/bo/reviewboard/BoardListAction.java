@@ -37,9 +37,8 @@ public class BoardListAction implements Action {
 		int no=Integer.parseInt(request.getParameter("hotel_no"));
 		
 		//총 리스트 수를 받아옵니다.
-		int listcount = boarddao.getListCount();
-		
-		
+		int listcount = boarddao.getListCount(no);
+			
 		
 		
 		//리스트를 받아옵니다.
