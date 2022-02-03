@@ -8,7 +8,24 @@
 <link href="css/join.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원가입</title>
-
+<script>
+$(function (){
+	 
+	$('input[type="radio"][id="channel"]').on('click', function(){
+	  var chkValue = $('input[type=radio][id="channel"]:checked').val();
+	  if(chkValue='1'){
+		  $('#etc_view').hide();
+	   } 
+	  else{
+		  $('#etc_view').show();
+	            
+	  }
+	 
+	});
+	 
+	});
+	 
+</script>
 
 <style>
 span {
@@ -30,11 +47,17 @@ span {
 		<span id="nickname_message"></span>
 
 		<div class="phone">
-		<label for="tel">전화번호</label><br>
+		전화번호<br>
      	<input type="text" name="tel" maxlength="13" required> 
      	<span id="tel_message"></span>
-        </div><br><br>
+        </div><br>
 		
+		<b>사용자 구분</b>
+		<input type="radio" id="user" name=user_grant value="0" checked>일반 사용자
+		<input type="radio" id="hotel" name=user_grant value="1">호텔 사용자
+		<br><br>
+		
+		<div id="etc_view">
 	    <b>반려동물 구분</b>
 	    <select name="kind">
 	      <option value="dog">강아지</option>
@@ -42,12 +65,10 @@ span {
 	    </select><br><br>
    
 		 <b>반려동물 무게(kg)</b>
-	 	 <input type="text" name="kg"  maxLength="5" required>
+	 	 <input type="text" name="kg"  maxLength="5">
 	   	 <b></b>
+		</div>
 		
-		<b>사용자 구분</b>
-		<label><input type="radio" name=user_grant value="0" checked>일반 사용자</label>
-		<label><input type="radio" name=user_grant value="1">호텔 사용자</label>
 		<div class="clearfix">
 			<button type="submit" class="submitbtn">회원가입</button>
 			<button type="reset" class="cancelbtn">돌아가기</button>

@@ -58,6 +58,42 @@ private DataSource ds;
 			}
 		}
 	};
+	
+	public void close(Connection conn, PreparedStatement pstmt, PreparedStatement pstmt2, ResultSet rs) {
+		if(rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(pstmt2 != null) {
+			try {
+				pstmt2.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	};
+	
 	public void close(Connection conn,Statement stmt, ResultSet rs) {
 		if(rs != null) {
 			try {

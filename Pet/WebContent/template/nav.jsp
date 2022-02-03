@@ -38,49 +38,53 @@
                 <ul class="navbar-nav ml-auto">
                 
                  
-                    <c:if test="${!empty id}">			
-                    		<span style="color:white">${temp.nickname}님 반갑습니다./${temp.user_grant}/${temp.regdate}</span>
+                    <c:if test="${!empty id}">	
+                    	<li class="nav-item">	
+                    		<div>
+                    			${temp.nickname}님 반갑습니다.
+                    		</div>	
+                    	</li>
                     </c:if>
                     
                     <c:if test="${empty id}">
-                      <li class="nav-item">
-                        <a class="nav-link" href="login.co">로그인</a>
-                    </li>
-                   </c:if>
-                    <c:if test="${empty id}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="join.co">회원가입</a>
-                    </li>
-                   	</c:if>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#cards">호텔 유저 호텔등록</a>
-                    </li>
+                    	<li class="nav-item">
+                        	<a class="nav-link" href="login.co">로그인</a>
+                    	</li>
+                   		<li class="nav-item">
+                        	<a class="nav-link" href="join.co">회원가입</a>
+                    	</li>
+                    </c:if>
                     
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#forms">관리자 회원 정보</a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#forms">관리자 마이페이지</a>
-                    </li>
-                   			
-                       <li class="nav-item">
-                        <a class="nav-link" href="#forms">일반유저 마이페이지</a>
-                    </li>
-                   
-                          <li class="nav-item">
-                        <a class="nav-link" href="#forms">일반유저 찜목록</a>
-                       
-                    </li>
+                    <%-- 관리자 --%>
+                    <c:if test="${temp.user_grant==2}">
+                   		 <li class="nav-item">
+                        	<a class="nav-link" href="#forms">회원목록 보기</a>
+                   		 </li>
+                   		 
+                     </c:if>
                      
+                     <%-- 호텔측 사용자 --%>
+                     <c:if test="${temp.user_grant==1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cards">호텔 등록</a>
+                    
+                    </c:if>
+                    
+                  	<%-- 일반 사용자 --%>
+                   	<c:if test="${temp.user_grant==0}">		
+	                	
+                   		
+                    </c:if> 
+                    
                     <c:if test="${!empty id}">
                           <li class="nav-item">
                         <a class="nav-link" href="logout.co">로그아웃</a>
                     </li>
                     </c:if>
+                     <c:if test="${temp.user_grant != 2}">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          More
+                          MyPage
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
                             <a class="dropdown-item px-2" href="#more">Badges</a>
@@ -90,6 +94,7 @@
                             <a class="dropdown-item px-2" href="#more">All</a>
                         </div>
                     </li>
+                    </c:if>
                 </ul>
             </div>
         </div>

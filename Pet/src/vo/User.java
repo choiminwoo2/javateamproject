@@ -15,7 +15,12 @@ public class User {
 	private int kg;
 	
 	
-	
+	@Override
+	public String toString() {
+		return "User [user_no=" + user_no + ", id=" + id + ", password=" + password + ", nickname=" + nickname
+				+ ", tel=" + tel + ", user_grant=" + user_grant + ", regdate=" + regdate + ", animal_no=" + animal_no
+				+ ", kind=" + kind + ", kg=" + kg + "]";
+	}
 	public int getUser_no() {
 		return user_no;
 	}
