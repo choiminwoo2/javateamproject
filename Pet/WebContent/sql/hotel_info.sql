@@ -1,6 +1,7 @@
 drop table hotel_info cascade constraints purge;
 CREATE TABLE hotel_info(
    hi_no    number,         --호텔 상세 페이지번호
+   hotel_name varchar2(100),
    hotel_no     number,
    hi_intro     varchar2(2000),    --본문
    hi_url       varchar2(50),      --호텔 링크
@@ -12,7 +13,8 @@ CREATE TABLE hotel_info(
    
    
    insert into HOTEL_INFO
-   values (1,1,'안녕하세요.','http://naver.com',sysdate,1)
+   values (1,'우리호텔1',1,'안녕하세요.','http://naver.com',sysdate,1)
    
-
+ insert into HOTEL_INFO
+   values (2,'우리호텔2',1,'안녕하세요2','http://naver.com',sysdate,1)
    
