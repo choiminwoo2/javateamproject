@@ -75,8 +75,6 @@ public class UserDAO {
 					 "INSERT INTO userdata (user_no, id, password, nickname, tel, user_grant, regdate) "
 					 + "VALUES ("+no+",?,?,?,?,?, sysdate)");
 			
-			
-			
 			pstmt.setString(1, m.getId());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getNickname());
