@@ -31,6 +31,8 @@ public class HotelAddOk implements Action{
 		int size = 5 * 1024 * 1024;
 		
 		ServletContext sc = req.getServletContext();
+		
+		
 		readFolder = sc.getRealPath(saveFolder);
 		System.out.println("==========리드 폴더===========");
 		System.out.println("readFolder=" +readFolder);
