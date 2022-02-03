@@ -47,12 +47,21 @@
   color: white;
 }
 
+div.gallery {
+  margin: 55px;
+  width: 100%;
+ 
+}
+
+
+
+
 </style>
 </head>
 <body>
 <div class="container">
 <div class="info_main">
-<img src="image/test2.jpg" alt="호텔메인사진" width="100%" height="200px">
+<img src="hotelDetail/image/test2.jpg" alt="호텔메인사진" width="100%" height="200px">
 
 
 </div>
@@ -68,9 +77,9 @@
 
 <hr>
 <p>펫 호텔명 호텔 주소</p>
-<a href="#">호텔 예약하기(링크이동)</a>
-<button type="button" class="btn btn-primary mr-1" style="position: absolute;
-    right: 30px; top:250px">이용 후기</button>
+<a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
+<button type="button" class="btn btn-primary mr-1 review" style="position: absolute;
+    right: 30px; top:250px" >이용 후기</button>
 <hr>
 
 <table id="price">
@@ -89,7 +98,28 @@
  
 </table>
 
+<div class="form-group">
+   <label for="hi_intro"></label>
+   <textarea name="hi_intro" id="hi_intro" rows="10"
+          class="form-control">${hotelinfo.hi_intro}</textarea>
+   </div>
+  
+   <div class="gallery">
+  <img class="img1" src="hotelDetail/image/test2.jpg" alt="호텔사진1" width="60%" height="300" >
+<img class="img2" src="hotelDetail/image/test2.jpg" alt="호텔사진2" width="30%" height="300">
+<br>
+<br>
+<img class="img3" src="hotelDetail/image/test2.jpg" alt="호텔사진3" width="30%" height="300">
+
+<img class="img4" src="hotelDetail/image/test2.jpg" alt="호텔사진4" width="60%" height="300">
+</div>
+
 </div>
 <%-- <jsp:include page="template/footer.jsp"/> --%>
+<script>
+$("button.review").click(function(){
+	location.href="BoardList.bo";
+})
+</script>
 </body>
 </html>

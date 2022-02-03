@@ -10,5 +10,9 @@ CREATE TABLE hotel_info(
    PRIMARY KEY(hi_no)
    );
    
+   
+   insert into HOTEL_INFO
+   values (1,1,'안녕하세요.','http://naver.com',sysdate,1)
+   
 
    
