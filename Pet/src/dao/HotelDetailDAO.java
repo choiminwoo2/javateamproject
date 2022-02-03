@@ -18,7 +18,7 @@ public class HotelDetailDAO {
 		ResultSet rs=null;
 		try {
 			
-			String sql = "select * from hotel_info where animal_no = ? ";
+			String sql = "select * from hotel_info where hi_no = ? ";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,hi_no);
 			rs = pstmt.executeQuery();
@@ -28,9 +28,9 @@ public class HotelDetailDAO {
 				m.setHi_no(rs.getInt(1));
 				//m.setHotel_no(rs.geInt(2));
 				m.setHi_intro(rs.getString(3));
-				m.setHi_url(rs.getString(3));
-				m.setHi_date(rs.getString(4));
-				m.setMap_no(rs.getInt(5));
+				m.setHi_url(rs.getString(4));
+				m.setHi_date(rs.getString(5));
+				m.setMap_no(rs.getInt(6));
 				
 			}
 			}catch(Exception e) {

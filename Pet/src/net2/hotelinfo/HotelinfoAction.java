@@ -1,4 +1,4 @@
-package net.hotel;
+package net2.hotelinfo;
 
 import java.io.IOException;
 
