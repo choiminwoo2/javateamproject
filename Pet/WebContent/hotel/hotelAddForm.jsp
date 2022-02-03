@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>호텔 등록 페이지</title>
+   <link rel="stylesheet" href="css/hoteladd.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 	<jsp:include page="../template/nav.jsp"/>
@@ -47,5 +49,7 @@
         </form>
         </div>
       </section>
+      <jsp:include page="../template/footer.jsp"/>
+      <script src="js/hoteladd.js"></script>
 </body>
 </html>
