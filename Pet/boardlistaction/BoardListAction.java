@@ -42,9 +42,7 @@ public class BoardListAction implements Action {
 		
 		
 		//리스트를 받아옵니다.
-		boardlist = boarddao.getBoardList(page, limit,no);
-		
-		float star_avg=boarddao.getStaravg(no);
+		boardlist = boarddao.getBoardList(page, limit);
 		
 		/*
 		 *총 페이지 수
@@ -87,7 +85,7 @@ public class BoardListAction implements Action {
 		if(endpage > maxpage)
 			endpage = maxpage;
 		
-		   request.setAttribute("star_avg",star_avg); //star_avg
+		
 			request.setAttribute("page", page); //현재 페이지 수
 			request.setAttribute("maxpage", maxpage); //최대 페이지 수
 			

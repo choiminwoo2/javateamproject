@@ -7,7 +7,7 @@ CREATE TABLE hotel_info(
    hi_url       varchar2(50),      --호텔 링크
    hi_date date default sysdate,   --호텔 등록일
    map_no     number,      
-  -- foreign key(hotel_no) references hotel(hotel_no),   --호텔 번호
+   foreign key(hotel_no) references hotel(hotel_no),   --호텔 번호
    PRIMARY KEY(hi_no)
    );
    

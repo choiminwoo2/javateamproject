@@ -1,6 +1,7 @@
 package vo;
 
 public class Review {
+	private int hotel_no;
 	private int review_no;
 	private String rb_id;
 	private String rb_title;
@@ -8,7 +9,12 @@ public class Review {
 	private String rb_date;
 	private String rb_redate;
 
-	
+	public int getHotel_no() {
+		return hotel_no;
+	}
+	public void setHotel_no(int hotel_no) {
+		this.hotel_no = hotel_no;
+	}	
 	public int getReview_no() {
 		return review_no;
 	}

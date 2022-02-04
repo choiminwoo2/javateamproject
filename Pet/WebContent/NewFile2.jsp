@@ -25,7 +25,7 @@
    
         
         <br>
-        <input type="text" name="starvalue" class="kv-svg rating-loading" value="1.75" data-size="md" title="">
+        <input type="text" name="starvalue" class="kv-svg rating-loading" value="${star_avg }" data-size="md" title="">
         <br>
         
        
