@@ -48,7 +48,6 @@
         </form>
         </div>
       </section>
-      <jsp:include page="../template/footer.jsp"/>
       <script src="js/hoteladd.js"></script>
 </body>
 </html>

@@ -2,15 +2,16 @@
 html,body {
     margin:0;
     width:100%;
-    height:90%;
+    height:100%;
+        background-color: rgba(226,226,226,0.4) !important;
 }
 .section-form-container{
-    top:200px;
+    top:60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgba(226,226,226,0.4);
+    height:90vh;
 }
 label{
     margin-left: 7px;
