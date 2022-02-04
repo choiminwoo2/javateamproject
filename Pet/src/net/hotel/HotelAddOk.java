@@ -68,6 +68,12 @@ public class HotelAddOk implements Action{
 			hotel.setHotel_addrdetail(postcode[2]);
 			hotel.setHotel_pthtofile(file_name);
 			result = dao.insertHotel(hotel);
+			if(result) {
+				forward.setRedirect(false);
+				forward.setPath("hotel/hotelDetailAddView.jsp");
+			}else {
+				
+			}
 		}catch(Exception e) {
 			forward.setPath("error/error.jsp");
 			req.setAttribute("message", "호텔 등록 실패입니다.");
