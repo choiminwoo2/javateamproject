@@ -18,7 +18,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 </style>
 <link href="css/bootstrap.css" rel="stylesheet">
 <script src="js/jquery-3.6.0.js"></script>
-<script src="../js/list.js"></script>
+<!-- <script src="../js/list.js"></script> -->
 <title>이용후기 게시판</title>
 </head>
 <body>
@@ -27,12 +27,19 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 <c:if test="${listcount > 0 }">
 
 <h1 style="text-align:center">이용후기 게시판</h1>
+
+<div class="info_main">
+<img src="hotelDetail/image/test2.jpg" alt="호텔메인사진" width="100%" height="200px">
+</div>
+
+<p>호텔명 : ${param.hotel_name}</p>
+<p>평균 평점 : ${star_avg}</p>
 <table class="table table-striped">
 <thead>
 <tr>
 
-<th>
-<font size=3>글 개수 : ${listcount}</font>
+<th colspan="4">
+글 개수 : ${listcount}
 </th>
 </tr>
 <tr>
@@ -123,7 +130,7 @@ class="page-link">이전&nbsp;</a>
 </div>
 <script>
 $("button.write").click(function(){
-	location.href="BoardWrite.bo";
+	location.href="BoardWrite.bo?hotel_no=${param.hotel_no}";
 })
 </script>
 </body>

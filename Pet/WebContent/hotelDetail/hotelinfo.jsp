@@ -116,9 +116,9 @@ div.gallery {
 
 </div>
 <%-- <jsp:include page="template/footer.jsp"/> --%>
-<script>
+<script> /* 주소: http://localhost:8088/Pet/BoardList.bo?hotel_no=1&hotel_name=%EC%9A%B0%EB%A6%AC%ED%98%B8%ED%85%941 */
 $("button.review").click(function(){
-	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}";
+	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}";
 })
 </script>
 </body>

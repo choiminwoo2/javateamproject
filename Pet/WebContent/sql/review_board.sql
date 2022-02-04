@@ -1,6 +1,6 @@
 drop table review_board cascade constraints purge;
 CREATE TABLE review_board(
-  --호텔번호
+   hotel_no   number,
    review_no   number,         --게시글번호
    rb_id       varchar2(30),   --작성자
    rb_title    varchar2(60),  --제목
@@ -11,10 +11,13 @@ CREATE TABLE review_board(
    );
    
    insert into review_board
-   values(1,'admin','후기입니다.','좋아요',sysdate,null)
+   values(1,1,'admin','후기입니다.','좋아요',sysdate,null)
    
    insert into review_board
-   values(2,'admin','후기입니다2.','좋아요2',sysdate,null)
+   values(2,2,'admin','후기입니다2.','좋아요2',sysdate,null)
+   
+    insert into review_board
+   values(1,3,'admin','후기입니다3.','좋아요3',sysdate,null)
    
    select*from review_board
    
