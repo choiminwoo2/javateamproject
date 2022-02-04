@@ -22,11 +22,12 @@ public class UserJoinProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int kg = 0;
+		int kg=0;
 		if(request.getParameter("kg") != null && !request.getParameter("kg").equals("")) {
-			kg=Integer.parseInt(request.getParameter("kg"));
+		 kg = Integer.parseInt(request.getParameter("kg"));
 		}
-		System.out.println("kg=" + kg);
+		
+		
 		
 		String id = request.getParameter("id");
 		System.out.println("ID=" + id);
@@ -41,10 +42,12 @@ public class UserJoinProcessAction implements Action {
 		String kind = request.getParameter("kind");
 		System.out.println("종류=" + kind);
 	
-		System.out.println("무게=" + kg);
+		System.out.println("몸무게=" + kg);
+		
 		User m = new User();
 		
 		
+	
 		
 		m.setId(id);     	m.setPassword(password);	 m.setNickname(nickname);
 		m.setTel(tel); 	   	m.setUser_grant(user_grant);  

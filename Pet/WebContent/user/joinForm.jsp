@@ -8,14 +8,24 @@
 <link href="css/join.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원가입</title>
-<style>
+<script>
+function setDisplay(){
+    if($('input:radio[id=hotel]').is(':checked')){
+        $('#usercheck').hide();
+        $('#kg').val('');
+    }else{
+        $('#usercheck').show();
+    }
+ }
+ </script>
+ <style>
 span {
 	font-size:15px;
 }
 </style>
 </head>
 <body>
-	<form name="joinform" action="joinProcess.co" method="post">
+	<form id="joinform" name="joinform" action="joinProcess.co" method="post">
 		<h1>회원가입</h1>
 		<hr>
 		<b>아이디</b>
@@ -34,11 +44,11 @@ span {
         </div><br>
 		
 		<b>사용자 구분</b>
-		<input type="radio" id="user" name=user_grant value="0" checked>일반 사용자
-		<input type="radio" id="hotel" name=user_grant value="1">호텔 사용자
+		<input type="radio" id="user" name=user_grant value="0" onchange="setDisplay()" checked>일반 사용자
+		<input type="radio" id="hotel" name=user_grant value="1" onchange="setDisplay()">호텔 사용자
 		<br><br>
 		
-		<div id="etc_view">
+		<div id="usercheck">
 	    <b>반려동물 구분</b>
 	    <select name="kind">
 	      <option value="dog">강아지</option>
@@ -46,7 +56,8 @@ span {
 	    </select><br><br>
    
 		 <b>반려동물 무게(kg)</b>
-	 	 <input type="text" name="kg"  maxLength="5">
+	 	 <input type="text" id="kg" name="kg"  maxLength="5" >
+	 	 <span id="animal_message"></span>
 	   	 <b></b>
 		</div>
 		

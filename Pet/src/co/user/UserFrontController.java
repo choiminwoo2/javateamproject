@@ -59,9 +59,12 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 		case "/logout.co":
 			action = new UserLogOutAction();
 			break;		
-		case "/mypage.co":
-			action = new UserMyPageAction();
+		case "/usermodify.co":
+			action = new UserModifyViewAction();
 			break;
+		case "/usermodifyProcess.co":
+			action = new UserModifyProcessAction();
+			break;	
 		
 		}
 		

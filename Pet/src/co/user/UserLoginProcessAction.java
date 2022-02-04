@@ -25,9 +25,12 @@ public class UserLoginProcessAction implements Action {
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-	
+		
+		
+		
 		UserDAO mdao = new UserDAO();
 		User temp = mdao.UserSession(id);
+	
 		
 		int result = mdao.isId(id, password);
 		System.out.println("결과는" + result);
@@ -40,7 +43,6 @@ public class UserLoginProcessAction implements Action {
 			session.setAttribute("password", password);
 			session.setAttribute("temp", temp); //로그인한 유저 정보 
 		
-			
 			String IDStore = request.getParameter("remember");
 			Cookie cookie = new Cookie("id", id);
 			

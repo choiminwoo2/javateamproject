@@ -8,12 +8,11 @@ public class User {
 	private String password;
 	private String nickname;
 	private String tel;
-	private int user_grant;
-	private Date regdate;
+	private int user_grant;	// 유저 권한
+	private Date regdate;	// 회원 가입 날짜
 	private int animal_no;
 	private String kind;
 	private int kg;
-	
 	
 	@Override
 	public String toString() {
@@ -21,6 +20,7 @@ public class User {
 				+ ", tel=" + tel + ", user_grant=" + user_grant + ", regdate=" + regdate + ", animal_no=" + animal_no
 				+ ", kind=" + kind + ", kg=" + kg + "]";
 	}
+	
 	public int getUser_no() {
 		return user_no;
 	}
