@@ -82,12 +82,11 @@ public class UserDAO {
 			pstmt.setInt(5, m.getUser_grant());
 			result=pstmt.executeUpdate(); //삽입 성공시 result 는 1
 			
-
 			if(m.getKg() != 0) {
 				pstmt2 = con.prepareStatement(
 						 "INSERT INTO animal (animal_no, kind, kg, user_no) VALUES ("+num2+",?,?,"+no+")");
 				pstmt2.setString(1, m.getKind());
-				pstmt2.setInt(2, m.getKg());
+				pstmt2.setInt(2, m.getKg()); 
 				pstmt2.executeUpdate();
 				con.commit();
 			}else {
@@ -98,7 +97,6 @@ public class UserDAO {
 			e.printStackTrace();
 		}  finally {
 			db.close(con, pstmt, pstmt2, rs);
-		
 		}
 		return result;
 }//insert end
@@ -168,8 +166,6 @@ public class UserDAO {
 		ResultSet rs = null;
 	
 		try {
-			
-			
 			String sql = "select * from userdata where id = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -197,24 +193,73 @@ public class UserDAO {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-	
+
+		
+		
 		try {
+			/*
+			String no = "select user_no from userdata where id= ? ";
+			pstmt = con.prepareStatement(no);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
 			
-			String sql = "select * from userdata where id = ? ";
+			if (rs.next()) {
+				no =  rs.getString(1);
+			}
+			*/
+			
+			String sql = "(select u.user_no, u.id, u.nickname, u.tel, u.user_grant, u.regdate, a.kind, a.kg from userdata u, animal a where u.id = ?)";
 			pstmt = con.prepareStatement(sql);
+			System.out.println(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				temp = new User();
 				temp.setUser_no(rs.getInt(1));
 				temp.setId(rs.getString(2));
-				temp.setPassword(rs.getString(3));
-				temp.setNickname(rs.getString(4));
-				temp.setTel(rs.getString(5));
-				temp.setUser_grant(rs.getInt(6));
-				temp.setRegdate(rs.getDate(7));
+				temp.setNickname(rs.getString(3));
+				temp.setTel(rs.getString(4));
+				temp.setUser_grant(rs.getInt(5));
+				temp.setRegdate(rs.getDate(6));
+				temp.setKind(rs.getString(7));
+				temp.setKg(rs.getInt(8));
+				
+	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, rs);
+			
+		}
+		return temp;
+	} //Member_info end
 	
-			}
+/*
+
+	public User UserSession(int user_no) {
+		User temp = null;
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			select user_no from userdata where id ='admin';
+			String sql = "select u.user_no, u.id, u.nickname,u.tel,u.user_grant,u.regdate, a.kind, a.kg from userdata u, animal a where u.user_no = a.user_no";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, user_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				temp = new User();
+				temp.setUser_no(rs.getInt(1));
+				temp.setId(rs.getString(2));
+				temp.setNickname(rs.getString(3));
+				temp.setTel(rs.getString(4));
+				temp.setUser_grant(rs.getInt(5));
+				temp.setRegdate(rs.getDate(6));
+				temp.setKind(rs.getString(7));
+				temp.setKg(rs.getInt(8));
+	}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -223,4 +268,5 @@ public class UserDAO {
 		return temp;
 	} //Member_info end
 	
+	*/
 }

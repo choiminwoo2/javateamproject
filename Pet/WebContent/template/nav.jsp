@@ -81,16 +81,15 @@
                         <a class="nav-link" href="logout.co">로그아웃</a>
                     </li>
                     </c:if>
-                     <c:if test="${temp.user_grant != 2}">
+                     <c:if test="${!empty id && temp.user_grant != 2}">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           MyPage
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
-                            <a class="dropdown-item px-2" href="#more">Badges</a>
-                            <a class="dropdown-item px-2" href="#more">Tooltips &amp; Popups</a>
-                            <a class="dropdown-item px-2" href="#more">Progress &amp; Alerts</a>
-                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item px-2" href="usermodify.co">회원 정보 수정</a>
+                            <a class="dropdown-item px-2" href="#more">회원 탈퇴</a>
+                        <div class="dropdown-divider"></div>
                             <a class="dropdown-item px-2" href="#more">All</a>
                         </div>
                     </li>
