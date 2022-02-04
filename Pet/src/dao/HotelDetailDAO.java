@@ -18,7 +18,7 @@ public class HotelDetailDAO {
 		ResultSet rs=null;
 		try {
 			
-			String sql = "select * from hotel_info where hi_no = ? ";
+			String sql = "select hi_no,h.hotel_name,hi_intro,hi_url,hi_date,map_no from hotel_info e join hotel h on e.hotel_no = h.hotel_no where hi_no = ? ";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,hi_no);
 			rs = pstmt.executeQuery();
