@@ -203,20 +203,24 @@ public class ReviewBoardDAO {
 			ResultSet rs = null;
 			try {
 				con = db.getConnect();
-				pstmt = con.prepareStatement("select * from review_board where review_no = ?");
+				pstmt = con.prepareStatement("select * from review_board inner join EVALUATION " + 
+						"   on REVIEW_BOARD.REVIEW_NO=EVALUATION.REVIEW_NO"
+						+ "  where review_board.review_no=? ");
 				pstmt.setInt(1, num);
 				rs=pstmt.executeQuery();
 				
 			if (rs.next()) {
 				board = new Review();
-
-				board.setReview_no(rs.getInt("review_no"));
-				board.setHotel_no(rs.getInt("hotel_no"));
+                board.setEv_no(rs.getInt("ev_no"));
+				board.setReview_no(rs.getInt(2));
+				board.setHotel_no(rs.getInt(1));
 				board.setRb_id(rs.getString("rb_id"));
 				board.setRb_title(rs.getString("rb_title"));
 				board.setRb_text(rs.getString("rb_text"));
 				board.setRb_date(rs.getString("rb_date"));
 				board.setRb_redate(rs.getString("rb_redate"));
+				board.setEv_score(rs.getFloat("ev_score"));
+				board.setAnimal_info(rs.getString("animal_info"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -226,6 +230,67 @@ public class ReviewBoardDAO {
 		db.close(con, pstmt, rs);
 		}
 		return board;
+	}
+    //글 수정
+	public boolean boardModify(Review review, Star star) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+	
+		String sql = "update review_board "
+				   + "set rb_title=?, rb_text=? "
+				   + "where review_no = ?";
+		try {
+			con = db.getConnect();
+			// 트랜잭션을 이용하기 위해서 setAutoCommit을 false로 설정합니다.
+						con.setAutoCommit(false);
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, review.getRb_title());
+			pstmt.setString(2, review.getRb_text());
+			pstmt.setInt(3, review.getReview_no());
+			int result1=pstmt.executeUpdate();
+			pstmt.close();
+			
+			sql = "update evaluation "
+					   + "set ev_score=?, animal_info=? "
+					   + "where ev_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setFloat(1, star.getEv_score());
+			pstmt.setString(2, star.getAnimal_info());
+			pstmt.setInt(3, star.getEv_no());
+			int result2=pstmt.executeUpdate();
+			if(result1==1&&result2==1) {
+				con.commit();
+			}
+			return true;
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			System.out.println("boardReply() 에러 : " + ex);
+			if (con != null) {
+				try {
+					con.rollback(); // rollback합니다.
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		} finally {
+			
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.setAutoCommit(true);
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return false;
 	}
 	
 }

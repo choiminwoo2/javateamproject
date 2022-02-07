@@ -8,7 +8,28 @@ public class Review {
 	private String rb_text;
 	private String rb_date;
 	private String rb_redate;
+	private float ev_score;
+	private int ev_no;
+	private String animal_info;
 
+	public int getEv_no() {
+		return ev_no;
+	}
+	public void setEv_no(int ev_no) {
+		this.ev_no = ev_no;
+	}
+	public float getEv_score() {
+		return ev_score;
+	}
+	public void setEv_score(float ev_score) {
+		this.ev_score = ev_score;
+	}
+	public String getAnimal_info() {
+		return animal_info;
+	}
+	public void setAnimal_info(String animal_info) {
+		this.animal_info = animal_info;
+	}
 	public int getHotel_no() {
 		return hotel_no;
 	}

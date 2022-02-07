@@ -41,9 +41,9 @@
                  
                     <c:if test="${!empty id}">	
                     	<li class="nav-item">	
-                    		<div>
+                    		<a class="nav-link">
                     			${temp.nickname}님 반갑습니다.
-                    		</div>	
+                    		</a>	
                     	</li>
                     </c:if>
                     

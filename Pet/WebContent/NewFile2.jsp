@@ -22,7 +22,7 @@
 <body>
 <div class="container">
     	<br>
-        <input type="text" name="starvalue" class="kv-svg rating-loading" value="${star_avg }" data-size="md" title="">
+        <input type="text" name="starvalue" class="kv-svg rating-loading" value="${review.ev_score}" data-size="md" title="">
         <br>
 </div>
 </body>
