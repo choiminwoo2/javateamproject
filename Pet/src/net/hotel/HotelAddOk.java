@@ -1,6 +1,7 @@
 package net.hotel;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class HotelAddOk implements Action{
 		readFolder = sc.getRealPath(saveFolder);
 		System.out.println("==========리드 폴더===========");
 		System.out.println("readFolder=" +readFolder);
-		boolean result =false;
+		int result =-1;
 		try {
 			MultipartRequest multi = new MultipartRequest(req, readFolder,size, "utf-8",
 					new DefaultFileRenamePolicy());
@@ -68,11 +69,19 @@ public class HotelAddOk implements Action{
 			hotel.setHotel_addrdetail(postcode[2]);
 			hotel.setHotel_pthtofile(file_name);
 			result = dao.insertHotel(hotel);
-			if(result) {
+			System.out.println(result);
+			if(result != -1) {
 				forward.setRedirect(false);
+				req.setAttribute("num", result);
 				forward.setPath("hotel/hotelDetailAddView.jsp");
 			}else {
+				res.setContentType("text/html; charset=utf-8");
+				PrintWriter out = res.getWriter();
 				
+				out.println("<script>");
+				out.println("alert('입력에 실패하셨습니다.')");
+				out.println("history.back();");
+				out.println("</script>");
 			}
 		}catch(Exception e) {
 			forward.setPath("error/error.jsp");
@@ -80,7 +89,7 @@ public class HotelAddOk implements Action{
 			forward.setRedirect(false);
 		}
 		
-		return null;
+		return forward;
 	}
 	
 
