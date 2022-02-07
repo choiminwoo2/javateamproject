@@ -27,7 +27,7 @@
 <div style="height: 60px;">
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
-            <a class="navbar-brand mr-1 mb-1 mt-0" href="index.jsp">Bootstrap 4</a>
+            <a class="navbar-brand mr-1 mb-1 mt-0" href="index.jsp">Pet Cozi</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,7 +49,7 @@
                     
                     <c:if test="${empty id}">
                       <li class="nav-item">
-                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                        <a class="nav-link" href="hotelList.net">호텔 찾기</a>
                      </li>
                     	<li class="nav-item">
                         	<a class="nav-link" href="login.co">로그인</a>
@@ -70,10 +70,10 @@
                      <%-- 호텔측 사용자 --%>
                      <c:if test="${temp.user_grant==1}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#cards">호텔 등록</a>
+                        <a class="nav-link" href="hotelAdd.net">호텔 등록</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                        <a class="nav-link" href="hotelList.net">호텔 찾기</a>
                      </li>
                     
                     </c:if>
@@ -81,7 +81,7 @@
                   	<%-- 일반 사용자 --%>
                    	<c:if test="${temp.user_grant==0}">		
 	                 <li class="nav-item">
-                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                        <a class="nav-link" href="hotelList.net">호텔 찾기</a>
                      </li>
                    		
                     </c:if> 
