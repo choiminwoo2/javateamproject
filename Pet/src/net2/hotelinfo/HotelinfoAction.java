@@ -16,6 +16,7 @@ public class HotelinfoAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
+		
 		HotelDetailDAO dao = new HotelDetailDAO();
 		//String hi_no = req.getParameter("hi_no");
 		String hi_no = "1";
