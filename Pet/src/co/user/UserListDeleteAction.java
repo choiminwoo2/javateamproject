@@ -18,6 +18,7 @@ public class UserListDeleteAction implements Action {
 			throws ServletException, IOException {
 		UserDAO mdao = new UserDAO();
 		String id = request.getParameter("id");
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		int result = mdao.delete(id);

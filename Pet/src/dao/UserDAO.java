@@ -98,9 +98,6 @@ public class UserDAO {
 		}
 		return result;
 }//insert end
-
-
-	
 	
 	public int isId(String id) {
 		Connection con = db.getConnect();
@@ -176,7 +173,6 @@ public class UserDAO {
 				nickname.setNickname(rs.getString(4));
 				nickname.setTel(rs.getString(5));
 				nickname.setUser_grant(rs.getInt(6));
-	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -413,8 +409,7 @@ public class UserDAO {
 		}
 		return list;
 	}
-
-
+	
 	public User user_info(String id) {
 		User m = null;
 		Connection con = db.getConnect();

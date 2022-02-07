@@ -16,10 +16,7 @@ public class UserLogOutAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		
 		request.getSession().invalidate();
-		
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -29,9 +26,6 @@ public class UserLogOutAction implements Action {
 		out.println("location.href='index.jsp';");
 		out.println("</script>");
 		out.close();
-	
 		return null;
-		
 	}
-			
 }

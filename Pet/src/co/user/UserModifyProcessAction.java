@@ -66,15 +66,9 @@ String realFolder="";
 			System.out.println("몸무게=" + kg);
 		
 			User m = new User();
-			
-			
-		
-			
 			m.setId(id);     	m.setPassword(password);	 m.setNickname(nickname);
 			m.setTel(tel); 	   	
 			m.setKind(kind);     m.setKg(kg);
-			
-			
 			
 			UserDAO mdao = new UserDAO(); 
 			int result = mdao.modify(m);
@@ -82,13 +76,14 @@ String realFolder="";
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			//삽입이 된 경우
+			
+			//삽입 성공
 			if (result == 1) {
 				out.println("alert('수정되었습니다.');");
 				out.println("location.href='index.jsp';");
 			} else {
 				out.println("alert('회원 정보 수정에 실패했습니다.');");
-				out.println("history.back()");	//비밀번호를 제외한 다른 데이터는 유지
+				out.println("history.back()");	
 			}
 			out.println("</script>");
 			out.close();
@@ -107,11 +102,7 @@ String realFolder="";
 			request.setAttribute("temp", "프로필 사진 업로드 실패입니다.");
 			forward.setRedirect(false);
 			return null;
-		
-			
-			
 		} // catch end 
 	*/
 	} //execute end
-	
 }
