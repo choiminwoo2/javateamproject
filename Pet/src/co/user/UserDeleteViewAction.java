@@ -1,17 +1,18 @@
 package co.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import action.Action;
 import action.ActionForward;
 import dao.UserDAO;
 import vo.User;
 
-public class UserModifyViewAction implements Action {
+public class UserDeleteViewAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -23,8 +24,8 @@ public class UserModifyViewAction implements Action {
 		String id = request.getParameter("id");
 		temp = mdao.UserSession(id);
 		request.setAttribute("temp", temp);
-		forward.setPath("user/usermodify.jsp");
+		forward.setPath("user/userdelete.jsp");
 		return forward;
+		
 	}
-
 }

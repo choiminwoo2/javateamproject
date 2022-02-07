@@ -109,7 +109,4 @@ $(document).ready(function() {
 				location.href="index.jsp";
 		}); // 돌아가기 버튼 메인으로 이동
 			
-	
-	
-	
 });

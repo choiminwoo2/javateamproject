@@ -31,6 +31,7 @@ public class UserLoginProcessAction implements Action {
 		UserDAO mdao = new UserDAO();
 		User temp = mdao.UserSession(id);
 	
+	
 		
 		int result = mdao.isId(id, password);
 		System.out.println("결과는" + result);
@@ -62,6 +63,7 @@ public class UserLoginProcessAction implements Action {
 			forward.setPath("index.jsp"); //로그인 성공시 메인 페이지로 이동
 			return forward;
 		} else {
+			
 			String message = "비밀번호가 일치하지 않습니다. " ;
 			if (result == -1)
 				message = "아이디가 존재하지 않습니다.";

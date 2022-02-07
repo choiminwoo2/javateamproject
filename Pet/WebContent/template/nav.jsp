@@ -27,7 +27,7 @@
 <div style="height: 60px;">
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
-            <a class="navbar-brand mr-1 mb-1 mt-0" href="../">Bootstrap 4</a>
+            <a class="navbar-brand mr-1 mb-1 mt-0" href="index.jsp">Bootstrap 4</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,8 +35,9 @@
                 <ul class="navbar-nav">
                    
                 </ul>
+               
                 <ul class="navbar-nav ml-auto">
-                
+                	
                  
                     <c:if test="${!empty id}">	
                     	<li class="nav-item">	
@@ -58,7 +59,7 @@
                     <%-- 관리자 --%>
                     <c:if test="${temp.user_grant==2}">
                    		 <li class="nav-item">
-                        	<a class="nav-link" href="#forms">회원목록 보기</a>
+                        	<a class="nav-link" href="userList.co">회원목록 보기</a>
                    		 </li>
                    		 
                      </c:if>
@@ -87,8 +88,8 @@
                           MyPage
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
-                            <a class="dropdown-item px-2" href="usermodify.co">회원 정보 수정</a>
-                            <a class="dropdown-item px-2" href="#more">회원 탈퇴</a>
+                            <a class="dropdown-item px-2" href="usermodifyview.co">회원 정보 수정</a>
+                            <a class="dropdown-item px-2" href="userdeleteview.co">회원 탈퇴</a>
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item px-2" href="#more">All</a>
                         </div>

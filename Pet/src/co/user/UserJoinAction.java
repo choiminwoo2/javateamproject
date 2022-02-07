@@ -11,7 +11,8 @@ import action.ActionForward;
 public class UserJoinAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("user/joinForm.jsp");

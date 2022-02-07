@@ -33,7 +33,7 @@
     </Style>
     
   </head>
-  
+
   <body data-spy="scroll" data-target="#navbar1" data-offset="60">
     <header class="bg-primary">
         <div class="container h-100">
