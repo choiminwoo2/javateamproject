@@ -13,3 +13,8 @@ CREATE TABLE evaluation(
    select * from EVALUATION
    
    select round(avg(ev_score),1) from EVALUATION where hotel_no=1
+   
+   select * 
+   from review_board inner join EVALUATION
+   on REVIEW_BOARD.REVIEW_NO=EVALUATION.REVIEW_NO
+   where review_board.review_no=6

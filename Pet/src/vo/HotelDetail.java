@@ -4,10 +4,19 @@ public class HotelDetail {
 	private int hi_no;
 	private int hotel_no;
 	private String hi_intro;
+	private String hotel_name;
 	private String hi_url;
 	private String hi_date;
 	private int map_no;
 	private String hi_photofiles;
+	
+	
+	public String getHotel_name() {
+		return hotel_name;
+	}
+	public void setHotel_name(String hotel_name) {
+		this.hotel_name = hotel_name;
+	}
 	
 	public String getHi_photofiles() {
 		return hi_photofiles;
