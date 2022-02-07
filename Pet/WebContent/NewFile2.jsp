@@ -21,15 +21,9 @@
     <script src="star/themes/krajee-uni/theme.js" type="text/javascript"></script>
 <body>
 <div class="container">
-    
-   
-        
-        <br>
+    	<br>
         <input type="text" name="starvalue" class="kv-svg rating-loading" value="${star_avg }" data-size="md" title="">
         <br>
-        
-       
-   
 </div>
 </body>
 <script>
