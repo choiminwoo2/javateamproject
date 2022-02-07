@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<jsp:include page="../template/nav.jsp"/>
+ <script src="js/bootstrap.js"></script>
 <style>
 select.form-control{
 width:auto; margin-bottom:2em; display:inline-block
@@ -16,8 +17,8 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(3){width:14%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(4){width:17%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 </style>
-<link href="css/bootstrap.css" rel="stylesheet">
-<script src="js/jquery-3.6.0.js"></script>
+<!-- <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/jquery-3.6.0.js"></script> -->
 <!-- <script src="../js/list.js"></script> -->
 <title>이용후기 게시판</title>
 </head>
@@ -66,7 +67,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
         --%>
 
    
-   <a href="BoardDetailAction.bo?num=${b.review_no}">
+   <a href="BoardDetailAction.bo?num=${b.review_no}&hotel_name=${param.hotel_name}">
    <c:out value="${b.rb_title}"/>
    </a>  
 </div>
@@ -87,7 +88,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 </c:if>
 <c:if test="${page > 1 }">
 <li class="page-item">
-<a href="BoardList.bo?page=${page-1}"
+<a href="BoardList.bo?page=${page-1}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
 class="page-link">이전&nbsp;</a>
 </li>
 </c:if>
@@ -100,7 +101,7 @@ class="page-link">이전&nbsp;</a>
 </c:if>
 <c:if test="${a != page }">
 <li class="page-item">
-<a href="BoardList.bo?page=${a}"
+<a href="BoardList.bo?page=${a}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
    class="page-link">${a}</a>
    </li>
    </c:if>
@@ -113,7 +114,7 @@ class="page-link">이전&nbsp;</a>
    </c:if>
    <c:if test="${page < maxpage }">
    <li class="page-item">
-   <a href="BoardList.bo?page=${page+1}"
+   <a href="BoardList.bo?page=${page+1}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
       class="page-link">&nbsp;다음</a>
 </li>
 </c:if>   

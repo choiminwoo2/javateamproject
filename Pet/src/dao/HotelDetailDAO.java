@@ -28,10 +28,10 @@ public class HotelDetailDAO {
 				m.setHi_no(rs.getInt(1));
 				//m.setHotel_no(rs.geInt(2));
 				m.setHotel_name(rs.getString(2));
-				m.setHi_intro(rs.getString(4));
-				m.setHi_url(rs.getString(5));
-				m.setHi_date(rs.getString(6));
-				m.setMap_no(rs.getInt(7));
+				m.setHi_intro(rs.getString(3));
+				m.setHi_url(rs.getString(4));
+				m.setHi_date(rs.getString(5));
+				m.setMap_no(rs.getInt(6));
 				
 			}
 			}catch(Exception e) {

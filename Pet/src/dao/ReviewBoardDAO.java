@@ -211,6 +211,7 @@ public class ReviewBoardDAO {
 				board = new Review();
 
 				board.setReview_no(rs.getInt("review_no"));
+				board.setHotel_no(rs.getInt("hotel_no"));
 				board.setRb_id(rs.getString("rb_id"));
 				board.setRb_title(rs.getString("rb_title"));
 				board.setRb_text(rs.getString("rb_text"));
