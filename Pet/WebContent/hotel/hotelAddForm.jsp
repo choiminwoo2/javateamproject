@@ -25,6 +25,9 @@
                 </div>
                 <label for ="">전화번호</label>
                 <input class="form-control " name="hotel_tel" type="text" placeholder="호텔명">
+                <label>호텔을 이용가능한 반려동물</label><br>
+                <input type="checkbox" value="0" name="animal"> 강아지
+                <input type="checkbox" value="1" name="animal"> 고양이
                 <div class="post-grid">
                     <label for="post1">우편번호</label>
                     <input type="button" value="검색" id="postbtn" class="btn btn-primary align-center btn-sm mr-1">

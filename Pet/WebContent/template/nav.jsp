@@ -48,6 +48,9 @@
                     </c:if>
                     
                     <c:if test="${empty id}">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                     </li>
                     	<li class="nav-item">
                         	<a class="nav-link" href="login.co">로그인</a>
                     	</li>
@@ -68,12 +71,18 @@
                      <c:if test="${temp.user_grant==1}">
                     <li class="nav-item">
                         <a class="nav-link" href="#cards">호텔 등록</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                     </li>
                     
                     </c:if>
                     
                   	<%-- 일반 사용자 --%>
                    	<c:if test="${temp.user_grant==0}">		
-	                	
+	                 <li class="nav-item">
+                        <a class="nav-link" href="#cards">호텔 찾기</a>
+                     </li>
                    		
                     </c:if> 
                     

@@ -25,6 +25,7 @@ public class HotelList implements Action {
 		if(arr != null) {
 			forward.setRedirect(false);
 			req.setAttribute("hotel_list", arr);
+			System.out.println("arr=" + arr.size());
 			forward.setPath("hotel/hotelListView.jsp");
 			return forward;
 		}

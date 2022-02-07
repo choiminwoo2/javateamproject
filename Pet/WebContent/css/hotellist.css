@@ -74,18 +74,22 @@ input[type="radio"]{
     width: 100%;
     justify-content: center;
     align-items: flex-start;
-    height: 40vh;
+    height: 50vh;
 }
 .hotellist-grid{
     display: grid;
     align-items: flex-start;
     width: 80%;
+    height:500px;
     justify-content: space-between;
     grid-template-columns: 15em 15em 15em 15em 15em;
     grid-column-gap: 10px;
-    grid-template-rows: 10em;
+    grid-template-rows: 500px;
 }
 .card-img-top{
  
+}
+.card-title{
+	font-weight: 24px;
 }
 /* 호텔 리스트 끝 */

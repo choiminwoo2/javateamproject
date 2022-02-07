@@ -3,6 +3,7 @@ package vo;
 public class Hotel {
 	private int hotel_no;
 	private String hotel_name;
+	private int hotel_animal_grade;
 	private String hotel_postcode;
 	private String hotel_addr;
 	private String hotel_addrdetail;
@@ -12,8 +13,48 @@ public class Hotel {
 	private int hotel_price_8ge12lt;
 	private int hotel_price_12gt;	
 	private String hotel_pthtofile;
+	private String id;
+	public String hotel_animal_kinds;
+	public String hotel_location;
 	
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getHotel_location() {
+		String s = "";
+		s = hotel_addr.substring(0, hotel_addr.indexOf(" "));
+		System.out.println(s);
+		return s;
+	}
+	
+	public String getHotel_animal_kinds() {
+		String s= "";
+		switch (hotel_animal_grade) {
+		case 0:
+			s = "강아지";
+			break;
+		case 1:
+			s="고양이";
+			break;	
+		case 2:
+			s="강아지,고양이";
+			break;
+		}
+		return s;
+		
+	}
+	public int getHotel_animal_grade() {
+		return hotel_animal_grade;
+	}
+	public void setHotel_animal_grade(int hotel_animal_grade) {
+		this.hotel_animal_grade = hotel_animal_grade;
+	}
 	public String getHotel_name() {
 		return hotel_name;
 	}

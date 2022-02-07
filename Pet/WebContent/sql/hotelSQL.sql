@@ -13,7 +13,8 @@ CREATE TABLE HOTEL(
 	hotel_postcode varchar2(10) not null,
 	hotel_addr varchar2(100) not null,
 	hotel_addr_detail varchar2(100) not null,
-	hotel_photofile varchar2(20) not null
+	hotel_photofile varchar2(20) not null,
+	hotel_id varchar2(50) not null
 );
 --테스트용 테이블
 CREATE TABLE HOTEL1 AS
