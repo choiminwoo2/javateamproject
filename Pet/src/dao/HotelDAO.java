@@ -42,19 +42,21 @@ public class HotelDAO {
 			}
 			rs.close();
 			pstmt.close();
-			String sql = "insert into hotel values(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into hotel values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2,hotel.getHotel_name());
-			pstmt.setInt(3, hotel.getHotel_price_5lt());
-			pstmt.setInt(4, hotel.getHotel_price_5ge8lt());
-			pstmt.setInt(5, hotel.getHotel_price_8ge12lt());
-			pstmt.setInt(6, hotel.getHotel_price_12gt());
-			pstmt.setString(7, hotel.getHotel_tel());
-			pstmt.setString(8, hotel.getHotel_postcode());
-			pstmt.setString(9, hotel.getHotel_addr());
-			pstmt.setString(10, hotel.getHotel_addrdetail());
-			pstmt.setString(11, hotel.getHotel_pthtofile());
+			pstmt.setInt(3, hotel.getHotel_animal_grade());
+			pstmt.setInt(4, hotel.getHotel_price_5lt());
+			pstmt.setInt(5, hotel.getHotel_price_5ge8lt());
+			pstmt.setInt(6, hotel.getHotel_price_8ge12lt());
+			pstmt.setInt(7, hotel.getHotel_price_12gt());
+			pstmt.setString(8, hotel.getHotel_tel());
+			pstmt.setString(9, hotel.getHotel_postcode());
+			pstmt.setString(10, hotel.getHotel_addr());
+			pstmt.setString(11, hotel.getHotel_addrdetail());
+			pstmt.setString(12, hotel.getHotel_pthtofile());
+			pstmt.setString(13, hotel.getId());
 			int re = pstmt.executeUpdate();
 			if(re == 1) {
 				System.out.println("호텔 등록성공");
@@ -63,11 +65,12 @@ public class HotelDAO {
 				System.out.println("호텔 등록 실패");
 			}
 			
+			
 		}catch(Exception e) {
 		}finally {
 			db.close(conn, pstmt, null);
 		}
-		return num;
+		return result;
 		
 	}
 	//인설트 호텔 end
@@ -123,12 +126,18 @@ public class HotelDAO {
 				Hotel h = new Hotel();
 				h.setHotel_no(rs.getInt(1));
 				h.setHotel_name(rs.getString(2));
-				h.setHotel_price_5lt(rs.getInt(3));
-				h.setHotel_price_5ge8lt(rs.getInt(4));
-				h.setHotel_price_8ge12lt(rs.getInt(5));
-				h.setHotel_price_12gt(rs.getInt(6));
-				h.setHotel_addr(sql);
-			
+				h.setHotel_animal_grade(rs.getInt(3));
+				h.setHotel_price_5lt(rs.getInt(4));
+				h.setHotel_price_5ge8lt(rs.getInt(5));
+				h.setHotel_price_8ge12lt(rs.getInt(6));
+				h.setHotel_price_12gt(rs.getInt(7));
+				h.setHotel_tel(rs.getString(8));
+				h.setHotel_postcode(rs.getString(9));
+				h.setHotel_addr(rs.getString(10));
+				System.out.println("addr=" +  h.getHotel_addr().substring(0, h.getHotel_addr().indexOf(" ")));
+				h.setHotel_addrdetail(rs.getString(11));
+				h.setHotel_pthtofile(rs.getString(12));
+				arr.add(h);
 				
 			}
 		}catch(Exception e) {

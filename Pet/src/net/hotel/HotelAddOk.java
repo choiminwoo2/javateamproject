@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -56,8 +57,25 @@ public class HotelAddOk implements Action{
 			for(String s : postcode) {
 				System.out.println("주소 순서순대로"+ s);
 			}
+			String[] animal_list = multi.getParameterValues("animal");
+			int cnt = 1;
+			int animal_grade = -1;
+			for(String s : animal_list ) {
+				animal_grade = Integer.parseInt(s);
+				if(cnt ==2) {
+					animal_grade = 2;
+					cnt = 1;
+				}
+				cnt++;
+			}
+			System.out.println("애니멀종류=" + animal_grade);
 			String file_name = multi.getOriginalFileName("hotel_file");
 			System.out.println("파일이름= "+file_name);
+			HttpSession session = req.getSession();
+			String id =(String) session.getAttribute("id");
+			System.out.println("id=" + id);
+			hotel.setId(id);
+			hotel.setHotel_animal_grade(animal_grade);
 			hotel.setHotel_name(hotel_name);
 			hotel.setHotel_price_5lt(Integer.parseInt(hotel_weight[0]));
 			hotel.setHotel_price_5ge8lt(Integer.parseInt(hotel_weight[1]));

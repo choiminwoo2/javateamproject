@@ -1,11 +1,24 @@
+<%@page import="vo.Hotel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
    <link rel="stylesheet" href="css/hotellist.css">
+   <style type="text/css">
+   	p{
+   		margin: 2px 0px !important;
+   	}
+   	select{
+   		font-size: 8px;
+   	}
+   	.hotellist-grid p{
+   		font-size: 16px;
+   	}
+   </style>
 </head>
 <body>
 <jsp:include page="../template/nav.jsp"/>
@@ -59,47 +72,43 @@
         </section>
       </div>
       <div class ="hotellist-container">
-        <section class="hotellist-grid">
-            <div class="card" style="width: 14rem;">
-                <img src="hotel1.jpg" class="card-img-top" alt="...">
+        <div class="hotellist-grid">
+        <c:forEach items="${hotel_list}" var="h">
+        	 <div class="card" style="width: 15rem;">
+                <img src="hotel/img/${h.hotel_pthtofile }" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title">${h.hotel_name} 호텔</h5>
+                  <p> 지역: ${h.hotel_location}</p>
+                  <p>동물 종류:
+                   ${h.hotel_animal_kinds}</p>
+                  <p>가격</p>
+                  <div class="sm-3">
+	                  <select class="form-control">
+	                   		<option>5kg 미만 : ${h.hotel_price_5lt}원</option>
+                   </select>
+                  </div>
+                  <button class="btn float-right item-btn" value="${h.hotel_no}">더 보기</button>
+                   
                 </div>
-              </div>
-              <div class="card" style="width: 14rem;">
-                <img src="hotel1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">00 호텔</h5>
-                  <span> 가격:100,000원 지역:서울</span>
-                </div>
-              </div>
-              <div class="card" style="width: 14rem;">
-                <img src="hotel1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card" style="width: 14rem;">
-                <img src="hotel1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card" style="width: 14rem;">
-                <img src="hotel1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </section>
+              </div> 
+        </c:forEach>
+           
+        </div>
       </div>
+      <script>
+      function btnClick(e){
+    	  console.log(e.target.value);
+    		const hotelName = document.querySelector('.card-title');
+      		const rehotel = hotelName.innerText.replace(" 호텔","");
+    	  	location.href = "hotelinfo.net2?num=" + e.target.value +"&hotel_name=" + rehotel;
+      }
+      	window.onload= function(){
+      		const btnGroup = document.querySelectorAll('.item-btn');
+      		btnGroup.forEach((item) =>{
+      			item.addEventListener('click',btnClick);
+      		});
+      		
+      	}
+      </script>
 </body>
 </html>
