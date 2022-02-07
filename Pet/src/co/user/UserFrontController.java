@@ -25,10 +25,8 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 		String RequestURI = request.getRequestURI();
 		System.out.println("RequestURI = " + RequestURI);
 		
-		
 		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
-		
 		
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command = " + command);

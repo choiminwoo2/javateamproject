@@ -114,27 +114,14 @@ td:nth-child(1) {
 <script>
 $(document).ready(function() {
 		
-		  $("#btnDelete").click(function(){
-
-	        // 확인 대화상자 
-
-	        if(confirm("정말 탈퇴하시겠습니까?")){
-
-	            document.deleteform.action = "userdeleteProcess.co";
-
-	            document.deleteform.submit();
-
-	        }
-
-	    });
-
-		
-		$(".cancelbtn").click(function (){
-					location.href="index.jsp";
-			}); // 돌아가기 버튼 메인으로 이동
-				
-		
+	$(".listdel").click(function(event) {
+		var answer= confirm("정말 삭제 하시겠습니까?");
+		console.log(answer); //취소를 클릭한경우- false
+		if (!answer) { 		//취소를 클릭한 경우
+			event.preventDefault(); // 이동하지 않습니다.
+		}
 	});
+});
 </script>
 </head>
   <jsp:include page="../template/nav.jsp"/>
@@ -160,11 +147,9 @@ $(document).ready(function() {
 		<c:if test="${listcount > 0 }">
 		<br><br><br>
 		
-		
 			<%--회원이 있는 경우 --%>
 			<form name="deleteform" method="post">
 			<table class="table table-striped">
-				
 				<thead>
 					<tr>
 						<th colspan="4"> 회원 목록</th>
@@ -185,9 +170,8 @@ $(document).ready(function() {
 							<td>${m.nickname}</td>
 							<td>${m.tel}</td>
 							<td>${m.regdate}</td>
-							<td> <a href="userListDelete.co?id=${m.id}" class="btn btn-info" id="btnDelete">삭제</a>
-							<input type="button" class="submitbtn" id="btnDelete" value="회원 탈퇴"></td>
-							
+							<td> <a href="userListDelete.co?id=${m.id}" class="btn btn-info listdel" id="btnDelete">삭제</a>
+							<input type="hidden" class="submitbtn"></td>
 						</tr>
 					</c:forEach>	
 				</tbody>	

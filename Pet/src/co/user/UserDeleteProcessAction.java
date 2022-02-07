@@ -33,7 +33,6 @@ public class UserDeleteProcessAction implements Action {
 		forward.setPath("index.jsp"); 
 		
 		}
-	
 		request.getSession().invalidate();
 		return forward;
  }

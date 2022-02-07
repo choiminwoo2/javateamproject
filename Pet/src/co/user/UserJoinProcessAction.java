@@ -27,8 +27,6 @@ public class UserJoinProcessAction implements Action {
 		 kg = Integer.parseInt(request.getParameter("kg"));
 		}
 		
-		
-		
 		String id = request.getParameter("id");
 		System.out.println("ID=" + id);
 		String password = request.getParameter("password");
@@ -46,9 +44,6 @@ public class UserJoinProcessAction implements Action {
 		
 		User m = new User();
 		
-		
-	
-		
 		m.setId(id);     	m.setPassword(password);	 m.setNickname(nickname);
 		m.setTel(tel); 	   	m.setUser_grant(user_grant);  
 		m.setKind(kind);     m.setKg(kg);
@@ -61,7 +56,6 @@ public class UserJoinProcessAction implements Action {
 		UserDAO mdao = new UserDAO(); 
 		int result = mdao.insert(m);
 	
-		
 		if(result==0) {
 			System.out.println("회원 가입 실패입니다.");
 			ActionForward forward = new ActionForward();
