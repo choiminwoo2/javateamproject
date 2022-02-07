@@ -46,6 +46,15 @@ public class HotelFrontController extends HttpServlet {
 	   case "/hotelAddOk.net":
 		   action = new HotelAddOk();
 		   break;
+	   case "/hotelDetailAdd.net":
+		   action = new HotelDetailAdd();
+	   	   break;
+	   case "/hotelContentAdd.net":
+		   action = new HotelContentAdd();
+		   break;
+	   case "/hotelList.net":
+		   action = new HotelList();
+		   break;
 	   
 	   }
 	   forward = action.execute(request,  response);

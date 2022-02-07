@@ -48,6 +48,7 @@ body,html{
     gap: 10px;
     overflow-y: scroll;
     border-radius: 3px;
+    opacity: 0.3;
 }
 .file-grid-container::-webkit-scrollbar{
     width: 5px;
@@ -68,7 +69,7 @@ body,html{
    height: 400px;
    width: 400px;
    background-color: rgba(0, 0, 0, 0.3);
-   text-align: center;
+   display:none;
    line-height: 400px;
    top:280;
    border-radius: 3px;
@@ -80,7 +81,6 @@ img{
     background-color: rgba(0,0,0,0.1);
     border: 2px dashed gray;
     align-self: center;
-    opacity: 0.3;
 }
 .file-inner-container{
     display: flex;

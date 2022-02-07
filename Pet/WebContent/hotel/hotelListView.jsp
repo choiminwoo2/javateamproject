@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="../css/hotellist.css">
+   <link rel="stylesheet" href="css/hotellist.css">
 </head>
 <body>
 <jsp:include page="../template/nav.jsp"/>

@@ -7,7 +7,7 @@ CREATE TABLE hotel_info(
    hi_date date default sysdate,   --호텔 등록일
    map_no     number,      
    hi_photofiles varchar2(1000), --호텔 상세페이지에서 사용할 사진 목록.
-   foreign key(hotel_no) references hotel(hotel_no),   --호텔 번호
+   foreign key(hotel_no) references hotel(hotel_no) on delete cascade,   --호텔 번호
    PRIMARY KEY(hi_no)
    );
    
