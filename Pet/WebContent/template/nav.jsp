@@ -14,8 +14,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-
+   
+   </head>
 <body>
 <div style="height: 60px;">
  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
@@ -28,10 +28,9 @@
                 <ul class="navbar-nav">
                    
                 </ul>
-               
+                
                 <ul class="navbar-nav ml-auto">
                 	
-                 
                     <c:if test="${!empty id}">	
                     	<li class="nav-item">	
                     		<a class="nav-link">

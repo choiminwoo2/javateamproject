@@ -19,7 +19,7 @@ public class UserDeleteProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ActionForward forward = new ActionForward();
+		
 		
 		String id = request.getParameter("id");
 		System.out.println("ID=" + id);
@@ -28,12 +28,16 @@ public class UserDeleteProcessAction implements Action {
 		int result = mdao.delete(id);
 		
 		if(result ==1) {
-		
-		forward.setRedirect(true);
-		forward.setPath("index.jsp"); 
-		
+			request.getSession().invalidate();
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			String message = "정상적으로 탈퇴 되셨습니다.";
+			out.println("<script>");
+			out.println("alert('" + message + "');");
+			out.println("location.href='index.jsp';");
+			out.println("</script>");
+			out.close();
 		}
-		request.getSession().invalidate();
-		return forward;
- }
+		return null;
+  }
 }

@@ -19,15 +19,13 @@ public class UserDAO {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result= -1; //아이디가 존재하지 않습니다.
+		int result= -1; //아이디가 없는 경우
 		try {
 			
 			String sql = "select id, password from userdata where id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			
 			rs = pstmt.executeQuery();
-			
 			
 			if(rs.next()) { 
 				if(rs.getString(2).equals(password)) {
@@ -52,8 +50,8 @@ public class UserDAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		int no = 1;
-		int result = 0; //초기값
-		System.out.println("DAO진입");
+		int result = 0; 
+		System.out.println("insert DAO진입");
 		try {
 			
 			con.setAutoCommit(false);
@@ -97,7 +95,7 @@ public class UserDAO {
 			db.close(con, pstmt, pstmt2, rs);
 		}
 		return result;
-}//insert end
+}
 	
 	public int isId(String id) {
 		Connection con = db.getConnect();
@@ -122,7 +120,7 @@ public class UserDAO {
 			db.close(con, pstmt, rs);
 		}
 		return result;
-		}// isId end
+		}
 
 	
 	public int isNickname(String nickname) {
@@ -133,7 +131,6 @@ public class UserDAO {
 		
 		int result= -1;
 		try {
-			
 			
 			String sql = "select nickname from userdata where nickname = ?";
 			pstmt = con.prepareStatement(sql);
@@ -153,54 +150,14 @@ public class UserDAO {
 		}
 		return result;
 	}
-/*
-	public User nickname(String id) {
-		User nickname = null;
-		Connection con = db.getConnect();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-	
-		try {
-			String sql = "select * from userdata where id = ? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				nickname = new User();
-				nickname.setUser_no(rs.getInt(1));
-				nickname.setId(rs.getString(2));
-				nickname.setPassword(rs.getString(3));
-				nickname.setNickname(rs.getString(4));
-				nickname.setTel(rs.getString(5));
-				nickname.setUser_grant(rs.getInt(6));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}  finally {
-			db.close(con, pstmt, rs);
-		}
-		return nickname;
-	} 
-*/
+
 	public User UserSession(String id) {
 		User temp = null;
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		
-		
 		try {
-			/*
-			String no = "select user_no from userdata where id= ? ";
-			pstmt = con.prepareStatement(no);
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			
-			if (rs.next()) {
-				no =  rs.getString(1);
-			}
-			*/
 			
 			String sql = "(select u.user_no, u.id, u.nickname, u.tel, u.user_grant, u.regdate, a.kind, a.kg from userdata u, animal a where u.id = ?)";
 			pstmt = con.prepareStatement(sql);
@@ -235,8 +192,8 @@ public class UserDAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		
-		int result = 0; //초기값
-		System.out.println("회원정보 수정");
+		int result = 0;
+		System.out.println("회원정보 수정진입");
 		try {
 			
 			con.setAutoCommit(false);
@@ -248,7 +205,7 @@ public class UserDAO {
 			pstmt.setString(3, m.getTel());
 			pstmt.setString(4, m.getId());
 			
-			result=pstmt.executeUpdate(); //삽입 성공시 result 는 1
+			result=pstmt.executeUpdate(); //성공시 result 는 1
 			
 			if(m.getKg() != 0) {
 				
@@ -279,7 +236,7 @@ public class UserDAO {
 	
 		ResultSet rs = null;
 		
-		int result = 0; //초기값
+		int result = 0; 
 		
 		try {
 			
@@ -289,7 +246,7 @@ public class UserDAO {
 			
 			pstmt.setString(1, id);
 			
-			result=pstmt.executeUpdate(); //삭제 성공시 result 는 1
+			result=pstmt.executeUpdate(); //성공시 result 는 1
 		
 			System.out.println("회원정보 탈퇴진입");
 			} catch (SQLException e) {
@@ -305,7 +262,7 @@ public class UserDAO {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = 0;
+		int result = 0;
 		
 		try {
 		
@@ -313,35 +270,15 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				x = rs.getInt(1);
+				result = rs.getInt(1);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("getListCount() 에러: " + ex);
 		}  finally {
-			if (rs != null)
-			try {
-				rs.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				
-			}
-			if (pstmt != null)
-			try {
-				pstmt.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				
-			}
-			if (con != null)
-			try {
-				con.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-				
-			}
+			db.close(con, pstmt, rs);
 		}
-		return x;
+		return result;
 	}
 
 
@@ -361,11 +298,11 @@ public class UserDAO {
 					+         ")"
 					+"   where rnum>=? and rnum<=?";
 			pstmt = con.prepareStatement(sql);
-			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ...
+			
 			int startrow = (page - 1) * limit + 1;
-					//읽기 시작할 row 번호 (1 11 21 31 ...
+					
 			int endrow = startrow + limit - 1;
-					//읽을 마지막 row 번호 (10 20 30 40 ...
+					
 			pstmt.setInt(1, startrow);
 			pstmt.setInt(2, endrow);
 			rs = pstmt.executeQuery();
@@ -385,27 +322,7 @@ public class UserDAO {
 			ex.printStackTrace();
 			
 		}  finally {
-			if (rs != null)
-			try {
-				rs.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				
-			}
-			if (pstmt != null)
-			try {
-				pstmt.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				
-			}
-			if (con != null)
-			try {
-				con.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-				
-			}
+			db.close(con, pstmt, rs);
 		}
 		return list;
 	}
@@ -438,24 +355,42 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
-			try {
-				if (rs != null)
-					rs.close();
-			} catch (SQLException ex) {
-				System.out.println(ex.getMessage());
+			db.close(con, pstmt, rs);
+		}
+		return m;
+	}
+
+
+	public User AnimalSession(int user_no) {
+		User m = null;
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			
+			String sql = "(select u.user_no, u.id, u.nickname, u.tel, u.user_grant, u.regdate, a.kind, a.kg from userdata u, animal a where a.user_no = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, user_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m = new User();
+				m.setUser_no(rs.getInt(1));
+				m.setId(rs.getString(2));
+				m.setNickname(rs.getString(3));
+				m.setTel(rs.getString(4));
+				m.setUser_grant(rs.getInt(5));
+				m.setRegdate(rs.getDate(6));
+				m.setKind(rs.getString(7));
+				m.setKg(rs.getInt(8));
+			
 			}
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (SQLException ex) {
-				System.out.println(ex.getMessage());
-			}
-			try {
-				if (con != null)
-					con.close();
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, rs);
 		}
 		return m;
 	}
