@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,6 +35,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#navbar1" data-offset="60">
+  <c:if test="${temp.user_grant==1}">
     <header class="bg-primary">
         <div class="container h-100">
             <div class="row h-100">
@@ -52,6 +53,7 @@
             </div>
         </div>
     </header>
+   </c:if>
        <jsp:include page="template/nav.jsp"/>
     <main>
         <section class="container vh-10">
