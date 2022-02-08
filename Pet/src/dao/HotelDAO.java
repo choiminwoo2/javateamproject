@@ -118,6 +118,7 @@ public class HotelDAO {
 	//호텔all list end
 	public List<Hotel> selectHotel(int page, int limit) {
 		
+		
 		String sql = " select * from (select " + 
 				" rownum rnum,h.* from hotel h order by hotel_no desc) where " + 
 				" rnum >= ? and rnum <= ?";
