@@ -8,18 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <meta charset="utf-8">
-    <link rel="icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
-    <meta property="og:image" name="twitter:image" content="http://bootstrap.themes.guide/assets/ss_fresca.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@ThemesGuide">
-    <meta name="twitter:creator" content="@ThemesGuide">
-    <meta name="twitter:title" content="Open-source Bootstrap 4 Themes">
-    <meta name="twitter:description" content="Download Fresca - free, open source Bootstrap 4 theme by Themes.guide">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
-    <link href="css/template.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
