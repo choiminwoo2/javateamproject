@@ -14,6 +14,7 @@ window.onload= function(){
      });
       		
 }
+
 function madebox(){
 	var addContent = document.createElement('div');
 	addContent.classList.add('hotellist-container');
