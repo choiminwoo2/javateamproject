@@ -1,17 +1,8 @@
 @charset "UTF-8";
-html{
-	margin:0px;
-	padding:0px;
-	height:100%;
-	width:100%;
-}
-body{
-	min-height: 100%;
-			background-color: rgba(226,226,226,0.4) !important;
-}
-.wrap{
-	min-height:100%;
-	max-height:100%;
+html,body{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(226,226,226,0.4) !important;
 }
 /*카테고리 영역 시작. */
 .categori{
@@ -83,61 +74,22 @@ input[type="radio"]{
     width: 100%;
     justify-content: center;
     align-items: flex-start;
-    height: 900px;
+    height: 50vh;
 }
 .hotellist-grid{
     display: grid;
     align-items: flex-start;
     width: 80%;
-    height:400px;
+    height:500px;
     justify-content: space-between;
     grid-template-columns: 15em 15em 15em 15em 15em;
     grid-column-gap: 10px;
-    grid-template-rows: 450px;
+    grid-template-rows: 500px;
 }
-.card-img-top img{
- max-height: 180px;
-}
-.card-body{
-	height:200px;
-	padding 10px;
+.card-img-top{
+ 
 }
 .card-title{
 	font-weight: 24px;
-}
-.card{
-	height: 400px;
-}
-@media (min-width: 1024) and (max-width:1600){
-    .hotellist-container{
-        display:flex;
-        flex-wrap: row warp;
-        width: 100%;
-        justify-content: center;
-        align-items: flex-start;
-        height: 110vh;
-    }
-    .hotellist-grid{
-        display: grid;
-        align-items: flex-start;
-        width: 80%;
-        justify-content: space-between;
-        grid-template-columns: 15em 15em 15em 15em 15em;
-        grid-column-gap: 10px;
-        grid-template-rows: 55vh;
-    }
-    .card-img-top img{
-     max-height: 100px;
-    }
-    .card-body{
-        height:25vh;
-        padding 10px;
-    }
-    .card-title{
-        font-weight: 24px;
-    }
-    .card{
-        height: 54vh;
-    }
 }
 /* 호텔 리스트 끝 */
