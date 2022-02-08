@@ -23,3 +23,4 @@ SELECT * FROM HOTEL;
 CREATE SEQUENCE hotel_seq;
 
 --더미데이터
+
