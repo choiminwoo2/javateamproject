@@ -9,8 +9,42 @@ public class HotelDetail {
 	private String hi_date;
 	private int map_no;
 	private String hi_photofiles;
+	private String hotel_photofile;
+	private int hotel_price_5lt;
+	private int hotel_price_5ge8lt;
+	private int hotel_price_8ge12lt;
+	private int hotel_price_12gt;	
 	
-	
+	public int getHotel_price_5lt() {
+		return hotel_price_5lt;
+	}
+	public void setHotel_price_5lt(int hotel_price_5lt) {
+		this.hotel_price_5lt = hotel_price_5lt;
+	}
+	public int getHotel_price_5ge8lt() {
+		return hotel_price_5ge8lt;
+	}
+	public void setHotel_price_5ge8lt(int hotel_price_5ge8lt) {
+		this.hotel_price_5ge8lt = hotel_price_5ge8lt;
+	}
+	public int getHotel_price_8ge12lt() {
+		return hotel_price_8ge12lt;
+	}
+	public void setHotel_price_8ge12lt(int hotel_price_8ge12lt) {
+		this.hotel_price_8ge12lt = hotel_price_8ge12lt;
+	}
+	public int getHotel_price_12gt() {
+		return hotel_price_12gt;
+	}
+	public void setHotel_price_12gt(int hotel_price_12gt) {
+		this.hotel_price_12gt = hotel_price_12gt;
+	}
+	public String getHotel_photofile() {
+		return hotel_photofile;
+	}
+	public void setHotel_photofile(String hotel_photofile) {
+		this.hotel_photofile = hotel_photofile;
+	}
 	public String getHotel_name() {
 		return hotel_name;
 	}

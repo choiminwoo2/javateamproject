@@ -292,5 +292,33 @@ public class ReviewBoardDAO {
 		}
 		return false;
 	}
+    //글 삭제
+	public boolean boardDelete(int review_no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String board_delete_sql = "delete from review_board"
+				+ "            where review_no = ?";
+
+		
+		try {
+			con=db.getConnect();
+			pstmt = con.prepareStatement(board_delete_sql);
+			/* pstmt.setInt(1, rs.getInt("review_no")); */
+			 pstmt.setInt(1, review_no); 
+			 rs = pstmt.executeQuery(); 
+			
+				return true; //삭제가 안된 경우에는 false를 반환합니다.
+			
+		}catch (Exception ex) {
+			System.out.println("boardDelete() 에러: " + ex);
+			ex.printStackTrace();
+		}finally {
+			db.close(con, pstmt, rs);
+		
+	}
+		return false;
+}
 	
 }

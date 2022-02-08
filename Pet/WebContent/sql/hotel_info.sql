@@ -11,4 +11,17 @@ CREATE TABLE hotel_info(
    PRIMARY KEY(hi_no)
    );
    
+   select*from hotel_info
+   
+   
+select hi_no,         h.hotel_name,          hi_intro,         hi_url
+,hi_date,          map_no, hi_photofiles, hotel_photofile,
+hotel_price_5kglt, hotel_price_5ge8let, hotel_price_8ge12lt,hotel_price_12gt
+from hotel_info e join hotel h on e.hotel_no = h.hotel_no where hi_no = 1 ;
+
+delete from hotel_info
+
+   insert into HOTEL_INFO
+   values(1,1,'안녕하세요','http://naver.com',sysdate,0,'hotel1.png/attach.png/down.png/profile.png');
+
    
