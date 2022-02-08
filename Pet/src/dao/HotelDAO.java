@@ -7,8 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import db.DB;
 import vo.Hotel;
@@ -106,7 +104,6 @@ public class HotelDAO {
 			}else {
 				System.out.println("호텔상세 등록 실패");
 			}
-			
 		}catch(Exception e) {
 		}finally {
 			db.close(conn, pstmt, null);
@@ -117,9 +114,6 @@ public class HotelDAO {
 	
 	//호텔all list end
 	public List<Hotel> selectHotel(int page, int limit) {
-		
-		
-		
 		String sql = " select * from (select " + 
 				" rownum rnum,h.* from hotel h order by hotel_no desc) where " + 
 				" rnum >= ? and rnum <= ?";
@@ -159,4 +153,25 @@ public class HotelDAO {
 		}
 		return arr;
 	}
+	public int getHotelCount() {
+		int result = -1;
+		String sql = "select count(*) from hotel";
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = db.getConnect();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			db.close(conn, stmt, rs);
+		}
+		return result;
+	}
+	
 }

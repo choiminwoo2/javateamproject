@@ -11,7 +11,7 @@
 	<jsp:include page="../template/nav.jsp"/>
  	<section class="content-container">
         <div class="add-detail-form-container">
-          <form action="hotelList.net" method="post">
+          <form action="hotelContentAdd.net" method="post">
           <input type="hidden" value="${files}" name="fileList">
           <div class="add-detail-content-container">
             <div class="content-inner-container">
@@ -21,8 +21,6 @@
                 <textarea class="content-text" id="content-text" name="content" placeholder="호텔의 소개와 설명을 적어주세요."></textarea>
                 <span class="text-span" style="display:none;"></span>
                 <input type="hidden" value="${num}" name="num">
-
-              
             </div>
             <div class="flex-btn">
               <input type="submit" value="호텔 등록" id="filelistbtn" class="btn btn-primary btn-lg">

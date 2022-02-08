@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -16,13 +15,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import action.Action;
 import action.ActionForward;
-import dao.HotelDAO;
-import vo.Hotel;
 
 public class HotelDetailAdd implements Action {
 	
@@ -44,7 +39,6 @@ public class HotelDetailAdd implements Action {
 		factory.setSizeThreshold(LIMIT_SIZE_BYTES);
 		ServletFileUpload fileUpload = new ServletFileUpload(factory);
 		int num = -1;
-
 		try {
 			List<FileItem> items = fileUpload.parseRequest(req);
 			List<String> temp = new ArrayList<String>();
