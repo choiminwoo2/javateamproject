@@ -42,9 +42,9 @@ public class UserLoginProcessAction implements Action {
 			
 			// ID 기억하기
 			if (IDStore != null && IDStore.equals("store")) {
-			//쿠키의 유효시간을 24시간으로 설정합니다.
+			//유효시간 24시간으로 설정
 			cookie.setMaxAge(2*60);
-			//클라이언트로 쿠키값을 전송합니다
+			
 			response.addCookie(cookie);
 			} else {
 			cookie.setMaxAge(0);

@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -24,31 +25,11 @@ public class UserModifyProcessAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-	/*
-String realFolder="";
-		
-	
-		String saveFolder = "userupload";
-		
-		int filesize = 5*1024*1024; // 업로드할 파일의 최대 사이즈 5mb
-		
-		// 실제 저장 경로
-		ServletContext sc = request.getServletContext();
-		realFolder = sc.getRealPath(saveFolder);
-		System.out.println("realFolder= " + realFolder);
-		try {
-			MultipartRequest multi = new MultipartRequest(request, realFolder, filesize, "utf-8",
-						new DefaultFileRenamePolicy());
 			
-			*/
-			int kg=0;
+		int kg=0;
 			if(request.getParameter("kg") != null && !request.getParameter("kg").equals("")) {
 			 kg = Integer.parseInt(request.getParameter("kg"));
 			}
-			
-			
 			
 			String id = request.getParameter("id");
 			System.out.println("ID=" + id);
@@ -56,6 +37,8 @@ String realFolder="";
 			System.out.println("Pass=" + password);
 			String nickname = request.getParameter("nickname");
 			System.out.println("닉네임=" + nickname);
+			
+			
 			String tel = request.getParameter("tel");
 			System.out.println("전화번호=" + tel);
 			int user_grant = Integer.parseInt(request.getParameter("user_grant"));
@@ -79,6 +62,10 @@ String realFolder="";
 			
 			//삽입 성공
 			if (result == 1) {
+				HttpSession session = request.getSession();
+				User temp = (User) session.getAttribute("temp");
+				temp.setNickname(nickname);
+				
 				out.println("alert('수정되었습니다.');");
 				out.println("location.href='index.jsp';");
 			} else {
@@ -94,15 +81,7 @@ String realFolder="";
 			request.setAttribute("temp", temp);
 			
 			return null;
-			/*
-		} catch (IOException ex) {
 			
-			ActionForward forward = new ActionForward();
-			forward.setPath("error/error.jsp");
-			request.setAttribute("temp", "프로필 사진 업로드 실패입니다.");
-			forward.setRedirect(false);
-			return null;
-		} // catch end 
-	*/
-	} //execute end
+		
+	} 
 }

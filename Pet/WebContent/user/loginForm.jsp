@@ -22,7 +22,7 @@ $(document).ready(function() {
 	
 	$(".cancelbtn").click(function (){
 		location.href="index.jsp";
-	});    //메인으로 돌아가기 버튼
+	});    
 	
 	var id = '${id}';
 	if(id){
@@ -42,7 +42,7 @@ $(document).ready(function() {
 		<input type="password" name="password" placeholder="Enter password" id="password" required>
 		
 		<input type="checkbox" id="remember" name="remember" value="store">
-		<span>remember</span>
+		<span>ID 기억하기</span>
 		<div class="clearfix">
 			<button type="submit" class="submitbtn">로그인</button>
 			<button type="reset" class="cancelbtn">돌아가기</button>

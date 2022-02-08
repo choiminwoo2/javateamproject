@@ -55,8 +55,8 @@ span {
 	      <option value="cat">고양이</option>
 	    </select><br><br>
    
-		 <b>반려동물 무게(kg)</b>
-	 	 <input type="text" id="kg" name="kg"  maxLength="5" >
+		 <b>반려동물 무게</b>
+	 	 <input type="text" id="kg" name="kg"  maxLength="5" placeholder="KG">
 	 	 <span id="animal_message"></span>
 	   	 <b></b>
 		</div>

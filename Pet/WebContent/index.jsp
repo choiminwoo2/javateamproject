@@ -31,7 +31,7 @@
 		margin-bottom: 12em;
 	}
     </Style>
-    
+
   </head>
 
   <body data-spy="scroll" data-target="#navbar1" data-offset="60">

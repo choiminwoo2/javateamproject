@@ -52,6 +52,15 @@ public class User {
 	public int getUser_grant() {
 		return user_grant;
 	}
+	
+	public String getUser_grantView() {
+		if(user_grant == 0) {
+			return "일반 사용자";
+		} else {
+			return "호텔 사용자";
+		}
+	}
+	
 	public void setUser_grant(int user_grant) {
 		this.user_grant = user_grant;
 	}
