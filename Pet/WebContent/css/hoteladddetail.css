@@ -4,6 +4,7 @@ body,html{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1) !important;
 }
+
 .content-container{
     top:60px;
     height: 900px;

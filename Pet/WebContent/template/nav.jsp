@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <meta charset="utf-8">
+
     <link rel="shortcut icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">

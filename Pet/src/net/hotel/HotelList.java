@@ -46,6 +46,7 @@ public class HotelList implements Action {
 				forward.setPath("hotel/hotelListView.jsp");
 				return forward;
 			}
+			
 			//ajax요청이라면
 		}else {
 			JsonObject obj = new JsonObject();
