@@ -72,7 +72,7 @@ img{width:20px;}
 
    <div class="form-group">
    <button type=submit class="btn btn-primary">등록</button>
-   <button type=reset class="btn btn-danger">취소</button>
+   <button type=reset class="btn btn-danger" onClick="history.go(-1)">취소</button>
    </div> 
    </form>
 </div>

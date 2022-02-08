@@ -7,13 +7,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Krajee JQuery Plugins - &copy; Kartik</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="star/css/star-rating.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="star/themes/krajee-fa/theme.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="star/themes/krajee-svg/theme.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="star/themes/krajee-uni/theme.css" media="all" type="text/css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="star/js/star-rating.js" type="text/javascript"></script>
     <script src="star/themes/krajee-fa/theme.js" type="text/javascript"></script>
     <script src="star/themes/krajee-svg/theme.js" type="text/javascript"></script>

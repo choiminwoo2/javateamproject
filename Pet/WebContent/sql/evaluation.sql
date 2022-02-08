@@ -6,11 +6,16 @@ CREATE TABLE evaluation(
    ev_score   number(2,1),    --본문
    animal_info varchar2(20),
    --foreign key(hotel_no) references hotel(hotel_no),   --호텔 번호
-   foreign key(review_no) references review_board(review_no),   --게시판 인덱스
+   foreign key(review_no) references review_board(review_no) on delete cascade,   --게시판 인덱스
    PRIMARY KEY(ev_no)
    );
    
+   create table evaluation_copy
+   as 
    select * from EVALUATION
+   
+   insert into EVALUATION
+   select * from evaluation_copy
    
    select round(avg(ev_score),1) from EVALUATION where hotel_no=1
    

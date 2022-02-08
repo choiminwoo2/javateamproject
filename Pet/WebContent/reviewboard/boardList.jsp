@@ -30,7 +30,8 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 <h1 style="text-align:center">이용후기 게시판</h1>
 
 <div class="info_main">
-<img src="hotelDetail/image/test2.jpg" alt="호텔메인사진" width="100%" height="200px">
+<img src="hotel/img/${param.img}" alt="호텔메인사진" width="100%" height="400px"
+style="border:1px solid #e3dfdf;">
 </div>
 
 <p>호텔명 : ${param.hotel_name}</p>
@@ -67,7 +68,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
         --%>
 
    
-   <a href="BoardDetailAction.bo?num=${b.review_no}&hotel_name=${param.hotel_name}">
+   <a href="BoardDetailAction.bo?num=${b.review_no}&hotel_name=${param.hotel_name}&hotel_no=${param.hotel_no}">
    <c:out value="${b.rb_title}"/>
    </a>  
 </div>

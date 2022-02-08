@@ -18,8 +18,17 @@
 </tr>
 <tr>
 <td><div>글쓴이</div></td>
-<td><div>${review.rb_id}</div></td>
+<td><div>${temp.nickname}</div></td>
 </tr>
+<tr>
+<td><div>별점</div></td>
+<td><div>${review.ev_score}</div></td>
+</tr>
+<tr>
+<td><div>반려동물 종류/무게(kg)</div></td>
+<td><div>${review.animal_info}</div></td>
+</tr>
+
 <tr>
 <td><div>제목</div></td>
 <td><c:out value="${review.rb_title}" /></td>
@@ -52,7 +61,30 @@
    </tr>
 </table>
 <%--게시판 view end --%>
-
+<%--modal 시작 --%>
+<div class="modal" id="myModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<%-- Modal body --%>
+<div class="modal-body">
+<form name="deleteForm" action="BoardDeleteAction.bo" method="post">
+<%--http://localhost:8088/Board/BoardDetailAction.bo?num=22
+    주소를 보면 num을 파라미터로 넘기고 있습니다.
+    이 값을 가져와서 ${param.num}를 사용
+    또는 ${boarddata.board_num}
+     --%>
+     <input type="hidden" name="review_no" value="${param.num}" >
+     <input type="hidden" name="hotel_no" value="${param.hotel_no}" >
+     <input type="hidden" name="hotel_name" value="${param.hotel_name}">
+     <div class="form-group">
+       <label for="pwd">정말 삭제하시겠습니까?</label>
+     </div>
+     <button type="submit" class="btn btn-primary">확인</button>
+     <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+</form>
+</div>
+</div>
+</div>
 
 
 

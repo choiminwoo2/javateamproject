@@ -16,7 +16,7 @@
 .info_main {
   max-width: 100%;
   height:auto;
-  margin-top: 14vh;
+  margin-top: 5vh;
   
 } 
 .container {
@@ -50,10 +50,10 @@
 div.gallery {
   margin: 55px;
   width: 100%;
- 
+
 }
 
-
+div.gallery>img{border:1px solid #e3dfdf;}
 
 
 </style>
@@ -61,7 +61,9 @@ div.gallery {
 <body>
 <div class="container">
 <div class="info_main">
-<img src="hotelDetail/image/test2.jpg" alt="호텔메인사진" width="100%" height="200px">
+<img src="hotel/img/${hotelinfo.hotel_photofile}" alt="호텔메인사진" width="100%" height="400px"
+style="border:1px solid #e3dfdf;">
+
 
 
 </div>
@@ -79,7 +81,7 @@ div.gallery {
 <p>${hotelinfo.hotel_name}</p>
 <a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
 <button type="button" class="btn btn-primary mr-1 review" style="position: absolute;
-    right: 30px; top:250px" >이용 후기</button>
+    right: 30px; top:450px" >이용 후기</button>
 <hr>
 
 <table id="price">
@@ -89,36 +91,44 @@ div.gallery {
   </tr>
   <tr>
     <td>~5kg</td>
-    <td>가격</td>
+    <td>${hotelinfo.hotel_price_5lt}</td>
   </tr>
   <tr>
-    <td>~10kg</td>
-    <td>가격</td>
+    <td>5~8kg</td>
+    <td>${hotelinfo.hotel_price_5ge8lt}</td>
+  </tr>
+  <tr>
+    <td>8~12kg</td>
+    <td>${hotelinfo.hotel_price_8ge12lt}</td>
+  </tr>
+    <tr>
+    <td>12kg~</td>
+    <td>${hotelinfo.hotel_price_12gt}</td>
   </tr>
  
 </table>
 
-<div class="form-group">
+<div class="form-group"> 
    <label for="hi_intro"></label>
    <textarea name="hi_intro" id="hi_intro" rows="10"
-          class="form-control">${hotelinfo.hi_intro}</textarea>
-   </div>
+          class="form-control" style="background:white;" readOnly>${hotelinfo.hi_intro}</textarea>
+   </div> 
   
    <div class="gallery">
-  <img class="img1" src="hotelDetail/image/test2.jpg" alt="호텔사진1" width="60%" height="300" >
-<img class="img2" src="hotelDetail/image/test2.jpg" alt="호텔사진2" width="30%" height="300">
+  <img class="img1" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[0]}' alt="호텔사진1" width="60%" height="300" >
+<img class="img2" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[1]}' alt="호텔사진2" width="30%" height="300">
 <br>
 <br>
-<img class="img3" src="hotelDetail/image/test2.jpg" alt="호텔사진3" width="30%" height="300">
+<img class="img3" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[2]}' alt="호텔사진3" width="30%" height="300">
 
-<img class="img4" src="hotelDetail/image/test2.jpg" alt="호텔사진4" width="60%" height="300">
+<img class="img4" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[3]}' alt="호텔사진4" width="60%" height="300">
 </div>
 
 </div>
 <%-- <jsp:include page="template/footer.jsp"/> --%>
 <script> /* 주소: http://localhost:8088/Pet/BoardList.bo?hotel_no=1&hotel_name=%EC%9A%B0%EB%A6%AC%ED%98%B8%ED%85%941 */
 $("button.review").click(function(){
-	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}";
+	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}";
 })
 </script>
 </body>

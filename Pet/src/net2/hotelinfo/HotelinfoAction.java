@@ -18,8 +18,7 @@ public class HotelinfoAction implements Action {
 		
 		
 		HotelDetailDAO dao = new HotelDetailDAO();
-		//String hi_no = req.getParameter("hi_no");
-		String hi_no = "1";
+		String hi_no = req.getParameter("num");
 		HotelDetail h = dao.getinfo(hi_no);
 		req.setAttribute("hotelinfo", h);
 		ActionForward forward = new ActionForward();

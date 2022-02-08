@@ -10,17 +10,14 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-  <link href="star/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
 <jsp:include page="../template/nav.jsp"/>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+ <link href="star/css/star-rating.css" media="all" rel="stylesheet" type="text/css" /> 
   <script src="js/bootstrap.js"></script> 
 <!-- <script src="js/jquery-3.6.0.js"></script> -->
-<script src="star/js/star-rating.js"></script>
+<!--  <script src="star/js/star-rating.js"></script>  -->
 <style>
-@media (min-width: 768px)
-.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
-    margin-right: 0;
-    margin-left: 500px !important;
-}
+
 h1{font-size:1.5em; text-align:center; color:#1a92b9}
 </style>
 
@@ -35,8 +32,7 @@ h1{font-size:1.5em; text-align:center; color:#1a92b9}
    <div class="form-group">
    <label for="board_name">글쓴이</label><%--수정해야함 {닉네임으로 고쳐야 함}--%>
    <input name="rb_id" id="board_name" value="${temp.nickname}" readOnly
-          type="text"       class="form-control"
-          placeholder="Enter board_name">
+          type="text"       class="form-control">
    </div>
 
    <hr>
