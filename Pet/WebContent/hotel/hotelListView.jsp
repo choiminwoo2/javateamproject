@@ -12,6 +12,9 @@
    	p{
    		margin: 2px 0px !important;
    	}
+   	h5{
+   		margin: 2px 0px !important;
+   	}
    	select{
    		font-size: 8px;
    	}
@@ -21,6 +24,7 @@
    </style>
 </head>
 <body>
+<div class="wrap">
 <jsp:include page="../template/nav.jsp"/>
  <div class="categori">
         <section class="categori-grid">
@@ -73,9 +77,9 @@
       </div>
       <div class ="hotellist-container">
         <div class="hotellist-grid">
-        <c:forEach items="${hotel_list}" var="h">
+        <c:forEach items="${hotellist}" var="h" varStatus="status">
         	 <div class="card" style="width: 15rem;">
-                <img src="hotel/img/${h.hotel_pthtofile }" class="card-img-top" alt="...">
+                <img src="hotel/img/${h.hotel_pthtofile }" style="height: 200px;" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${h.hotel_name} 호텔</h5>
                   <p> 지역: ${h.hotel_location}</p>
@@ -95,20 +99,7 @@
            
         </div>
       </div>
-      <script>
-      function btnClick(e){
-    	  console.log(e.target.value);
-    		const hotelName = document.querySelector('.card-title');
-      		const rehotel = hotelName.innerText.replace(" 호텔","");
-    	  	location.href = "hotelinfo.net2?num=" + e.target.value +"&hotel_name=" + rehotel;
-      }
-      	window.onload= function(){
-      		const btnGroup = document.querySelectorAll('.item-btn');
-      		btnGroup.forEach((item) =>{
-      			item.addEventListener('click',btnClick);
-      		});
-      		
-      	}
-      </script>
+</div>
+      <script src="js/hotellist.js"></script>
 </body>
 </html>

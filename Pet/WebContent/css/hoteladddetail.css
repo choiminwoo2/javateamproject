@@ -24,9 +24,7 @@ body,html{
     width: 800px;
     height:800px;
     background-color: white;
-    border-radius: 10px;
-
-    
+    border-radius: 10px;   
 }
 .add-detail-form-container{
     display: flex;
@@ -71,8 +69,8 @@ body,html{
    background-color: rgba(0, 0, 0, 0.3);
    display:none;
    line-height: 400px;
+   padding-left:50px;
    top:280;
-   margin-left:50px;
    border-radius: 3px;
 }
 /*사진 업로드시 opacity = 100%; and before_file display = none; */
