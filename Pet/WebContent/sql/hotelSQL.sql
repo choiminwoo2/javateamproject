@@ -1,5 +1,5 @@
 --테이블 삭제
-DROP TABLE HOTEL purge;
+DROP TABLE HOTEL cascade constraints purge;
 --테이블 생성
 CREATE TABLE HOTEL(
 	hotel_no number primary key,
