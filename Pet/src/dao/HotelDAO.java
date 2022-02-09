@@ -11,6 +11,7 @@ import java.util.List;
 import db.DB;
 import vo.Hotel;
 import vo.HotelDetail;
+import vo.Search;
 
 public class HotelDAO {
 	DB db = new DB();
@@ -113,7 +114,7 @@ public class HotelDAO {
 	//호텔 디테일 인설트 end
 	
 	//호텔all list end
-	public List<Hotel> selectHotel(int page, int limit) {
+	public List<Hotel> selectHotel(int page, int limit, Search search_obj) {
 		String sql = " select * from (select " + 
 				" rownum rnum,h.* from hotel h order by hotel_no desc) where " + 
 				" rnum >= ? and rnum <= ?";

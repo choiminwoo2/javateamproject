@@ -29,7 +29,6 @@ public class Hotel {
 	public String getHotel_location() {
 		String s = "";
 		s = hotel_addr.substring(0, hotel_addr.indexOf(" "));
-		System.out.println(s);
 		return s;
 	}
 	

@@ -58,7 +58,6 @@ public class HotelFrontController extends HttpServlet {
 	   
 	   }
 	   forward = action.execute(request,  response);
-	   
 	   if(forward != null) {
 		   if(forward.isRedirect()) { //리다이렉트 됩니다.
 			   response.sendRedirect(forward.getPath());
