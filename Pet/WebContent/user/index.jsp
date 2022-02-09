@@ -31,7 +31,18 @@
 		margin-bottom: 12em;
 	}
     </Style>
-    
+   <script>
+	$(document).ready(function() {
+		var sessionEmail = '<%=session.getAttribute("sessionEmail")%>';
+		// '' 없이 세션을 받아오면 문자라 오류 발생!
+		<%--var sessionEmail = '<%=session.getAttribute("세션으로 등록한 값")%>'; --%>
+		if(sessionEmail == '' || sessionEmail == 'null'){
+		// 문자로 지정해줘서 'null'이 되지만 혹시 몰라 ''까지 지정해뒀다.
+		// 세션 값이 없을 때 지정한 페이지로 이동!
+			location.href = 'login.co'; 
+		}
+	});
+   </script> 
   </head>
   
   <body data-spy="scroll" data-target="#navbar1" data-offset="60">

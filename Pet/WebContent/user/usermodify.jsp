@@ -10,12 +10,12 @@
 <script src="scripts.js"></script>
 <script src="js/user_modify.js"></script>
 <link href="css/join.css" type="text/css" rel="stylesheet">
-    <link href="css/theme.css" type="text/css" rel="stylesheet">
+ <link href="css/theme.css" type="text/css" rel="stylesheet">
       
 <title>회원 정보 수정</title>
 <script>
 $(document).ready(function() {
-	var snickname = '${temp.nickname}';
+	var snickname = '${userinfo.nickname}';
 
  	$("input:eq(2)").on('keyup',
 			function () {
@@ -31,8 +31,8 @@ $(document).ready(function() {
 					url : "nicknamecheck.co",
 					data : {"nickname" : nickname},
 					success : function(resp) {
-						if ($("input:eq(2)").val() == snickname) {
-									checknickname=true;
+						if ($("input:eq(2)").val() == snickname) {  //닉네임 수정 안할경우
+									checknickname=true; 
 						} else if (resp == -1) { //db에 해당 닉네임이 없는경우
 							$("#nickname_message").css('color', 'green').html("사용 가능한 닉네임 입니다.");
 							checknickname=true;
@@ -55,35 +55,35 @@ $(document).ready(function() {
 		<h1>회원 정보 수정</h1>
 		<hr>
 		<b>아이디</b>
-		<input type="text"  class="form-control" name="id" value="${temp.id}" required maxLength="12" readOnly>
+		<input type="text"  class="form-control" name="id" value="${userinfo.id}" required maxLength="12" readOnly>
 		<span id="id_message"></span>
 
 		<b>비밀번호</b><input type="password" name="password" placeholder="Enter password" required>
 
-		<b>닉네임</b><input type="text" name="nickname" maxLength="10" value="${temp.nickname}" required>
+		<b>닉네임</b><input type="text" name="nickname" maxLength="10" value="${userinfo.nickname}" required>
 		<span id="nickname_message"></span>
 
 		<div class="phone">
 		전화번호<br>
-     	<input type="text" name="tel" maxlength="13" value="${temp.tel}" required> 
+     	<input type="text" name="tel" maxlength="13" value="${userinfo.tel}" required> 
      	<span id="tel_message"></span>
         </div><br>
 		
-		<c:if test="${temp.user_grant==0}">	
+		<c:if test="${userinfo.user_grant==0}">	
 		<b>사용자 구분</b>
 		<input type="radio" id="user" name=user_grant value="0" onchange="setDisplay()" checked onclick="return(false);">일반 사용자
 		<input type="radio" id="hotel" name=user_grant value="1" onchange="setDisplay()" onclick="return(false);">호텔 사용자
 		<br><br>
 		</c:if>
 		
-		<c:if test="${temp.user_grant==1}">	
+		<c:if test="${userinfo.user_grant==1}">	
 		<b>사용자 구분</b>
 		<input type="radio" id="user" name=user_grant value="0" onchange="setDisplay()" onclick="return(false);">일반 사용자
 		<input type="radio" id="hotel" name=user_grant value="1" onchange="setDisplay()" checked onclick="return(false);">호텔 사용자
 		<br><br>
 		</c:if>
 		
-		<c:if test="${temp.user_grant==0}">	
+		<c:if test="${userinfo.user_grant==0}">	
 		<div id="usercheck">
 	    <b>반려동물 구분</b>
 	    <select name="kind">
@@ -92,11 +92,13 @@ $(document).ready(function() {
 	    </select><br><br>
    
 		 <b>반려동물 무게(kg)</b>
-	 	 <input type="text" id="kg" name="kg"  maxLength="5" value="${temp.kg}">
+	 	 <input type="text" id="kg" name="kg"  maxLength="5" value="${animalinfo.kg}">
 	 	 <span id="animal_message"></span>
 	   	 <b></b>
 		</div>
 		</c:if>
+		
+		<input type="hidden" name="user_no" maxLength="10" value="${userinfo.user_no}">
 		
 		<div class="clearfix">
 			<button type="submit" class="submitbtn">완료</button>

@@ -35,8 +35,8 @@ $(document).ready(function() {
 			var txt = $("#kg").val();
 	
 			$("#kg").val(txt.replace(/(\.\d+)+/, "").replace(/[^0-9]/g,"")); // 소숫점아래 제거, 문자열 제거
-			if ($('#kg').val() > 12){
-				$("#kg").val(txt.replace(txt,12));  //12 kg 이상이면 12kg으로
+			if ($('#kg').val() > 50){
+				$("#kg").val(txt.replace(txt,50));  //12 kg 이상이면 12kg으로
 			}
 			
 		}); //submit

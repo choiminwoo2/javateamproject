@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ActionForward;
-
 import dao.UserDAO;
 import vo.User;
+import vo.Wishlist;
 
-public class UserListAction implements Action {
+public class UserMyListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		UserDAO mdao = new UserDAO();
+		UserDAO udao = new UserDAO();
+		Wishlist jjim = new Wishlist();
+	
 		
 		int page = 1;
 		int limit = 10;
@@ -29,8 +31,8 @@ public class UserListAction implements Action {
 		List<User> list = null;
 		int listcount = 0;
 		
-		listcount = mdao.getListCount();
-		list = mdao.getList(page, limit);
+		listcount = udao.getListCount();
+		list = udao.getList(page, limit);
 	
 		int maxpage = (listcount + limit -1)/limit;
 		int startpage = ((page -1)/10)*10 +1;
@@ -43,8 +45,20 @@ public class UserListAction implements Action {
 		request.setAttribute("endpage", endpage);
 		request.setAttribute("listcount", listcount);
 		request.setAttribute("totallist", list);
-		forward.setPath("user/userList.jsp");
-		forward.setRedirect(false);
+		
+		String id = request.getParameter("id");
+		int user_no = Integer.parseInt(request.getParameter("usr_no"));
+		jjim = udao.MyList(user_no);
+		
+		request.setAttribute("jjim", jjim);
+		forward.setPath("user/mylist.jsp");
 		return forward;
+		
+		
+		
+	
+		
+		
 	}
+
 }
