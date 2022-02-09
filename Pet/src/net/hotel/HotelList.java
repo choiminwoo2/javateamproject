@@ -41,28 +41,28 @@ public class HotelList implements Action {
 		int startpage = ((page-1) / 10) * 10 +1;
 		int endpage = startpage +10 -1;
 		String weight = req.getParameter("weight");
-		String[] weightlist = new String[2];
+		String[] weightlist = null;
 		if(weight != null) {
 			weightlist = weight.split(",");
-		}
-		if(weightlist.length == 2) {
-			search_obj.setMax_weight(Integer.parseInt(weightlist[1]));
-			search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
-		}else {
-			search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
+			if(weightlist.length == 2) {
+				search_obj.setMax_weight(Integer.parseInt(weightlist[1]));
+				search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
+			}else {
+				search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
+			}
 		}
 		String animal = req.getParameter("animal");
 		String location = req.getParameter("location");
 		String price = req.getParameter("price");
-		String[] pricelist = new String[2];
+		String[] pricelist = null;
 		if(price != null) {
-			pricelist = weight.split(",");
-		}
-		if(pricelist.length == 2) {
-			search_obj.setMax_price(Integer.parseInt(pricelist[1]));
-			search_obj.setMin_price(Integer.parseInt(pricelist[0]));
-		}else {
-			search_obj.setMin_price(Integer.parseInt(pricelist[0]));
+			pricelist = price.split(",");
+			if(pricelist.length == 2) {
+				search_obj.setMax_price(Integer.parseInt(pricelist[1]));
+				search_obj.setMin_price(Integer.parseInt(pricelist[0]));
+			}else {
+				search_obj.setMin_price(Integer.parseInt(pricelist[0]));
+			}
 		}
 		String search = req.getParameter("search");
 		System.out.println("---------------");
