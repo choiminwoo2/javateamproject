@@ -18,13 +18,14 @@ public class UserInfoAction implements Action {
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		String id = request.getParameter("id");
-		int user_no = Integer.parseInt(request.getParameter("user_no"));
-		UserDAO mdao = new UserDAO();
-	
-		User m = mdao.UserSession(id);
-		User m2 = mdao.AnimalSession(user_no);
 		
-		if(m==null) {
+		int user_no = Integer.parseInt(request.getParameter("user_no"));
+		UserDAO udao = new UserDAO();
+	
+		User u = udao.UserSession(id);
+		User u2 = udao.AnimalSession(user_no);
+		
+		if(u==null) {
 			forward.setPath("error/error.jsp");
 			forward.setRedirect(false);
 			request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
@@ -32,8 +33,8 @@ public class UserInfoAction implements Action {
 		}
 		forward.setPath("user/userInfo.jsp");
 		forward.setRedirect(false);
-		request.setAttribute("userinfo",m);
-		request.setAttribute("animalinfo",m2);
+		request.setAttribute("userinfo",u);
+		request.setAttribute("animalinfo",u2);
 		return forward;
 	}
 

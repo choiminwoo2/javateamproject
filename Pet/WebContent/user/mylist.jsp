@@ -91,10 +91,10 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<td>아이디</td>
-						<td>닉네임</td>
-						<td>사용자구분</td>
+						<td>호텔 번호</td>
+						<td>사용자 번호</td>
 						<td>전화번호</td>
-						<td>삭제</td>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -102,10 +102,9 @@ $(document).ready(function() {
 						<tr>
 							<td><a href="userInfo.co?id=${temp.id}&user_no=${temp.user_no}">${temp.id}</a></td>
 							<td>${temp.nickname}</td>
-							<td>${temp.user_grantView}</td>
+							<td>${temp.user_no}</td>
 							<td>${temp.tel}</td>
-							<td> <a href="userListDelete.co?id=${temp.id}" class="btn btn-info listdel" id="btnDelete">삭제</a>
-							<input type="hidden" class="submitbtn"></td>
+							
 						</tr>
 					</c:forEach>	
 				</tbody>	

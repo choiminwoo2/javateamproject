@@ -17,12 +17,23 @@ public class UserModifyViewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		UserDAO mdao = new UserDAO();
-		User temp = new User();
+		UserDAO udao = new UserDAO();
+		
+		User u = new User();
+		User u2 = new User();
 		
 		String id = request.getParameter("id");
-		temp = mdao.UserSession(id);
-		request.setAttribute("temp", temp);
+		u = udao.UserSession(id);
+		
+		
+		
+		int user_no = Integer.parseInt(request.getParameter("user_no"));
+		 u2 = udao.AnimalSession(user_no);
+		
+	
+		request.setAttribute("userinfo", u);
+		request.setAttribute("animalinfo",u2);
+		
 		forward.setPath("user/usermodify.jsp");
 		return forward;
 	}

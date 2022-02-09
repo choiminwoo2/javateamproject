@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,16 +68,17 @@ style="border:1px solid #e3dfdf;">
 
 
 </div>
-
-<button type="button" class="btn btn-outline-danger" style="
+<c:if test="${temp.user_grant==0}">
+<button type="button" class="btn btn-outline-danger" id="jjim"
+	style="
     position: absolute;
     right: 30px;
     top: 0px;
-    background: white;">    
+    background: white;"><a href="jjim.co?hotel_no=${hotelinfo.hi_no}&user_no=${temp.user_no}">찜하기</a>    
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-</svg><br>찜하기</button>
-
+</svg></button>
+</c:if>
 <hr>
 <p>${hotelinfo.hotel_name}</p>
 <a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
@@ -88,6 +90,10 @@ style="border:1px solid #e3dfdf;">
   <tr>
     <th>몸무게</th>
     <th>호텔 이용요금</th>
+  </tr>
+  <tr>
+    <td>찜할 유저번호=${temp.user_no}</td>
+    <td>찜할 호텔번호=${hotelinfo.hi_no}</td>
   </tr>
   <tr>
     <td>~5kg</td>

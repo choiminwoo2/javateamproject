@@ -26,10 +26,13 @@ public class UserModifyProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
-		int kg=0;
+			int kg=0;
 			if(request.getParameter("kg") != null && !request.getParameter("kg").equals("")) {
 			 kg = Integer.parseInt(request.getParameter("kg"));
 			}
+			
+			int user_no = Integer.parseInt(request.getParameter("user_no"));
+			System.out.println("유저번호=" + user_no);
 			
 			String id = request.getParameter("id");
 			System.out.println("ID=" + id);
@@ -47,14 +50,15 @@ public class UserModifyProcessAction implements Action {
 			String kind = request.getParameter("kind");
 			System.out.println("종류=" + kind);
 			System.out.println("몸무게=" + kg);
-		
+			
 			User m = new User();
 			m.setId(id);     	m.setPassword(password);	 m.setNickname(nickname);
-			m.setTel(tel); 	   	
+			m.setTel(tel); 	   	m.setUser_no(user_no);
 			m.setKind(kind);     m.setKg(kg);
 			
-			UserDAO mdao = new UserDAO(); 
-			int result = mdao.modify(m);
+			UserDAO udao = new UserDAO(); 
+			int result = udao.modify(m);
+			
 			
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -76,10 +80,10 @@ public class UserModifyProcessAction implements Action {
 			out.close();
 		
 			
-			User temp = new User();
-			temp = mdao.UserSession(id);
-			request.setAttribute("temp", temp);
-			
+			User userinfo = new User();
+			userinfo = udao.UserSession(id);
+			request.setAttribute("userinfo", userinfo);
+		
 			return null;
 			
 		
