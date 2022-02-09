@@ -115,20 +115,21 @@ style="border:1px solid #e3dfdf;">
    </div> 
   
    <div class="gallery">
-  <img class="img1" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[0]}' alt="호텔사진1" width="60%" height="300" >
-<img class="img2" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[1]}' alt="호텔사진2" width="30%" height="300">
+  <img class="img1" src='hotel/img/${hi_photofiles.split(",")[0]}' alt="호텔사진1" width="60%" height="300" >
+<img class="img2" src='hotel/img/${hi_photofiles.split(",")[1]}' alt="호텔사진2" width="30%" height="300">
 <br>
 <br>
-<img class="img3" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[2]}' alt="호텔사진3" width="30%" height="300">
+<img class="img3" src='hotel/img/${hi_photofiles.split(",")[2]}' alt="호텔사진3" width="30%" height="300">
 
-<img class="img4" src='hotel/img/${hotelinfo.hi_photofiles.split("/")[3]}' alt="호텔사진4" width="60%" height="300">
+<img class="img4" src='hotel/img/${hi_photofiles.split(",")[3]}' alt="호텔사진4" width="60%" height="300">
 </div>
 
 </div>
 <%-- <jsp:include page="template/footer.jsp"/> --%>
 <script> /* 주소: http://localhost:8088/Pet/BoardList.bo?hotel_no=1&hotel_name=%EC%9A%B0%EB%A6%AC%ED%98%B8%ED%85%941 */
 $("button.review").click(function(){
-	location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}";
+	//location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}";
+	location.href="BoardList.bo";
 })
 </script>
 </body>
