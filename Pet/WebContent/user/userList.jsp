@@ -3,11 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="scripts.js"></script>
+   <link rel="shortcut icon" href="http://themes.guide/favicon.ico" type="image/x-icon" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>회원관리 시스템 관리자모드(회원목록 보기)</title>
 <style>
@@ -15,25 +15,20 @@ table caption {
 	caption-side: top;
 	text-align: center
 }
-
 h1 {
 	text-align: center
 }
-
 li .gray {
 	color: gray;
 }
-
 body>div>table>tbody>tr>td:last-child>a {
 	color: white;
 }
-
 form {
 	margin: 0 auto;
 	width: 80%;
 	text-align: center
 }
-
 select {
 	color: #495057;
 	background-color: #fff;
@@ -98,13 +93,13 @@ $(document).ready(function() {
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="temp" items="${totallist}">
+					<c:forEach var="temp" items="${totallist}"> 
 						<tr>
 							<td><a href="userInfo.co?id=${temp.id}&user_no=${temp.user_no}">${temp.id}</a></td>
 							<td>${temp.nickname}</td>
 							<td>${temp.user_grantView}</td>
 							<td>${temp.tel}</td>
-							<td> <a href="userListDelete.co?id=${temp.id}" class="btn btn-info listdel" id="btnDelete">삭제</a>
+							<td> <a href="userListDelete.co?id=${temp.id}" class="listdel" id="btnDelete">삭제</a>
 							<input type="hidden" class="submitbtn"></td>
 						</tr>
 					</c:forEach>	

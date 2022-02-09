@@ -76,7 +76,7 @@
                         <a class="nav-link" href="hotelList.net">호텔 찾기</a>
                      </li>
                    	  <li class="nav-item">
-                        <a class="nav-link" href="userMyList.co">찜한 호텔보기</a>
+                        <a class="nav-link" href="userMyList.co?user_no=${temp.user_no}">찜한 호텔보기</a>
                       </li>	
                     </c:if> 
                     

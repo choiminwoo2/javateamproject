@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.DB;
+import vo.Hotel;
 import vo.User;
+import vo.Wishlist;
 
 
 public class UserDAO {
@@ -128,8 +130,8 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
-		
 		int result= -1;
+		
 		try {
 			
 			String sql = "select nickname from userdata where nickname = ?";
@@ -137,12 +139,11 @@ public class UserDAO {
 			pstmt.setString(1, nickname);
 			rs = pstmt.executeQuery();
 			System.out.println(nickname);
+			
 			if(rs.next()) { 
 				result = 0;
-				
 			}
-			
-			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -156,14 +157,14 @@ public class UserDAO {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
 		try {
-			
-			String sql = "(select u.user_no, u.id, u.nickname, u.tel, u.user_grant, u.regdate, a.kind, a.kg from userdata u, animal a where u.id = ?)";
+			String sql = "(select user_no, id, nickname,tel, user_grant, regdate from userdata where id = ?)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				temp = new User();
 				temp.setUser_no(rs.getInt(1));
@@ -172,10 +173,8 @@ public class UserDAO {
 				temp.setTel(rs.getString(4));
 				temp.setUser_grant(rs.getInt(5));
 				temp.setRegdate(rs.getDate(6));
-				temp.setKind(rs.getString(7));
-				temp.setKg(rs.getInt(8));
-				
-	}
+			}
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -192,6 +191,8 @@ public class UserDAO {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		
+		
+		
 		int result = 0;
 		System.out.println("회원정보 수정진입");
 		try {
@@ -207,15 +208,17 @@ public class UserDAO {
 			
 			result=pstmt.executeUpdate(); //성공시 result 는 1
 			
-			if(m.getKg() != 0) {
+			if(m.getKg() != 0) {	//일반 회원의 경우
 				
 				System.out.println("반려동물 정보수정");
 				
 				pstmt2 = con.prepareStatement(
-						 "update animal set kind = ?, kg = ?");
+						 "update animal set kind = ?, kg = ? where user_no = ?"); //fk인 유저 번호에 해당하는 반려동물 정보수정
 				pstmt2.setString(1, m.getKind());
 				pstmt2.setInt(2, m.getKg()); 
+				pstmt2.setInt(3, m.getUser_no());
 				pstmt2.executeUpdate();
+				
 				con.commit();
 			}else {
 				con.commit();
@@ -258,15 +261,17 @@ public class UserDAO {
 	}
 
 
-	public int getListCount() {
+	public int getMyListCount(int user_no) {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
 		
 		try {
-		
-			pstmt = con.prepareStatement("select count(*) from userdata where id != 'admin'");
+		    String sql = "select count(*) from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, user_no);
+			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -281,6 +286,29 @@ public class UserDAO {
 		return result;
 	}
 
+	public int getListCount() {
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+		    String sql = "select count(*) from userdata where id != 'admin'";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getListCount() 에러: " + ex);
+		}  finally {
+			db.close(con, pstmt, rs);
+		}
+		return result;
+	}
 
 	public List<User> getList(int page, int limit) {
 		List<User> list = new ArrayList<User>();
@@ -318,6 +346,7 @@ public class UserDAO {
 				m.setRegdate(rs.getDate(7));
 				list.add(m);
 			}
+			System.out.println(list);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			
@@ -395,6 +424,102 @@ public class UserDAO {
 		return m;
 	}
 
+	//찜하기
+	public void Jjiminsert(int user_no, int hotel_no) {
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		
+     try{
+      String num = "(select nvl(max(wish_no),0)+1 from wishlist)";
+      
+      String sql="INSERT INTO Wishlist (wish_no, hotel_no, user_no) VALUES("+num+",?,?)";
+      
+      pstmt=con.prepareStatement(sql);
+      pstmt.setInt(1,user_no);
+      pstmt.setInt(2,hotel_no);
+      pstmt.executeUpdate();
+     }
+    
+     catch(Exception e)
+     {
+      e.printStackTrace();
+     }
+     finally
+     {
+    	 db.close(con, pstmt,null);
+     }
+      
+   }
 
-	
+/*
+	public List<Wishlist> MyList(int user_no) {
+		List<Wishlist> list = new ArrayList<Wishlist>();
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select hotel_name, hotel_tel, hotel_no from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, user_no);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Wishlist m = new Wishlist();
+				m.setHotel_name(rs.getString(1));
+				m.setHotel_tel(rs.getString(2));
+				m.setHotel_no(rs.getInt(3));
+				list.add(m);
+			}
+			System.out.println(list);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, rs);
+		}
+		return list;
+	}
+*/
+	public List<Wishlist> getMyList(int page, int limit, int user_no) {
+		List<Wishlist> list = new ArrayList<Wishlist>();
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql1 = "select hotel_name, hotel_tel, hotel_no from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
+			
+			String sql = "select * "
+					+" from (select b.*, rownum rnum"
+					+" 		from("+sql1+") b"
+					+         ")"
+					+"   where rnum>=? and rnum<=?";
+			pstmt = con.prepareStatement(sql);
+			
+			int startrow = (page - 1) * limit + 1;
+					
+			int endrow = startrow + limit - 1;
+			pstmt.setInt(1, user_no);		
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Wishlist m = new Wishlist();
+				m.setHotel_name(rs.getString(1));
+				m.setHotel_tel(rs.getString(2));
+				m.setHotel_no(rs.getInt(3));
+				list.add(m);
+			}
+			System.out.println(list);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			
+		}  finally {
+			db.close(con, pstmt, rs);
+		}
+		return list;
+	}
+
 }

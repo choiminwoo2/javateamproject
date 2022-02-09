@@ -17,14 +17,14 @@ public class UserJjimAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UserDAO udao = new UserDAO();
+		 UserDAO udao = new UserDAO();
 		
 		
 		 int hotel_no = Integer.parseInt(request.getParameter("hotel_no"));
 		 System.out.println("호텔번호="+hotel_no);
 		 int user_no = Integer.parseInt(request.getParameter("user_no"));
 		 System.out.println("유저번호="+user_no);
-		 
+		
 		 udao.Jjiminsert(hotel_no, user_no);
 	    
 	     return null;
