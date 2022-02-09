@@ -28,10 +28,9 @@ img{width:20px;}
 <!--    method="post" enctype="multipart/form-data"는 파일업로드할때 필수 -->
    <h1>이용후기를 작성해주세요.</h1>
    <div class="form-group">
-   <label for="board_name">글쓴이</label><%--수정해야함 {닉네임으로 고쳐야 함}--%>
+   <label for="board_name">글쓴이</label>
    <input name="rb_id" id="board_name" value="${temp.nickname}" readOnly
-          type="text"       class="form-control"
-          placeholder="Enter board_name">
+          type="text"       class="form-control">
    </div>
 
    <hr>

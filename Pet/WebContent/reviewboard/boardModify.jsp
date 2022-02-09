@@ -69,6 +69,7 @@ h1{font-size:1.5em; text-align:center; color:#1a92b9}
    </div>
 
    <input name="ev_no" value="${review.ev_no}" type="hidden">
+   <input name="rb_date" value="${review.rb_date}" type="hidden"><%--수정 --%>
    <div class="form-group">
    <button type=submit class="btn btn-primary">수정</button>
    <button type=reset class="btn btn-danger" onClick="history.go(-1)">취소</button>

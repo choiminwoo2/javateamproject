@@ -27,13 +27,16 @@ public class BoardModifyAction implements Action {
 			review.setReview_no(review_no);
 			review.setRb_title(req.getParameter("rb_title"));
 			review.setRb_text(req.getParameter("rb_text"));
+			review.setRb_date(req.getParameter("rb_date"));//수정
 			
 			
 			
 			Star star = new Star();
 			star.setEv_score(Float.parseFloat(req.getParameter("starvalue")));
+			System.out.println("별점(req)=" + req.getParameter("starvalue"));
+			System.out.println("별점=" + star.getEv_score());
 			star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight"));
-			star.setHotel_no(Integer.parseInt(req.getParameter("ev_no")));
+			star.setEv_no(Integer.parseInt(req.getParameter("ev_no")));
 			
 			
 			//DAO에서 수정 메서드 호출하여 수정합니다.
@@ -52,7 +55,7 @@ public class BoardModifyAction implements Action {
 			
 			forward.setRedirect(true);
 			//수정한 글 내용을 보여주기 위해 글 내용 보기 페이지로 이동하기 위해 경로를 설정합니다.
-			forward.setPath("BoardDetailAction.bo?num=" + review.getReview_no());
+			forward.setPath("BoardDetailAction.bo?review_no=" + review.getReview_no());
 			return forward;
 		
 	}

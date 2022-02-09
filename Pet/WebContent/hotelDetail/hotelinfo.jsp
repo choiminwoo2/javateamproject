@@ -80,7 +80,10 @@ style="border:1px solid #e3dfdf;">
 </svg></button>
 </c:if>
 <hr>
-<p>${hotelinfo.hotel_name}</p>
+<h4>${hotelinfo.hotel_name} ( ${hotelinfo.hotel_addr}${hotelinfo.hotel_addr_detail} )</h4>
+<p>tel: ${hotelinfo.hotel_tel}</p>
+
+
 <a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
 <button type="button" class="btn btn-primary mr-1 review" style="position: absolute;
     right: 30px; top:450px" >이용 후기</button>
@@ -132,7 +135,7 @@ style="border:1px solid #e3dfdf;">
 
 </div>
 <%-- <jsp:include page="template/footer.jsp"/> --%>
-<script> /* 주소: http://localhost:8088/Pet/BoardList.bo?hotel_no=1&hotel_name=%EC%9A%B0%EB%A6%AC%ED%98%B8%ED%85%941 */
+<script>
 $("button.review").click(function(){
 	//location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}";
 	location.href="BoardList.bo";

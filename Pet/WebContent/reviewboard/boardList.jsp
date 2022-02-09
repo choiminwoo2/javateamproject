@@ -30,11 +30,11 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 <h1 style="text-align:center">이용후기 게시판</h1>
 
 <div class="info_main">
-<img src="hotel/img/${param.img}" alt="호텔메인사진" width="100%" height="400px"
+<img src="hotel/img/${img}" alt="호텔메인사진" width="100%" height="400px"
 style="border:1px solid #e3dfdf;">
 </div>
 
-<p>호텔명 : ${param.hotel_name}</p>
+<p>호텔명 : ${hotel_name}</p>
 <p>평균 평점 : ${star_avg}</p>
 <table class="table table-striped">
 <thead>
@@ -68,7 +68,7 @@ style="border:1px solid #e3dfdf;">
         --%>
 
    
-   <a href="BoardDetailAction.bo?num=${b.review_no}&hotel_name=${param.hotel_name}&hotel_no=${param.hotel_no}">
+   <a href="BoardDetailAction.bo?review_no=${b.review_no}">
    <c:out value="${b.rb_title}"/>
    </a>  
 </div>
@@ -89,7 +89,7 @@ style="border:1px solid #e3dfdf;">
 </c:if>
 <c:if test="${page > 1 }">
 <li class="page-item">
-<a href="BoardList.bo?page=${page-1}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
+<a href="BoardList.bo?page=${page-1}"
 class="page-link">이전&nbsp;</a>
 </li>
 </c:if>
@@ -102,7 +102,7 @@ class="page-link">이전&nbsp;</a>
 </c:if>
 <c:if test="${a != page }">
 <li class="page-item">
-<a href="BoardList.bo?page=${a}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
+<a href="BoardList.bo?page=${a}"
    class="page-link">${a}</a>
    </li>
    </c:if>
@@ -115,7 +115,7 @@ class="page-link">이전&nbsp;</a>
    </c:if>
    <c:if test="${page < maxpage }">
    <li class="page-item">
-   <a href="BoardList.bo?page=${page+1}&hotel_no=${param.hotel_no}&hotel_name=${param.hotel_name}"
+   <a href="BoardList.bo?page=${page+1}"
       class="page-link">&nbsp;다음</a>
 </li>
 </c:if>   
@@ -132,7 +132,7 @@ class="page-link">이전&nbsp;</a>
 </div>
 <script>
 $("button.write").click(function(){
-	location.href="BoardWrite.bo?hotel_no=${param.hotel_no}";
+	location.href="BoardWrite.bo?hotel_no=${hotel_no}";
 })
 </script>
 </body>

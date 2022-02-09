@@ -36,12 +36,11 @@ public class BoardDeleteAction implements Action {
     //삭제 처리 성공한 경우 - 글 목록 보기 요청을 전송하는 부분입니다.
 		System.out.println("리뷰 삭제 성공");
 		res.setContentType("text/html;charset=utf-8");
-		String hotel_name=req.getParameter("hotel_name");
 		String hotel_no=req.getParameter("hotel_no");
 		PrintWriter out = res.getWriter();
 		out.println("<script>");
 		out.println("alert('삭제되었습니다.');");
-		out.println("location.href='BoardList.bo?hotel_no="+hotel_no+"&hotel_name=" + hotel_name+"';");
+		out.println("location.href='BoardList.bo?hotel_no="+hotel_no+"';");
 		out.println("</script>");
 		out.close();
 		return null;

@@ -12,13 +12,7 @@ import dao.ReviewBoardDAO;
 import vo.Review;
 import vo.Star;
 
-/*rb_id: admin
-starvalue: 2.5
-animal_info: 고양이
-weight: 3
-rb_title: 안녕하세요
-rb_text: 감사합니다
-hotel_no: 1*/
+
 public class BoardAddAction implements Action {
 
 	@Override
@@ -34,6 +28,8 @@ public class BoardAddAction implements Action {
 		review.setRb_text(req.getParameter("rb_text"));
 		int hotel_no = Integer.parseInt(req.getParameter("hotel_no"));
 		review.setHotel_no(hotel_no);
+		String hotel_name = req.getParameter("hotel_name");
+		
 		
 		Star star = new Star();
 		star.setEv_score(Float.parseFloat(req.getParameter("starvalue")));
@@ -56,7 +52,7 @@ public class BoardAddAction implements Action {
 		//글 등록이 완료되면 글 목록을 보여주기 위해 "BoardList.bo"로 이동합니다.
 		//Redirect여부를 true로 설정합니다.
 		forward.setRedirect(true);
-		forward.setPath("BoardList.bo?hotel_no="+hotel_no);//이동할 경로를 지정합니다.
+		forward.setPath("BoardList.bo?hotel_no="+hotel_no+"&hotel_name=" + hotel_name);//이동할 경로를 지정합니다.
 		return forward;
 	}
 		
