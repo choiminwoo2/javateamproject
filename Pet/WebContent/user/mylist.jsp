@@ -9,7 +9,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="scripts.js"></script>
 
-<title>회원관리 시스템 관리자모드(회원목록 보기)</title>
+<title>찜한 호텔 목록</title>
 <style>
 table caption {
 	caption-side: top;
@@ -47,20 +47,12 @@ select {
 	width: 60%
 }
 td:nth-child(1) {
-	width: 20%
+	width: 50%
 }
 td:nth-child(2) {
-	width: 20%
+	width:50%
 }
-td:nth-child(3) {
-	width: 25%
-}
-td:nth-child(4) {
-	width: 25%
-}
-td:nth-child(5) {
-	width: 10%
-}
+
 .input-group {
 	margin-bottom: 3em
 }
@@ -77,7 +69,7 @@ $(document).ready(function() {
 });
 </script>
 </head>
-  <body>
+    <body>
    <jsp:include page="../template/nav.jsp"/>
 	<div class="container">
 		<c:if test="${listcount > 0 }">
@@ -86,25 +78,19 @@ $(document).ready(function() {
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th colspan="4"> 회원 목록</th>
-						<th><font size="3">회원수: ${listcount}명</font></th>
+						<th colspan="2"> 찜호텔 목록</th>
+						
 					</tr>
 					<tr>
-						<td>아이디</td>
+						<td>호텔 이름</td>
 						<td>호텔 번호</td>
-						<td>사용자 번호</td>
-						<td>전화번호</td>
-						
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="temp" items="${totallist}">
+					<c:forEach var="jjim" items="${totallist}"> 
 						<tr>
-							<td><a href="userInfo.co?id=${temp.id}&user_no=${temp.user_no}">${temp.id}</a></td>
-							<td>${temp.nickname}</td>
-							<td>${temp.user_no}</td>
-							<td>${temp.tel}</td>
-							
+							<td><a href="hotelinfo.net2?num=${jjim.hotel_no}&state=1">${jjim.hotel_name}</a></td>
+							<td>${jjim.hotel_tel}</td>
 						</tr>
 					</c:forEach>	
 				</tbody>	
@@ -119,7 +105,7 @@ $(document).ready(function() {
 					</c:if>
 					<c:if test="${page >1 }">
 						<li class="page-item"> 
-							<a href="userList.co?page=${page-1}" class="page-link">이전</a>&nbsp;				
+							<a href="userMyList.co?page=${page-1}&user_no=${user_no}" class="page-link">이전</a>&nbsp;				
 						</li>
 					</c:if>
 					
@@ -130,8 +116,9 @@ $(document).ready(function() {
 							</li>
 						</c:if>
 						<c:if test="${a != page}">
-							<c:url var="go" value="userList.co">
+							<c:url var="go" value="userMyList.co">
 								<c:param name="page" value="${a}"/>
+								<c:param name="user_no" value="${user_no}"/>
 							</c:url>
 							<li class="page-item">
 								<a href="${go}" class="page-link">${a}</a>
@@ -145,8 +132,9 @@ $(document).ready(function() {
 						</li>
 					</c:if>
 					<c:if test="${page < maxpage}">
-						<c:url var="next" value="userList.co">
+						<c:url var="next" value="userMyList.co">
 							<c:param name="page"         value="${page+1}" />
+							<c:param name="user_no" value="${user_no}"/>
 						</c:url>
 						<li class="page-item">
 							<a href="${next}" class="page-link">&nbsp;다음</a>

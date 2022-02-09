@@ -13,6 +13,8 @@ public class User {
 	private int animal_no;
 	private String kind;
 	private int kg;
+	
+	
 	@Override
 	public String toString() {
 		return "User [user_no=" + user_no + ", id=" + id + ", password=" + password + ", nickname=" + nickname
@@ -88,7 +90,6 @@ public class User {
 	public void setKg(int kg) {
 		this.kg = kg;
 	}
-
 	
 	
 }

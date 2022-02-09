@@ -36,7 +36,7 @@ public class UserLoginProcessAction implements Action {
 			session.setAttribute("id", id);
 			session.setAttribute("password", password);
 			session.setAttribute("temp", temp); //로그인한 유저 정보 
-		
+			
 			String IDStore = request.getParameter("remember");
 			Cookie cookie = new Cookie("id", id);
 			
