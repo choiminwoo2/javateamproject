@@ -36,9 +36,7 @@
                 <div class="col-12 col-md-12 col-lg-6 mb-2 text-right">
                     <h6 class="text-uppercase">Follow</h6>
                     <ul class="nav float-right">
-                        <li><a class="text-white mr-2" rel="nofollow" href="http://twitter.com/ThemesGuide" title="Follow on Twitter"><i class="h1 fa fa-fw fa-twitter fa-2x ion-logo-twitter"></i></a></li>
-                        <li><a class="text-white mr-2" rel="nofollow" href="https://www.facebook.com/codeply" title="Follow on Facebook"><i class="h1 fa fa-fw fa-facebook fa-2x ion-logo-facebook"></i></a></li>
-                        <li><a class="text-white mr" rel="nofollow" href="https://github.com/ThemesGuide/bootstrap-themes" title="Follow on GitHub"><i class="h1 fa fa-fw fa-facebook fa-2x ion-logo-github"></i></a></li>
+                        <li><a class="text-white mr" rel="nofollow" href="https://github.com/choiminwoo2/javateamproject" title="Follow on GitHub"><i class="h1 fa fa-fw fa-facebook fa-2x ion-logo-github"></i></a></li>
                     </ul>
                 </div>
             </div>
