@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import action.Action;
 import action.ActionForward;
@@ -34,7 +35,10 @@ public class BoardListAction implements Action {
 		}
 		System.out.println("넘어온 limit =" + limit);
 		
-		int no=Integer.parseInt(request.getParameter("hotel_no"));
+		
+		HttpSession session=request.getSession();
+		int no=(int) session.getAttribute("hotel_no");
+		System.out.println("listAction[hotel_no] = "  + no);
 		
 		//총 리스트 수를 받아옵니다.
 		int listcount = boarddao.getListCount(no);

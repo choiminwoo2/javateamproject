@@ -14,7 +14,29 @@ public class HotelDetail {
 	private int hotel_price_5ge8lt;
 	private int hotel_price_8ge12lt;
 	private int hotel_price_12gt;	
+	private String hotel_tel;
+	private String hotel_addr;
+	private String hotel_addr_detail;
 	
+	
+	public String getHotel_tel() {
+		return hotel_tel;
+	}
+	public void setHotel_tel(String hotel_tel) {
+		this.hotel_tel = hotel_tel;
+	}
+	public String getHotel_addr() {
+		return hotel_addr;
+	}
+	public void setHotel_addr(String hotel_addr) {
+		this.hotel_addr = hotel_addr;
+	}
+	public String getHotel_addr_detail() {
+		return hotel_addr_detail;
+	}
+	public void setHotel_addr_detail(String hotel_addr_detail) {
+		this.hotel_addr_detail = hotel_addr_detail;
+	}
 	public int getHotel_price_5lt() {
 		return hotel_price_5lt;
 	}

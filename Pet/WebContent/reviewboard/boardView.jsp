@@ -44,7 +44,7 @@
 <tr>
 <td colspan="2" class="center">
 <c:if test="${review.rb_id == temp.nickname || id == 'admin' }">
-<a href="BoardModifyView.bo?num=${review.review_no}">
+<a href="BoardModifyView.bo?review_no=${review.review_no}">
 <button class="btn btn-info">수정</button>
 </a>
 <%--href의 주소를 #으로 설정합니다. --%>
@@ -53,7 +53,7 @@
    data-target="#myModal">삭제</button>
    </a>
    </c:if>
-   <a href="BoardList.bo?hotel_no=${review.hotel_no}&hotel_name=${param.hotel_name}">
+   <a href="BoardList.bo?hotel_no=${review.hotel_no}">
    <button class="btn btn-warning">목록</button>
    </a>
 
@@ -73,9 +73,7 @@
     이 값을 가져와서 ${param.num}를 사용
     또는 ${boarddata.board_num}
      --%>
-     <input type="hidden" name="review_no" value="${param.num}" >
-     <input type="hidden" name="hotel_no" value="${param.hotel_no}" >
-     <input type="hidden" name="hotel_name" value="${param.hotel_name}">
+     <input type="hidden" name="review_no" value="${review.review_no}" >
      <div class="form-group">
        <label for="pwd">정말 삭제하시겠습니까?</label>
      </div>

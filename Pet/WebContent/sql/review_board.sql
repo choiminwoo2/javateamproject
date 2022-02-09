@@ -20,6 +20,7 @@ CREATE TABLE review_board(
    values(1,3,'admin','후기입니다3.','좋아요3',sysdate,null)
    
    select*from review_board
+   delete from review_board where review_no=2;
    
 ALTER TABLE review_board
 ADD COLUMN rating INT NOT NULL DEFAULT 0;

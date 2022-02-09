@@ -20,7 +20,7 @@ public class BoardModifyView implements Action {
 		Review review =new Review();
 	   	
 	   	//파라미터로 전달받은 수정할 글 번호를 num변수에 저장합니다.
-		int num=Integer.parseInt(req.getParameter("num"));
+		int num=Integer.parseInt(req.getParameter("review_no"));
 		//글 내용을 불러와서 review객체에 저장합니다.
 	   	review=boarddao.getDetail(num);
 	   	

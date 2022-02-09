@@ -19,7 +19,7 @@ public class HotelDetailDAO {
 		try {
 
 			String sql = "select hi_no," + "          h.hotel_name," + "          hi_intro," + "          hi_url"
-					+ "         ,hi_date," + "          map_no, hi_photofiles, hotel_photofile, hotel_price_5kglt, hotel_price_5ge8let, hotel_price_8ge12lt,hotel_price_12gt   "
+					+ "         ,hi_date," + "          map_no, hi_photofiles, hotel_photofile, hotel_price_5kglt, hotel_price_5ge8let, hotel_price_8ge12lt,hotel_price_12gt, e.hotel_no, hotel_tel, hotel_addr, hotel_addr_detail   "
 					+ "from hotel_info e join hotel h on e.hotel_no = h.hotel_no where hi_no = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, hi_no);
@@ -40,7 +40,10 @@ public class HotelDetailDAO {
                 m.setHotel_price_5ge8lt(rs.getInt(10));
                 m.setHotel_price_8ge12lt(rs.getInt(11));
                 m.setHotel_price_12gt(rs.getInt(12));
-                
+                m.setHotel_no(rs.getInt(13));
+                m.setHotel_tel(rs.getString(14));
+                m.setHotel_addr(rs.getString(15));
+                m.setHotel_addr_detail(rs.getString(16));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
