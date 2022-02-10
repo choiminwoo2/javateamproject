@@ -25,73 +25,54 @@ public class HotelList implements Action {
 		// TODO Auto-generated method stub
 		int limit = 10;
 		int page = 1;
-		Search search_obj = new Search();
 		if(req.getParameter("page") != null && !req.getParameter("page").equals("")) {
 			page = Integer.parseInt(req.getParameter("page"));
 		}
 		ActionForward forward = new ActionForward();
 		HotelDAO dao = new HotelDAO();
-		int listcount = dao.getHotelCount();
-		/*
-		 * 총페이지 수 = db저장된 총 리스트 수 + 한페이지에서 보여주는 리스트의 수 -1 /한페이지에서 보여주는 리스트의 수
-		 * 
-		 */
-		int maxpage = (listcount + limit -1) /limit;
-		int startpage = ((page-1) / 10) * 10 +1;
-		int endpage = startpage +10 -1;
-		String[] weightlist = null;
-		String weight =req.getParameter("weight");
+		String weight = null;
+		String animal = null;
+		String location = null;
+		String price = null;
+		String search = null;
+		if(req.getParameter("search") != null) {
+			search =req.getParameter("search");
+		}
 		if(req.getParameter("weight") != null) {
-			weightlist = weight.split(",");
-			if(weightlist.length == 2) {
-				search_obj.setMax_weight(Integer.parseInt(weightlist[1]));
-				search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
-			}
-		}else {
-			search_obj.setMax_weight(-1);
+			weight =req.getParameter("weight");
 		}
-		String animal = req.getParameter("animal");
-		String location = req.getParameter("location");
-		String[] pricelist = null;
-		String price = req.getParameter("price");
+		if(req.getParameter("animal") != null) {
+			animal =req.getParameter("animal");
+		}
+		if(req.getParameter("loc") != null) {
+			location =req.getParameter("loc");
+		}
+		
 		if(req.getParameter("price") != null) {
-			pricelist = price.split(",");
-			if(pricelist.length == 2) {
-				search_obj.setMax_price(Integer.parseInt(pricelist[1]));
-				search_obj.setMin_price(Integer.parseInt(pricelist[0]));
-			}
-		}else {
-			search_obj.setMax_price(-1);
+			price = req.getParameter("price");
 		}
-		String search = req.getParameter("search");
-		System.out.println("---------------");
-		System.out.println("---------------");
 		System.out.println("---------------");
 		System.out.println("animal=" + animal);
-		System.out.println("---------------");
 		System.out.println("---------------");
 		System.out.println("location=" + location);
 		System.out.println("---------------");
 		System.out.println("---------------");
-		System.out.println("---------------");
-		System.out.println("---------------");
 		System.out.println("search=" + search);
 		System.out.println("---------------");
-		//만약 마지막 페이지그룹이 21~30이라면 보여주는 것이면 endpage는 30이게 되는데
-		//만약 maxpage가 21~25까지라면 21~25까지만 표기되도록 한다.
-		if(endpage > maxpage) {
-			endpage = maxpage;
-		}
-		search_obj.setHotel_name(search);
-		search_obj.setLoc(location);
-		search_obj.setAnimal_grade(animal);
+		System.out.println("weight=" + weight);
+		System.out.println("---------------");
+		System.out.println("price=" + price);
+		System.out.println("---------------");
 		String state = req.getParameter("state");
 		System.out.println("state= " + state);
 		System.out.println("page= " + page);
+		int listcount = dao.getHotelCount(price,weight,location,search,animal);
+		int maxpage = (listcount + limit -1) /limit;
 		if(state == null && price ==null &&
 		   weight==null && location == null &&
 		   animal ==null && search == null) {
-			List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
+			System.out.println("모두 널일 때 진입");
+			List<Hotel> arr = dao.selectHotel(page,limit,price,weight,location,search,animal);
 			if(arr != null) {
 				forward.setRedirect(false);
 				req.setAttribute("hotellist", arr);
@@ -103,8 +84,8 @@ public class HotelList implements Action {
 			
 			//ajax요청이라면
 		}else {
-			
-			List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
+			System.out.println("ajax요청");
+			List<Hotel> arr = dao.selectHotel(page,limit,price,weight,location,search,animal);
 			System.out.println("else진입");
 			JsonObject obj = new JsonObject();
 			JsonElement je = new Gson().toJsonTree(arr);

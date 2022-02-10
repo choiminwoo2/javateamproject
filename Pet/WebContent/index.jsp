@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresca Bootstrap 4 Theme Full Screen</title>
+    <title>애견 호텔에 오신걸 환영합니다.</title>
     <Style>
 
     .photoTitle{
@@ -30,6 +30,9 @@
 	.photoSection{
 		margin-bottom: 12em;
 	}
+	main{
+	margin-top:100px;
+	}
     </Style>
 
   </head>
@@ -38,7 +41,7 @@
   <c:if test="${temp.user_grant==1}">
     <header class="bg-primary">
         <div class="container h-100">
-            <div class="row h-100">
+            <div class="row h-100 centerItem">
                 <div class="col-12">
                     <div class="text-center m-0 vh-100 d-flex flex-column justify-content-center text-light">
                         <h1 class="display-4">호텔 등록</h1>

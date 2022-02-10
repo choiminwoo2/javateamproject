@@ -6,7 +6,7 @@ CREATE TABLE HOTEL(
 	hotel_name varchar2(20) not null,
 	hotel_animal_grade number(3) check(hotel_animal_grade in(0,1,2)),
 	hotel_price_5kglt number(6) not null,
-	hotel_price_5ge8let number(6) not null,
+	hotel_price_5ge8lt number(6) not null,
 	hotel_price_8ge12lt number(6) not null,
 	hotel_price_12gt number(6) not null,
 	hotel_tel varchar2(13) not null,

@@ -54,12 +54,12 @@ function madeItem(list,parent){
 	option2.innerText = "5kg 이상 8kg 미만:" + list.hotel_price_5ge8lt;
 	option3.innerText = "8kg 이상 12kg 미만:" + list.hotel_price_8ge12lt;
 	option4.innerText = "12kg 이상:" + list.hotel_price_12gt;
-	if(weight != "null"){
-		if(weight == "5"){
+	if(weight != "notItem"){
+		if(weight == "5kglt"){
 			option1.selected =true;
-		}else if(weight == "5,8"){
+		}else if(weight == "5ge8lt"){
 			option2.selected =true;
-		}else if(weight == "8,12"){
+		}else if(weight == "8ge12lt"){
 			option3.selected =true;
 		}else{
 			option4.selected =true;
@@ -98,15 +98,21 @@ function ajax(url,config,ajaxcontroller){
 	.then(res => res.json())
 	.then(data => {
 		if(ajaxcontroller == false){
-			console.log(page);
-			madebox(data.hotellist);
 			page=data.page;
+			madebox(data.hotellist);
 			maxpage = data.maxpage;
+			if(maxpage == 1){
+				scrollfix = true;
+			}
 			weight = data.weight;
 			animal = data.animal;
 			
 		}else{
-			page = page +1;
+			page=data.page;
+			maxpage = data.maxpage;
+			if(maxpage == 1){
+				scrollfix = true;
+			}
 			madebox(data.hotellist);
 		}
 	})
@@ -131,6 +137,7 @@ function go(page,scrollfix,loc,weight,price,animal,search){
 					.map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
 					.join('&');
 		var url = 'hotelList.net?' + query;
+		console.log("query" + query);
 		//서버로 보내는 data-type과 설정.
 		var config = {
 				method: 'POST',
@@ -143,20 +150,20 @@ function go(page,scrollfix,loc,weight,price,animal,search){
 		}
 	}
 }
-var page = 1;
+page = 2;
 var maxpage = 0;
-loc = "null";
-weight = "null";
-price = "null";
-animal = "null";
-search = "null";
+loc = "notItem";
+weight = "notItem";
+price = "notItem";
+animal = "notItem";
+search = "notItem";
 ajaxcontroll = false;
 //infinity scroll
 var scrollfix = false;
 	window.onscroll = function(e){
 		ajaxcontroll = false;
 		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
-			if(page == maxpage){
+			if(page == (maxpage+1)){
 				scrollfix = true;
 			}
 			setTimeout(() => {
@@ -171,11 +178,11 @@ var scrollfix = false;
 document.querySelector('.search-btn')
 .addEventListener('click',handleBtnClick);
 function handleBtnClick(e){
-	loc = "null";
-	weight = "null";
-	price = "null";
-	animal = "null";
-	search = "null";
+	loc = "notItem";
+	weight = "notItem";
+	price = "notItem";
+	animal = "notItem";
+	search = "notItem";
 	page = 1;
 	removebox();
 	ajaxcontroll = true;
@@ -205,6 +212,28 @@ function handleBtnClick(e){
 			price = item.value;
 		}
 	});
+	//프라이스가 널이라면
+	if(weight != "notItem" && price == "notItem"){
+		const temp_price = document.querySelector('.price_text');
+		temp_price.classList.add('show');
+		temp_price.classList.remove('hidden');
+		return;
+	}
+	//weight이 널
+	else if(weight == "notItem" && price != "notItem"){
+		const temp_weight = document.querySelector('.weight_text');
+		temp_weight.classList.add('show');
+		temp_weight.classList.remove('hidden');
+		return;
+	}else{
+		const temp_price = document.querySelector('.price_text');
+		const temp_weight = document.querySelector('.weight_text');
+		temp_weight.classList.add('hidden');
+		temp_weight.classList.remove('show');
+		temp_price.classList.remove('show');
+		temp_price.classList.add('hidden');
+	}
+	search = document.querySelector('.search-input').value;
 	setTimeout(() => {
 		console.log("search ajax");
 		go(page,false,loc,weight,price,animal,search);
