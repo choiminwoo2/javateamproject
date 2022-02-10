@@ -19,7 +19,7 @@ public class HotelinfoAction implements Action {
 		
 		
 		HotelDetailDAO dao = new HotelDetailDAO();
-		String hi_no = req.getParameter("num");
+		int hi_no = Integer.parseInt(req.getParameter("num"));
 		HotelDetail h = dao.getinfo(hi_no);
 		
 		HttpSession session=req.getSession();

@@ -10,12 +10,12 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-<jsp:include page="../template/nav.jsp"/>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
  <link href="star/css/star-rating.css" media="all" rel="stylesheet" type="text/css" /> 
+<jsp:include page="../template/nav.jsp"/>
   <script src="js/bootstrap.js"></script> 
+<!--   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
 <!-- <script src="js/jquery-3.6.0.js"></script> -->
-<!--  <script src="star/js/star-rating.js"></script>  -->
+  <script src="star/js/star-rating.js"></script>  
 <style>
 
 h1{font-size:1.5em; text-align:center; color:#1a92b9}
