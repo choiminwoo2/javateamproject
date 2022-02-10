@@ -51,7 +51,7 @@ img{width:20px;}
     <div class="form-group">
   ▶몸무게&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="hidden">
-<input name="weight" type="text" placeholder="KG" pattern="[0-9]{1,2}">
+<input name="weight" type="text" placeholder="KG" pattern="[0-9]{1,2}" required>
 </div>
 <br>
 

@@ -6,22 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="css/theme.css" rel="stylesheet">
- <link href="css/template.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <link rel="icon" href="/favicon.ico">
+<!--  <link href="css/theme.css" rel="stylesheet"> -->
+<!--  <link href="css/template.css" rel="stylesheet"> -->
+ <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- <script src="js/bootstrap.js"></script> -->
+ <!--  <link rel="icon" href="/favicon.ico"> -->
 <title>호텔 상세 페이지</title>
 <jsp:include page="../template/nav.jsp"/>
 <style>
 .info_main {
   max-width: 100%;
-  height:auto;
   margin-top: 5vh;
+  border:1px solid #e3dfdf;
   
 } 
 .container {
   position: relative;
+}
+
+.info_second{
+line-height: 1.3;
+font-family: sans-serif;
 }
 
 
@@ -38,7 +43,7 @@
   
 }
 
-#price tr:nth-child(even){background-color: #f2f2f2;}
+#price tr:nth-child(even){background-color: #f2f2f2;}/*even:짝수,odd:홀수*/
 
 #price th {
   padding-top: 12px;
@@ -56,18 +61,18 @@ div.gallery {
 
 div.gallery>img{border:1px solid #e3dfdf;}
 
-
+textarea{
+    resize:none;/* 크기고정 */ 
+}
 </style>
 </head>
 <body>
 <div class="container">
+
 <div class="info_main">
-<img src="hotel/img/${hotelinfo.hotel_photofile}" alt="호텔메인사진" width="100%" height="400px"
-style="border:1px solid #e3dfdf;">
-
-
-
+<img src="hotel/img/${img}" alt="호텔메인사진" width="100%" height="400px">
 </div>
+
 <c:if test="${temp.user_grant==0}">
 <button type="button" class="btn btn-outline-danger" id="jjim"
 	style="
@@ -79,12 +84,14 @@ style="border:1px solid #e3dfdf;">
   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
 </svg></button>
 </c:if>
+
 <hr>
-<h4>${hotelinfo.hotel_name} ( ${hotelinfo.hotel_addr}${hotelinfo.hotel_addr_detail} )</h4>
+<div class="info_second">
+<h4>${hotel_name} ( ${hotelinfo.hotel_addr}${hotelinfo.hotel_addr_detail} )</h4>
 <p>tel: ${hotelinfo.hotel_tel}</p>
-
-
 <a href="${hotelinfo.hi_url}">호텔 예약하기(링크이동)</a>
+</div>
+
 <button type="button" class="btn btn-primary mr-1 review" style="position: absolute;
     right: 30px; top:450px" >이용 후기</button>
 <hr>
@@ -137,7 +144,7 @@ style="border:1px solid #e3dfdf;">
 <%-- <jsp:include page="template/footer.jsp"/> --%>
 <script>
 $("button.review").click(function(){
-	//location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}";
+	//location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}"; (주소가 길어져서 세션에 담았음)
 	location.href="BoardList.bo";
 })
 </script>

@@ -52,7 +52,7 @@ public class BoardAddAction implements Action {
 		//글 등록이 완료되면 글 목록을 보여주기 위해 "BoardList.bo"로 이동합니다.
 		//Redirect여부를 true로 설정합니다.
 		forward.setRedirect(true);
-		forward.setPath("BoardList.bo?hotel_no="+hotel_no+"&hotel_name=" + hotel_name);//이동할 경로를 지정합니다.
+		forward.setPath("BoardList.bo?hotel_no="+hotel_no);//이동할 경로를 지정합니다.
 		return forward;
 	}
 		

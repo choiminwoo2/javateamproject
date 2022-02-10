@@ -63,27 +63,39 @@
 <%--게시판 view end --%>
 <%--modal 시작 --%>
 <div class="modal" id="myModal">
-<div class="modal-dialog">
-<div class="modal-content">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+ 			<div class="modal-header">
+		          <h6 class="modal-title">리뷰 삭제</h6>
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        	</div>
+
 <%-- Modal body --%>
-<div class="modal-body">
-<form name="deleteForm" action="BoardDeleteAction.bo" method="post">
+
+ <form name="deleteForm" action="BoardDeleteAction.bo" method="post">
 <%--http://localhost:8088/Board/BoardDetailAction.bo?num=22
     주소를 보면 num을 파라미터로 넘기고 있습니다.
     이 값을 가져와서 ${param.num}를 사용
     또는 ${boarddata.board_num}
      --%>
      <input type="hidden" name="review_no" value="${review.review_no}" >
-     <div class="form-group">
-       <label for="pwd">정말 삭제하시겠습니까?</label>
+     <div class="modal-body">
+	     <div style="text-align:center;font-weight:bold;font-size:1.5rem;color:#686666">
+	       <label >정말 삭제하시겠습니까?</label>
+	     </div>
      </div>
-     <button type="submit" class="btn btn-primary">확인</button>
-     <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+      <div class="modal-footer">
+	      <div>
+		     <button type="submit" class="btn btn-primary">확인</button>
+		     <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+		</div>
+	</div>
 </form>
 </div>
 </div>
 </div>
-
+</div>
 
 
 </div>

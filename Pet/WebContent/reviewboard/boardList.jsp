@@ -3,13 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <title>이용후기 게시판</title>
 <jsp:include page="../template/nav.jsp"/>
- <script src="js/bootstrap.js"></script>
+ <!-- <script src="js/bootstrap.js"></script> -->
 <style>
-select.form-control{
-width:auto; margin-bottom:2em; display:inline-block
-}
-.rows{text-align:right;}
 .gray{color:gray}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(1){width:8%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(2){width:50%}
@@ -17,10 +14,7 @@ body > div > table > thead > tr:nth-child(2) > th:nth-child(3){width:14%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(4){width:17%}
 body > div > table > thead > tr:nth-child(2) > th:nth-child(5){width:11%}
 </style>
-<!-- <link href="css/bootstrap.css" rel="stylesheet">
-<script src="js/jquery-3.6.0.js"></script> -->
-<!-- <script src="../js/list.js"></script> -->
-<title>이용후기 게시판</title>
+
 </head>
 <body>
 <div class="container">
@@ -40,8 +34,8 @@ style="border:1px solid #e3dfdf;">
 <thead>
 <tr>
 
-<th colspan="4">
-글 개수 : ${listcount}
+<th colspan="4" style="position: relative;left:890px">
+이용후기 개수 : ${listcount}
 </th>
 </tr>
 <tr>
@@ -128,7 +122,7 @@ class="page-link">이전&nbsp;</a>
 <font size=5>등록된 글이 없습니다.</font>
 </c:if>
 
-<button type="button" class="btn btn-info float-right write">글 쓰 기</button>
+<button type="button" class="btn btn-primary float-right write">글 쓰 기</button>
 </div>
 <script>
 $("button.write").click(function(){
