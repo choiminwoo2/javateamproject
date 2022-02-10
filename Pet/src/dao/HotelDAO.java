@@ -12,7 +12,6 @@ import java.util.Map;
 import db.DB;
 import vo.Hotel;
 import vo.HotelDetail;
-import vo.Search;
 
 public class HotelDAO {
 	DB db = new DB();

@@ -17,7 +17,6 @@ import action.Action;
 import action.ActionForward;
 import dao.HotelDAO;
 import vo.Hotel;
-import vo.Search;
 
 public class HotelList implements Action {
 	@Override
@@ -26,8 +25,9 @@ public class HotelList implements Action {
 		int limit = 10;
 		int page = 1;
 		if(req.getParameter("page") != null && !req.getParameter("page").equals("")) {
-			page = Integer.parseInt(req.getParameter("page"));
+			page = Integer.parseInt(req.getParameter("page"));	
 		}
+
 		ActionForward forward = new ActionForward();
 		HotelDAO dao = new HotelDAO();
 		String weight = null;
