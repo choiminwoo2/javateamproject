@@ -88,8 +88,11 @@
                   <p>가격</p>
                   <div class="sm-3">
 	                  <select class="form-control">
-	                   		<option>5kg 미만 : ${h.hotel_price_5lt}원</option>
-                   </select>
+	                   		<option>5kg 미만: ${h.hotel_price_5lt}원</option>
+	                   		<option>5kg 이상 8kg 미만: ${h.hotel_price_5ge8lt}</option>
+	                   		<option>8kg 이상 12kg 미만: ${h.hotel_price_8ge12lt}</option>
+	                   		<option>12kg 이상: ${h.hotel_price_12gt}</option>
+                   	</select>
                   </div>
                   <button class="btn float-right item-btn" value="${h.hotel_no}">더 보기</button>
                 </div>
