@@ -21,6 +21,10 @@
    	.hotellist-grid p{
    		font-size: 16px;
    	}
+   	.hidden{
+   	display:none;}
+   	.show{
+   	display:block;}
    </style>
 </head>
 <body>
@@ -32,10 +36,20 @@
             <div class="grid-item">
                 <ul class="flex-ul-container">
                     <li>몸무게</li>
-                    <li><input type="radio" name="weight" value="5">5kg미만</li>
-                    <li><input type="radio" name="weight" value="5,8">5~8kg미만</li>
-                    <li><input type="radio" name="weight" value="8,12">8~12kg미만</li>
-                    <li><input type="radio" name="weight" value="12">12kg이상</li>
+                    <li><input type="radio" name="weight" value="5kglt">5kg미만</li>
+                    <li><input type="radio" name="weight" value="5ge8lt">5~8kg미만</li>
+                    <li><input type="radio" name="weight" value="8ge12lt">8~12kg미만</li>
+                    <li><input type="radio" name="weight" value="12gt">12kg이상</li>
+                    <li class="text-danger weight_text hidden">몸무게를 골라주세요.</li>
+                </ul>
+            </div>
+              <div class="grid-item">
+                <ul class="flex-ul-container">
+                    <li>가격</li>
+                    <li><input type="radio" name="price" value="50000">5만원 이하</li>
+                    <li><input type="radio" name="price" value="50000,100000">5~10만원</li>
+                    <li><input type="radio" name="price" value="100000">10만원 이상</li>
+                    <li class="text-danger price_text hidden">가격을 골라주세요</li>
                 </ul>
             </div>
             <div class="grid-item">
@@ -50,20 +64,14 @@
                     <li>지역</li>
                     <li><input type="radio" name="location" value="서울">서울</li>
                     <li><input type="radio" name="location" value="경기">경기</li>
-                    <li><input list="other-location" name="location" class="form-control col-lg-6" type="text" placeholder="검색">
+                    <!--시간 부족으로 구현하지 못함
+                    <li><input list="other-location" name="location" class="form-control col-lg-6" type="text" placeholder="검색"> 
+                     -->
                         <datalist id="other-location">
                             <option value="경상도">
                             <option value="전라도">
                         </datalist>
                     </li>
-                </ul>
-            </div>
-            <div class="grid-item">
-                <ul class="flex-ul-container">
-                    <li>가격</li>
-                    <li><input type="radio" name="price" value="50000">5만원 이하</li>
-                    <li><input type="radio" name="price" value="50000,100000">5~10만원</li>
-                    <li><input type="radio" name="price" value="100000">10만원 이상</li>
                 </ul>
             </div>
             <div class="grid-catagori-button-containers">
@@ -88,7 +96,7 @@
                   <p>가격</p>
                   <div class="sm-3">
 	                  <select class="form-control">
-	                   		<option>5kg 미만: ${h.hotel_price_5lt}원</option>
+	                   		<option selected="selected">5kg 미만: ${h.hotel_price_5lt}원</option>
 	                   		<option>5kg 이상 8kg 미만: ${h.hotel_price_5ge8lt}</option>
 	                   		<option>8kg 이상 12kg 미만: ${h.hotel_price_8ge12lt}</option>
 	                   		<option>12kg 이상: ${h.hotel_price_12gt}</option>
@@ -102,7 +110,7 @@
         </div>
       </div>
 </div>
-      <script src="js/hotellist.js"></script>
       <script src="js/hotellistajax.js"></script>
+      <script src="js/hotellist.js"></script>
 </body>
 </html>

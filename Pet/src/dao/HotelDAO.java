@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import db.DB;
 import vo.Hotel;
@@ -114,21 +115,44 @@ public class HotelDAO {
 	//호텔 디테일 인설트 end
 	
 	//호텔all list end
-	public List<Hotel> selectHotel(int page, int limit, Search search_obj) {
-		 String[] search_menu = {"hotel_animal_grade"
-				,"hotel_price_5kglt","hotel_price_5ge8lt","hotel_price_12lt"
-				,"hotel_addr"}; 
+	public List<Hotel> selectHotel(int page, int limit, String price, String weight, String location, String search, String animal) {
+		String[] weights = {"5kglt","5ge8lt","8ge12lt","12gt"};
 		String sql = " select * from (select " + 
 				" rownum rnum,h.* from hotel h ";
-//				+ "where hotel_name like '%?%' ";
-//		if(search_obj.getLoc() != null) {
-//			sql += "and hotel_addr like '?%' ";
-//		}
-//		if(search_obj.getAnimal_grade() != null) {
-//			
-//		}
-				sql +="order by hotel_no desc) where " + 
-				" rnum >= ? and rnum <= ?";
+		System.out.println("서치는=" +search);
+		if(search != null && !search.equals("notItem")) {
+			sql+= "where hotel_name like ? ";
+		}else {
+			sql+= "where hotel_name like '%%' ";
+		}
+		if(location != null && !location.equals("notItem")) {
+			sql += "and hotel_addr like ? ";
+		}
+		if(animal != null && !animal.equals("notItem")) {
+			sql += "and hotel_animal_grade = ? ";
+		}
+		if(weight != null && !weight.equals("notItem")) {
+			for(int i=0; i < weights.length; i++) {
+				if(weights[i].equals(weight)) {
+					sql+="and hotel_price_"+weights[i];
+					if(price.split(",").length > 1) {
+						sql+=" between ? and ? ";
+					}else {
+						if(price.equals("50000")) {
+							sql += " < ? ";
+						}
+						else if(price.equals("100000")) {
+							sql += " >= ? ";
+						}
+					}
+					
+				}
+			}
+			
+		}
+		sql +="order by hotel_no desc) where " + 
+					" rnum >= ? and rnum <= ?";
+				
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -136,11 +160,43 @@ public class HotelDAO {
 		//endrow는 페이지 곱하기  limit하면 됀다.
 		int endrow = page * limit;
 		List<Hotel> arr = new ArrayList<Hotel>();
+		System.out.println("SQL= " + sql);
 		try {
 			conn = db.getConnect();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startrow);
-			pstmt.setInt(2, endrow);
+			int cnt = 0;
+			if(search != null && !search.equals("notItem")) {
+				pstmt.setString(++cnt, "%"+search+"%");
+			}else {
+				sql+= "where hotel_name like '%%' ";
+			}
+			if(location != null && !location.equals("notItem")) {
+				pstmt.setString(++cnt, location +"%");
+			}
+			if(animal != null && !animal.equals("notItem")) {
+				pstmt.setInt(++cnt, Integer.parseInt(animal));
+			}
+			if(weight != null && !weight.equals("notItem")) {
+				for(int i=0; i < weights.length; i++) {
+					if(weights[i].equals(weight)) {
+						if(price.split(",").length > 1) {
+							String[] temp = price.split(",");
+							pstmt.setInt(++cnt, Integer.parseInt(temp[0]));
+							pstmt.setInt(++cnt, Integer.parseInt(temp[1]));
+						}else {
+							if(price.equals("50000")) {
+								pstmt.setInt(++cnt, Integer.parseInt(price));
+							}
+							else if(price.equals("100000")) {
+								pstmt.setInt(++cnt, Integer.parseInt(price));
+							}
+						}
+						
+					}
+				}
+			}
+			pstmt.setInt(++cnt, startrow);
+			pstmt.setInt(++cnt, endrow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Hotel h = new Hotel();
@@ -165,23 +221,85 @@ public class HotelDAO {
 		}
 		return arr;
 	}
-	public int getHotelCount() {
+	public int getHotelCount(String price, String weight, String location, String search, String animal) {
 		int result = -1;
-		String sql = "select count(*) from hotel";
+		String[] weights = {"5kglt","5ge8lt","8ge12lt","12gt"};
+		String sql = "select count(*) from hotel ";
+		System.out.println("서치는=" +search);
+		if(search != null && !search.equals("notItem")) {
+			sql+= "where hotel_name like ? ";
+		}else {
+			sql+= "where hotel_name like '%%' ";
+		}
+		if(location != null && !location.equals("notItem")) {
+			sql += "and hotel_addr like ? ";
+		}
+		if(animal != null && !animal.equals("notItem")) {
+			sql += "and hotel_animal_grade = ? ";
+		}
+		if(weight != null && !weight.equals("notItem")) {
+			for(int i=0; i < weights.length; i++) {
+				if(weights[i].equals(weight)) {
+					sql+="and hotel_price_"+weights[i];
+					if(price.split(",").length > 1) {
+						sql+=" between ? and ? ";
+					}else {
+						if(price.equals("50000")) {
+							sql += " < ? ";
+						}
+						else if(price.equals("100000")) {
+							sql += " >= ? ";
+						}
+					}
+					
+				}
+			}
+			
+		}
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			int cnt=0;
 			conn = db.getConnect();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			if(search != null && !search.equals("notItem")) {
+				pstmt.setString(++cnt, "%"+search+"%");
+			}else {
+				sql+= "where hotel_name like '%%' ";
+			}
+			if(location != null && !location.equals("notItem")) {
+				pstmt.setString(++cnt, location +"%");
+			}
+			if(animal != null && !animal.equals("notItem")) {
+				pstmt.setInt(++cnt, Integer.parseInt(animal));
+			}
+			if(weight != null && !weight.equals("notItem")) {
+				for(int i=0; i < weights.length; i++) {
+					if(weights[i].equals(weight)) {
+						if(price.split(",").length > 1) {
+							String[] temp = price.split(",");
+							pstmt.setInt(++cnt, Integer.parseInt(temp[0]));
+							pstmt.setInt(++cnt, Integer.parseInt(temp[1]));
+						}else {
+							if(price.equals("50000")) {
+								pstmt.setInt(++cnt, Integer.parseInt(price));
+							}
+							else if(price.equals("100000")) {
+								pstmt.setInt(++cnt, Integer.parseInt(price));
+							}
+						}
+					}
+				}
+			}
+			rs= pstmt.executeQuery();
 			if(rs.next()) {
 				result = rs.getInt(1);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			db.close(conn, stmt, rs);
+			db.close(conn, pstmt, rs);
 		}
 		return result;
 	}
