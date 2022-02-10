@@ -12,8 +12,7 @@ CREATE TABLE review_board(
    foreign key(hotel_no) references hotel(hotel_no) on delete cascade,
    PRIMARY KEY(review_no)
    );
-   
-   
+
    --테스트 데이터 insert
    insert into review_board
    values('1',1,'admin','후기입니다.','좋아요',sysdate,null)
@@ -29,6 +28,4 @@ CREATE TABLE review_board(
    --데이터 삭제
    delete from review_board where review_no=2;
    
-
-
 
