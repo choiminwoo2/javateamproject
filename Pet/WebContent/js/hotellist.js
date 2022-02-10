@@ -1,18 +1,7 @@
 /**
  * 
  */
- function btnClick(e){
-    		const hotelName = document.querySelector('.card-title');
-      		const rehotel = hotelName.innerText.replace(" 호텔","");
-    	  	location.href = "hotelinfo.net2?num=" + e.target.value;
 
-}
-window.onload= function(){
-     const btnGroup = document.querySelectorAll('.item-btn');
-     btnGroup.forEach((item) =>{
-      	item.addEventListener('click',btnClick);
-     });   		
-}
 //윈도우 온로드 end
 const search_input = document.querySelector('.search-input');
 search_input.addEventListener('change', handleSearchInput);

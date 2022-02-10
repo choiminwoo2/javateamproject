@@ -40,33 +40,32 @@ public class HotelList implements Action {
 		int maxpage = (listcount + limit -1) /limit;
 		int startpage = ((page-1) / 10) * 10 +1;
 		int endpage = startpage +10 -1;
-		String weight = req.getParameter("weight");
 		String[] weightlist = null;
-		if(weight != null) {
+		String weight =req.getParameter("weight");
+		if(req.getParameter("weight") != null) {
 			weightlist = weight.split(",");
 			if(weightlist.length == 2) {
 				search_obj.setMax_weight(Integer.parseInt(weightlist[1]));
 				search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
-			}else {
-				search_obj.setMin_weight(Integer.parseInt(weightlist[0]));
 			}
+		}else {
+			search_obj.setMax_weight(-1);
 		}
 		String animal = req.getParameter("animal");
 		String location = req.getParameter("location");
-		String price = req.getParameter("price");
 		String[] pricelist = null;
-		if(price != null) {
+		String price = req.getParameter("price");
+		if(req.getParameter("price") != null) {
 			pricelist = price.split(",");
 			if(pricelist.length == 2) {
 				search_obj.setMax_price(Integer.parseInt(pricelist[1]));
 				search_obj.setMin_price(Integer.parseInt(pricelist[0]));
-			}else {
-				search_obj.setMin_price(Integer.parseInt(pricelist[0]));
 			}
+		}else {
+			search_obj.setMax_price(-1);
 		}
 		String search = req.getParameter("search");
 		System.out.println("---------------");
-		System.out.println("weight=" + weight);
 		System.out.println("---------------");
 		System.out.println("---------------");
 		System.out.println("animal=" + animal);
@@ -75,7 +74,6 @@ public class HotelList implements Action {
 		System.out.println("location=" + location);
 		System.out.println("---------------");
 		System.out.println("---------------");
-		System.out.println("price=" + price);
 		System.out.println("---------------");
 		System.out.println("---------------");
 		System.out.println("search=" + search);
@@ -90,10 +88,10 @@ public class HotelList implements Action {
 		String state = req.getParameter("state");
 		System.out.println("state= " + state);
 		System.out.println("page= " + page);
-		List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
 		if(state == null && price ==null &&
 		   weight==null && location == null &&
 		   animal ==null && search == null) {
+			List<Hotel> arr = dao.selectHotel(page+1,limit,search_obj);
 			if(arr != null) {
 				forward.setRedirect(false);
 				req.setAttribute("hotellist", arr);
@@ -105,11 +103,17 @@ public class HotelList implements Action {
 			
 			//ajax요청이라면
 		}else {
+			List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
 			System.out.println("else진입");
 			JsonObject obj = new JsonObject();
 			JsonElement je = new Gson().toJsonTree(arr);
 			obj.addProperty("page", page +1);
 			obj.addProperty("maxpage", maxpage);
+			obj.addProperty("animal", animal);
+			obj.addProperty("loc", location);
+			obj.addProperty("search", search);
+			obj.addProperty("price", price);
+			obj.addProperty("weight", weight);
 			obj.add("hotellist", je);
 			if(arr != null) {
 				System.out.println("arr=" + arr.size());
