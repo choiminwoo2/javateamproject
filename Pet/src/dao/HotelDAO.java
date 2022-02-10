@@ -115,9 +115,19 @@ public class HotelDAO {
 	
 	//호텔all list end
 	public List<Hotel> selectHotel(int page, int limit, Search search_obj) {
-		
+		 String[] search_menu = {"hotel_animal_grade"
+				,"hotel_price_5kglt","hotel_price_5ge8lt","hotel_price_12lt"
+				,"hotel_addr"}; 
 		String sql = " select * from (select " + 
-				" rownum rnum,h.* from hotel h order by hotel_no desc) where " + 
+				" rownum rnum,h.* from hotel h ";
+//				+ "where hotel_name like '%?%' ";
+//		if(search_obj.getLoc() != null) {
+//			sql += "and hotel_addr like '?%' ";
+//		}
+//		if(search_obj.getAnimal_grade() != null) {
+//			
+//		}
+				sql +="order by hotel_no desc) where " + 
 				" rnum >= ? and rnum <= ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -98,6 +98,7 @@ function ajax(url,config,ajaxcontroller){
 	.then(res => res.json())
 	.then(data => {
 		if(ajaxcontroller == false){
+			console.log(page);
 			madebox(data.hotellist);
 			page=data.page;
 			maxpage = data.maxpage;
@@ -105,6 +106,7 @@ function ajax(url,config,ajaxcontroller){
 			animal = data.animal;
 			
 		}else{
+			page = page +1;
 			madebox(data.hotellist);
 		}
 	})

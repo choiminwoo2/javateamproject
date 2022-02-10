@@ -20,7 +20,6 @@ import vo.Hotel;
 import vo.Search;
 
 public class HotelList implements Action {
-
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -85,13 +84,14 @@ public class HotelList implements Action {
 		}
 		search_obj.setHotel_name(search);
 		search_obj.setLoc(location);
+		search_obj.setAnimal_grade(animal);
 		String state = req.getParameter("state");
 		System.out.println("state= " + state);
 		System.out.println("page= " + page);
 		if(state == null && price ==null &&
 		   weight==null && location == null &&
 		   animal ==null && search == null) {
-			List<Hotel> arr = dao.selectHotel(page+1,limit,search_obj);
+			List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
 			if(arr != null) {
 				forward.setRedirect(false);
 				req.setAttribute("hotellist", arr);
@@ -103,6 +103,7 @@ public class HotelList implements Action {
 			
 			//ajax요청이라면
 		}else {
+			
 			List<Hotel> arr = dao.selectHotel(page,limit,search_obj);
 			System.out.println("else진입");
 			JsonObject obj = new JsonObject();
