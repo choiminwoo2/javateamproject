@@ -8,6 +8,15 @@ public class Search {
 	private String search;
 	private int min_price;
 	private int max_price;
+	private String animal_grade;
+	
+	
+	public String getAnimal_grade() {
+		return animal_grade;
+	}
+	public void setAnimal_grade(String animal_grade) {
+		this.animal_grade = animal_grade;
+	}
 	public int getMin_weight() {
 		return min_weight;
 	}
