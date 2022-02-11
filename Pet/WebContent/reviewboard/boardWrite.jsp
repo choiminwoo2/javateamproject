@@ -2,30 +2,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<title>리뷰 작성페이지</title>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
 <link href="star/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.6.0.js"></script>
+  <jsp:include page="../template/nav.jsp"/>
+  <script src="js/bootstrap.js"></script> 
+<!-- <script src="js/jquery-3.6.0.js"></script> -->
 <script src="star/js/star-rating.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+ 
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+ -->
 <style>
-h1{font-size:1.5em; text-align:center; color:#1a92b9}
-.container{width:60%}
-label{font-weight:bold}
-#upfile{display:none}
-img{width:20px;}
-
-
+h1{font-size:2em; text-align:center; color:#1a92b9}
+label{font-size:1.2em;font-weight:bold}
 </style>
 
 </head>
 <body>
 <div class="container">
 <form action="BoardAddAction.bo" method="post"  name="boardform">
-<!--    method="post" enctype="multipart/form-data"는 파일업로드할때 필수 -->
+
    <h1>이용후기를 작성해주세요.</h1>
    <div class="form-group">
    <label for="board_name">글쓴이</label>
@@ -34,12 +35,12 @@ img{width:20px;}
    </div>
 
    <hr>
-   <h3>&nbsp;이용은 만족하셨나요?</h3>
+   <label>&nbsp;이용은 만족하셨나요?</label>
    <jsp:include page="../NewFile2.jsp"/>
   <!--  <input name="rating" id="rating-system" type="text" class="rating rating-loading" data-size="xs"> -->
    <hr>
 
-<h3>&nbsp;반려동물 신체정보</h3>
+<label>&nbsp;반려동물 신체정보</label>
 <br>
   ▶반려동물 종류&nbsp;&nbsp;&nbsp;
   <div class="btn-group">
@@ -67,7 +68,7 @@ img{width:20px;}
           class="form-control" required></textarea>
    </div>
    
-   <input type="hidden" name="hotel_no" value="${param.hotel_no}">
+   <input type="hidden" name="hotel_no" value="${hotel_no}">
 
    <div class="form-group">
    <button type=submit class="btn btn-primary">등록</button>

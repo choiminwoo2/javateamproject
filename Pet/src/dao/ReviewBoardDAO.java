@@ -13,7 +13,7 @@ import vo.Star;
 
 public class ReviewBoardDAO {
 	DB db = new DB();
-
+    //글 목록 카운트
 	public int getListCount(int no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -39,19 +39,17 @@ public class ReviewBoardDAO {
 		return x;
 	}
 
+	//리스트 페이지
 	public List<Review> getBoardList(int page, int limit, int no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// page : 페이지
-		// limt : 페이지 당 목록의 수
-		// board_re_ref desc, board_re_seq asc에 의해 정렬한 것을
-		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
-		String board_list_sql = "select * " + " from (select rownum rnum, j.* "
-				+ " from (select * from review_board where hotel_no=? order by review_no desc) j " + " ) "
-				+ " where rnum>=? and rnum<=?";
+		String board_list_sql = "select * " 
+		                      + " from (select rownum rnum, j.* "
+				                      + " from (select * from review_board where hotel_no=? order by review_no desc) j " 
+				                      + " ) "
+				              + " where rnum>=? and rnum<=?";
 
 		List<Review> list = new ArrayList<Review>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지,2페이지, 3페이지, 4페이지...
@@ -74,7 +72,6 @@ public class ReviewBoardDAO {
 				board.setRb_text(rs.getString("rb_text"));
 				board.setRb_date(rs.getString("rb_date"));
 				board.setRb_redate(rs.getString("rb_redate"));
-				// board.setCnt(rs.getInt("cnt"));
 				list.add(board); // 값을 담은 객체를 리스트에 저장합니다.
 			}
 		} catch (Exception ex) {
@@ -86,6 +83,7 @@ public class ReviewBoardDAO {
 		return list;
 	}
 
+	//리뷰,별점 insert
 	public int boardInsert(Review review, Star star) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -145,32 +143,13 @@ public class ReviewBoardDAO {
 				}
 			}
 		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			if (con != null)
-				try {
-					con.setAutoCommit(true);
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			db.close(con, pstmt, rs);
 		}
 		return num;
-	}// boardReply()메서드 end
+	}
 
+	//별점 평균넣기
 	public float getStaravg(int no) {
-		
-		//    select avg(ev_score) from EVALUATION where hotel_no=1
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -178,7 +157,6 @@ public class ReviewBoardDAO {
 		try {
 			con = db.getConnect();
 
-			// 새로운 글을 등록하는 부분입니다.
 			pstmt = con.prepareStatement("select round(avg(ev_score),1) from EVALUATION where hotel_no=?");
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
@@ -276,19 +254,7 @@ public class ReviewBoardDAO {
 			}
 		} finally {
 			
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			if (con != null)
-				try {
-					con.setAutoCommit(true);
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+		db.close(con, pstmt,null);
 		}
 		return false;
 	}
@@ -305,7 +271,6 @@ public class ReviewBoardDAO {
 		try {
 			con=db.getConnect();
 			pstmt = con.prepareStatement(board_delete_sql);
-			/* pstmt.setInt(1, rs.getInt("review_no")); */
 			 pstmt.setInt(1, review_no); 
 			 rs = pstmt.executeQuery(); 
 			

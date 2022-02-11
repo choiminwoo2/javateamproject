@@ -23,11 +23,11 @@ public class BoardModifyAction implements Action {
 			int review_no = Integer.parseInt(req.getParameter("review_no"));
 			
 		
-			//review 객체에 글 등록 폼에서 입력받은 정보들을 저장합니다.
+			//review 객체에 글 수정 폼에서 입력받은 정보들을 저장합니다.
 			review.setReview_no(review_no);
 			review.setRb_title(req.getParameter("rb_title"));
 			review.setRb_text(req.getParameter("rb_text"));
-			review.setRb_date(req.getParameter("rb_date"));//수정
+			review.setRb_date(req.getParameter("rb_date"));
 			
 			
 			
@@ -35,7 +35,7 @@ public class BoardModifyAction implements Action {
 			star.setEv_score(Float.parseFloat(req.getParameter("starvalue")));
 			System.out.println("별점(req)=" + req.getParameter("starvalue"));
 			System.out.println("별점=" + star.getEv_score());
-			star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight"));
+			star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight") +"KG");
 			star.setEv_no(Integer.parseInt(req.getParameter("ev_no")));
 			
 			
