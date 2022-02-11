@@ -34,7 +34,7 @@ public class BoardAddAction implements Action {
 		Star star = new Star();
 		//Star 객체에 글쓰기폼에서 입력 받은 정보들을 저장합니다.
 		star.setEv_score(Float.parseFloat(req.getParameter("starvalue")));
-		star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight") +"KG");
+		star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight"));
 		star.setHotel_no(hotel_no);
 		//글 등록 처리를 위해 DAO의 boardInsert()메서드를 호출합니다.
 		//글 등록 폼에서 입력한 정보가 저장되어 있는 review, star객체를 전달합니다.
