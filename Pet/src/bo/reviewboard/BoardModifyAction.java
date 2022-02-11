@@ -27,7 +27,7 @@ public class BoardModifyAction implements Action {
 			review.setReview_no(review_no);
 			review.setRb_title(req.getParameter("rb_title"));
 			review.setRb_text(req.getParameter("rb_text"));
-			review.setRb_date(req.getParameter("rb_date"));
+			
 			
 			
 			
@@ -35,7 +35,7 @@ public class BoardModifyAction implements Action {
 			star.setEv_score(Float.parseFloat(req.getParameter("starvalue")));
 			System.out.println("별점(req)=" + req.getParameter("starvalue"));
 			System.out.println("별점=" + star.getEv_score());
-			star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight") +"KG");
+			star.setAnimal_info(req.getParameter("animal_info") + "/" + req.getParameter("weight"));
 			star.setEv_no(Integer.parseInt(req.getParameter("ev_no")));
 			
 			

@@ -25,7 +25,7 @@
 <td><div>${review.ev_score}</div></td>
 </tr>
 <tr>
-<td><div>반려동물 종류/무게</div></td>
+<td><div>반려동물 종류/무게(KG)</div></td>
 <td><div>${review.animal_info}</div></td>
 </tr>
 

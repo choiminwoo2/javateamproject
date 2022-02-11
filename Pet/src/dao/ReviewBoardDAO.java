@@ -215,7 +215,7 @@ public class ReviewBoardDAO {
 		PreparedStatement pstmt = null;
 	
 		String sql = "update review_board "
-				   + "set rb_title=?, rb_text=?, rb_date=sysdate "
+				   + "set rb_title=?, rb_text=? "
 				   + "where review_no = ?";
 		try {
 			con = db.getConnect();
