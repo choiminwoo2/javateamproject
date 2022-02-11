@@ -19,7 +19,7 @@ public class HotelDetailDAO {
 
 			String sql = "select hi_no, h.hotel_name, hi_intro, hi_url"
 					   + "     , hi_date, map_no, hi_photofiles, hotel_photofile"
-					   + "     , hotel_price_5kglt, hotel_price_5ge8let, hotel_price_8ge12lt, hotel_price_12gt"
+					   + "     , hotel_price_5kglt, hotel_price_5ge8lt, hotel_price_8ge12lt, hotel_price_12gt"
 					   + "     , e.hotel_no, hotel_tel, hotel_addr, hotel_addr_detail "
 					   + "from hotel_info e join hotel h on e.hotel_no = h.hotel_no "
 					   + "where hi_no = ? ";
