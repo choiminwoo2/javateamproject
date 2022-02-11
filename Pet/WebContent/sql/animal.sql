@@ -1,4 +1,4 @@
-drop table animal;
+drop table animal cascade constraints purge;
 
 create table Animal (
 	animal_no number primary key,

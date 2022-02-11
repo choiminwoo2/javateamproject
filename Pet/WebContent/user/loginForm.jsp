@@ -21,27 +21,29 @@ body {
 }
 
 .clearfix{
- 	width: 100%;
-    display: inline-block;
+ 	justify-content: space-between;
+    justify-content: flex-end;
+ 
+    margin: 0 auto;
+    display: flex;
     text-align: center;
-    padding-left: 2rem;
+    padding-left: 2rem
    
+}
+mr-2 {
+	
 }
 
 .b1 {
-	paddig-left:1.0rem;
-	margin-left: 0.6rem !important;
+	margin-right: 1rem !important;
+	width: 90px;
 	
 }
 .b2 {
-	margin-left: 0.6rem !important;
-	
+	padding: 5px,20px;
+	width:90px;
 }
 
-.b1{
-	
-	margin-right: 0.6rem !important;
-}
 
 </style>
 <script>
@@ -73,10 +75,10 @@ $(document).ready(function() {
 		<div style="width:100%" align="center">
 			<div class="clearfix">
 				<div>
-					<button type="submit" class="btn btn-primary b1 mr-2 submitbtn">로그인</button>
+					<button type="submit" class="btn btn-primary b1 submitbtn">로그인</button>
 				</div>
 				<div>
-					<button type="reset" class="btn btn-outline-secondary b2 mr-2 cancelbtn">돌아가기</button>
+					<button type="reset" class="btn btn-outline-secondary b2 cancelbtn">돌아가기</button>
 				</div>	
 			</div>
 		</div>
