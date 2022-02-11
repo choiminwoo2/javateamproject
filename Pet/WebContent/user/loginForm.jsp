@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script> 
 <link href="css/login.css" type="text/css" rel="stylesheet">
+<link href="css/theme.css" type="text/css" rel="stylesheet">
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -42,10 +45,10 @@ $(document).ready(function() {
 		<input type="password" name="password" placeholder="Enter password" id="password" required>
 		
 		<input type="checkbox" id="remember" name="remember" value="store">
-		<span>ID 기억하기</span>
+		<span>ID 기억하기</span><br><br>
 		<div class="clearfix">
-			<button type="submit" class="submitbtn">로그인</button>
-			<button type="reset" class="cancelbtn">돌아가기</button>
+			<button type="submit" class="btn btn-primary mr-2 submitbtn">로그인</button>
+			<button type="reset" class="btn btn-outline-secondary mr-2 cancelbtn">돌아가기</button>
 		</div>
 		<input type="hidden" value="index.jsp">
 	</form>

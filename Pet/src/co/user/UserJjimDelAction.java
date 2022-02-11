@@ -1,0 +1,27 @@
+package co.user;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import action.ActionForward;
+import dao.UserDAO;
+
+public class UserJjimDelAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		UserDAO udao = new UserDAO();
+		int wish_no = Integer.parseInt(request.getParameter("wish_no"));
+		System.out.println("찜번호="+wish_no);
+		 
+		udao.Jjimdel(wish_no);
+	    
+	    return null;
+	}
+
+}

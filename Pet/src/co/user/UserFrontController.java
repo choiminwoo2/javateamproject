@@ -70,8 +70,8 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 			action = new UserDeleteProcessAction();
 			break;
 		case "/userList.co":
-				action = new UserListAction();
-				break;
+			action = new UserListAction();
+			break;
 		case "/userInfo.co":
 			action = new UserInfoAction();
 			break;	
@@ -83,6 +83,9 @@ public class UserFrontController extends javax.servlet.http.HttpServlet{
 			break;		
 		case "/userMyList.co":
 			action = new UserMyListAction();
+			break;
+		case "/jjim_del.co":
+			action = new UserJjimDelAction();
 			break;	
 		}
 		forward = action.execute(request, response);

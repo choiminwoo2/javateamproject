@@ -22,5 +22,3 @@ insert into userdata(user_no, id, password, nickname, user_grant, regdate) value
 insert into userdata(user_no, id, password, nickname, user_grant, regdate) values (4, 'hotel4', 1234, 'hotel4', 1,sysdate);
 insert into userdata(user_no, id, password, nickname, user_grant, regdate) values (5, 'hotel5', 1234, 'hotel5', 1,sysdate);
 insert into userdata(user_no, id, password, nickname, user_grant, regdate) values (6, 'hotel6', 1234, 'hotel6', 1,sysdate);
-
-select*from userdata;

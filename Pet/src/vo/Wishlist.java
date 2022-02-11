@@ -6,10 +6,14 @@ public class Wishlist {
 	private int hotel_no;
 	private String hotel_name;
 	private String hotel_tel;
+	private String hotel_addr;
 	
+	
+
 	@Override
 	public String toString() {
-		return "Wishlist [wish_no=" + wish_no + ", user_no=" + user_no + ", hotel_no=" + hotel_no + "]";
+		return "Wishlist [wish_no=" + wish_no + ", user_no=" + user_no + ", hotel_no=" + hotel_no + ", hotel_name="
+				+ hotel_name + ", hotel_tel=" + hotel_tel + ", hotel_addr=" + hotel_addr + "]";
 	}
 
 	public int getWish_no() {
@@ -51,6 +55,16 @@ public class Wishlist {
 	public void setHotel_tel(String hotel_tel) {
 		this.hotel_tel = hotel_tel;
 	}
+
+	public String getHotel_addr() {
+		return hotel_addr;
+	}
+
+	public void setHotel_addr(String hotel_addr) {
+		this.hotel_addr = hotel_addr;
+	}
+
+	
 
 	
 }

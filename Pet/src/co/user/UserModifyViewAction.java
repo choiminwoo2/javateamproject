@@ -19,11 +19,12 @@ public class UserModifyViewAction implements Action {
 		ActionForward forward = new ActionForward();
 		UserDAO udao = new UserDAO();
 		
-		User u = new User();
+		
 		User u2 = new User();
 		
 		String id = request.getParameter("id");
-		u = udao.UserSession(id);
+		
+		User u = udao.UserSession(id);
 		
 		
 		

@@ -50,13 +50,16 @@ button:focus {
 	outline: none;
 } /* 취소 버튼*/
 .cancelbtn {
-	padding: 14px 20px;
-	background-color: #f44336;
+	padding: 6px 12px;
+	
+	height:38.21px;
+	
 }
 
 .cancelbtn, .submitbtn {
+	
 	float: left;
-	width: 50%;
+	width: 48%;
 }
 
 form {
@@ -86,6 +89,11 @@ b+div {
 	clear: both;
 	display: table;
 }
+.clearfix {
+	margin-left: 10px;
+}	
+	
+
 
 h1 {
 	text-align: center

@@ -9,8 +9,9 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="scripts.js"></script>
 <script src="js/user_modify.js"></script>
+<link href="css/theme.css" type="text/css" rel="stylesheet">
 <link href="css/join.css" type="text/css" rel="stylesheet">
- <link href="css/theme.css" type="text/css" rel="stylesheet">
+
       
 <title>회원 정보 수정</title>
 <script>
@@ -101,8 +102,8 @@ $(document).ready(function() {
 		<input type="hidden" name="user_no" maxLength="10" value="${userinfo.user_no}">
 		
 		<div class="clearfix">
-			<button type="submit" class="submitbtn">완료</button>
-			<button type="reset" class="cancelbtn">취소 </button>
+			<button type="submit" class="btn btn-primary mr-2 submitbtn">완료</button>
+			<button type="reset" class="btn btn-outline-secondary mr-2 cancelbtn">취소 </button>
 		</div>
 		</form>
 		<jsp:include page="../template/footer.jsp"/>

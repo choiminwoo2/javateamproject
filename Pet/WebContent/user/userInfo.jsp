@@ -2,23 +2,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>회원관리 시스템 관리자모드(회원 정보 보기)</title>
+<title>회원관리 시스템(회원 상세 보기)</title>
 <style>
 	tr>td:nth-child(odd) {font-weight: bold}
 	td{text-align:center}
 	.contaienr{width:50%}
+#u1 { 
+		text-decoration:none;
+		
+}
+#d1 {
+	width:100%;
+	text-align:center;
+	font-size:18px;
+}
+	.w-25 {
+		text-align:center;
+	}
+	tr {
+		height:50px;
+	}
+	table {
+		width:400px;
+	}
 </style>
 </head>
 <body>
  <jsp:include page="../template/nav.jsp"/>
 	<div class="container">
 	<br><br><br><br>
-		<h3 style="font-weight: bold" align="center">&lt; 회원 상세 정보 &gt;</h3>
+		<h3 style="font-weight: bold" align="center">회원 상세 정보</h3>
 		<br>
-		<table class="table table-bordered">
-		<tr>
+		<div class="table-responsive">
+		<table class="table table-hover table-sm">
+		<tbody>
+			<tr>
+				<th colspan="2" class="table-primary w-25">　</th>
+				
+			</tr>
+			<tr>
 				<td>아이디</td>
-				<td>${userinfo.id}</td><%-- Member클래스의 getId()메서드 호출 --%>
+				<td>${userinfo.id}</td>
 			</tr>
 			<tr>
 				<td>닉네임</td>
@@ -45,11 +69,13 @@
 				<td>가입날짜</td>
 				<td>${userinfo.regdate}</td>
 			</tr>
-			<tr>
-				<td colspan=2>
-				<a href="userList.co">리스트로 돌아가기</a></td>
-			</tr>
-		</table>
+		</tbody>
+	</table>
+</div>
+<br><br>
+<div id="d1">
+<a id="u1" href="userList.co">리스트로 돌아가기</a>
+</div>
 	</div>
 		<br><br><br><br>
 	 <jsp:include page="../template/footer.jsp"/>

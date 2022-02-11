@@ -232,7 +232,7 @@ public class UserDAO {
 		return result;
 	}
 
-
+	//회원 탈퇴
 	public int delete(String id) {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
@@ -242,8 +242,6 @@ public class UserDAO {
 		int result = 0; 
 		
 		try {
-			
-			
 			pstmt = con.prepareStatement(
 					 " delete from userdata where id= ? ");
 			
@@ -425,15 +423,21 @@ public class UserDAO {
 	}
 
 	//찜하기
-	public void Jjiminsert(int user_no, int hotel_no) {
+	public int Jjiminsert(int user_no, int hotel_no) {
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
+		int wish_no = 0;
      try{
       String num = "(select nvl(max(wish_no),0)+1 from wishlist)";
+      pstmt=con.prepareStatement(num);
+      rs = pstmt.executeQuery();
+      if(rs.next()) {
+    	  wish_no = rs.getInt(1);
+      }
       
+      pstmt.close();
       String sql="INSERT INTO Wishlist (wish_no, hotel_no, user_no) VALUES("+num+",?,?)";
-      
       pstmt=con.prepareStatement(sql);
       pstmt.setInt(1,user_no);
       pstmt.setInt(2,hotel_no);
@@ -448,47 +452,17 @@ public class UserDAO {
      {
     	 db.close(con, pstmt,null);
      }
-      
+      return wish_no;
    }
 
-/*
-	public List<Wishlist> MyList(int user_no) {
-		List<Wishlist> list = new ArrayList<Wishlist>();
-		Connection con = db.getConnect();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			String sql = "select hotel_name, hotel_tel, hotel_no from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, user_no);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Wishlist m = new Wishlist();
-				m.setHotel_name(rs.getString(1));
-				m.setHotel_tel(rs.getString(2));
-				m.setHotel_no(rs.getInt(3));
-				list.add(m);
-			}
-			System.out.println(list);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}  finally {
-			db.close(con, pstmt, rs);
-		}
-		return list;
-	}
-*/
+
 	public List<Wishlist> getMyList(int page, int limit, int user_no) {
 		List<Wishlist> list = new ArrayList<Wishlist>();
 		Connection con = db.getConnect();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql1 = "select hotel_name, hotel_tel, hotel_no from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
+			String sql1 = "select hotel_name, hotel_tel,hotel_addr, hotel_no from hotel where hotel_no in (select hotel_no from wishlist where user_no = ?)";
 			
 			String sql = "select * "
 					+" from (select b.*, rownum rnum"
@@ -509,7 +483,8 @@ public class UserDAO {
 				Wishlist m = new Wishlist();
 				m.setHotel_name(rs.getString(1));
 				m.setHotel_tel(rs.getString(2));
-				m.setHotel_no(rs.getInt(3));
+				m.setHotel_addr(rs.getString(3));
+				m.setHotel_no(rs.getInt(4));
 				list.add(m);
 			}
 			System.out.println(list);
@@ -522,4 +497,52 @@ public class UserDAO {
 		return list;
 	}
 
+
+	public Wishlist Jjimcheck(int hotel_no, int user_no) {
+		Wishlist m = null;
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		try {
+			
+			String sql = "(select wish_no from wishlist where hotel_no = ? and user_no = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, hotel_no);
+			pstmt.setInt(2, user_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m = new Wishlist();
+				m.setWish_no(rs.getInt(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, rs);
+		}
+		return m;
+	}
+
+
+	public void Jjimdel(int wish_no) {
+		
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		
+	
+		try {
+			
+			String sql = "delete from wishlist where wish_no = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, wish_no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, null);
+		}
+		
+	}
 }

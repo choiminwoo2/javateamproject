@@ -9,7 +9,7 @@
     <link href="css/theme.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<title>회원관리 시스템 관리자모드(회원목록 보기)</title>
+<title>회원관리 시스템(회원목록 보기)</title>
 <style>
 table caption {
 	caption-side: top;
@@ -59,6 +59,15 @@ td:nth-child(5) {
 .input-group {
 	margin-bottom: 3em
 }
+#u1,#u2 { text-decoration:none }
+
+#t1, #t2 {
+	text-align:center;
+}
+
+#t0 {
+	text-align:center;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -75,16 +84,19 @@ $(document).ready(function() {
   <body>
    <jsp:include page="../template/nav.jsp"/>
 	<div class="container">
-		<c:if test="${listcount > 0 }">
+		<c:if test="${listcount > 0}">
 		<br><br><br>
 		<form name="deleteform" method="post">
-			<table class="table table-striped">
+			<table class="table table-striped table-hover table-sm">
 				<thead>
-					<tr>
-						<th colspan="4"> 회원 목록</th>
-						<th><font size="3">회원수: ${listcount}명</font></th>
+					<tr id="t0">
+						<th><font size="3"> 회원 목록</font></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th><font size="2">회원: ${listcount}명</font></th>
 					</tr>
-					<tr>
+					<tr id="t1">
 						<td>아이디</td>
 						<td>닉네임</td>
 						<td>사용자구분</td>
@@ -94,12 +106,12 @@ $(document).ready(function() {
 				</thead>
 				<tbody>
 					<c:forEach var="temp" items="${totallist}"> 
-						<tr>
-							<td><a href="userInfo.co?id=${temp.id}&user_no=${temp.user_no}">${temp.id}</a></td>
+						<tr id="t2">
+							<td><a id="u1" href="userInfo.co?id=${temp.id}&user_no=${temp.user_no}">${temp.id}</a></td>
 							<td>${temp.nickname}</td>
 							<td>${temp.user_grantView}</td>
 							<td>${temp.tel}</td>
-							<td> <a href="userListDelete.co?id=${temp.id}" class="listdel" id="btnDelete">삭제</a>
+							<td> <a id="u2" href="userListDelete.co?id=${temp.id}" class="btn btn-primary mr-2 listdel" id="btnDelete">삭제</a>
 							<input type="hidden" class="submitbtn"></td>
 						</tr>
 					</c:forEach>	
@@ -107,6 +119,7 @@ $(document).ready(function() {
 			</table>
 			</form>
 			<div>
+			<br>	
 				<ul class="pagination justify-content-center">
 					<c:if test="${page <= 1 }">
 						<li class="page-item">
@@ -156,10 +169,11 @@ $(document).ready(function() {
 	
  	<br><br><br>
 	<c:if test="${listcount == 0}">
+		<br><br><br><br>
 		<h1>회원이 없습니다.</h1>
-		<br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</c:if>
-	<br><br><br><br><br>
+	<br><br><br>
 	  <jsp:include page="../template/footer.jsp"/>
 </body>
 </html>

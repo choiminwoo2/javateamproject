@@ -42,12 +42,12 @@ button:focus {
 } /* 취소 버튼*/
 .cancelbtn {
 	padding: 14px 20px;
-	background-color: #f44336;
+	
 }
 
 .cancelbtn, .submitbtn {
 	float: left;
-	width: 50%;
+	width: 48%;
 }
 
 form {

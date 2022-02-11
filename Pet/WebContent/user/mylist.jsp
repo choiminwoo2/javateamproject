@@ -47,14 +47,25 @@ select {
 	width: 60%
 }
 td:nth-child(1) {
-	width: 50%
+	width: 25%
 }
 td:nth-child(2) {
+	width:25%
+}
+td:nth-child(3) {
 	width:50%
 }
-
 .input-group {
 	margin-bottom: 3em
+}
+#ho1 { text-decoration:none }
+
+#t1, #t2 {
+	text-align:center;
+}
+
+#t0 {
+	text-align:center;
 }
 </style>
 <script>
@@ -72,31 +83,35 @@ $(document).ready(function() {
     <body>
    <jsp:include page="../template/nav.jsp"/>
 	<div class="container">
-		<c:if test="${listcount > 0 }">
+		<c:if test="${listcount > 0}">
 		<br><br><br>
 		<form name="deleteform" method="post">
-			<table class="table table-striped">
+			<table class="table table-striped table-hover table-sm">
 				<thead>
-					<tr>
-						<th colspan="2"> 찜호텔 목록</th>
-						
+					<tr id="t0">
+						<th><font size="3">찜한호텔 목록</font></th>
+						<th></th>
+						<th></th>
 					</tr>
-					<tr>
+					<tr id="t1">
 						<td>호텔 이름</td>
 						<td>호텔 번호</td>
+						<td>호텔 주소</td>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="jjim" items="${totallist}"> 
-						<tr>
-							<td><a href="hotelinfo.net2?num=${jjim.hotel_no}&state=1">${jjim.hotel_name}</a></td>
+						<tr id="t2">
+							<td><a id="ho1" href="hotelinfo.net2?num=${jjim.hotel_no}&state=1">${jjim.hotel_name}</a></td>
 							<td>${jjim.hotel_tel}</td>
+							<td>${jjim.hotel_addr}</td>
 						</tr>
 					</c:forEach>	
 				</tbody>	
 			</table>
 			</form>
 			<div>
+			<br>
 				<ul class="pagination justify-content-center">
 					<c:if test="${page <= 1 }">
 						<li class="page-item">
@@ -143,15 +158,14 @@ $(document).ready(function() {
 				</ul>
 			</div>
 		</c:if>
-		
 	</div>
-	
- 	<br><br><br>
+	<br><br><br>
 	<c:if test="${listcount == 0}">
-		<h1>회원이 없습니다.</h1>
-		<br><br><br>
+		<br><br><br><br>
+		<h1>찜한 호텔이 없습니다.</h1>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</c:if>
-	<br><br><br><br><br>
+	<br><br><br>
 	  <jsp:include page="../template/footer.jsp"/>
 </body>
 </html>

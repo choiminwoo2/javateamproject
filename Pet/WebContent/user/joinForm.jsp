@@ -4,7 +4,9 @@
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+ <link href="css/theme.css" type="text/css" rel="stylesheet">
 <script src="js/join.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link href="css/join.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>회원가입</title>
@@ -60,10 +62,12 @@ span {
 	 	 <span id="animal_message"></span>
 	   	 <b></b>
 		</div>
-		
+		<div class="form-group row">
+		<label class="col-lg-2 col-form-label form-control-label"></label>
+		</div>
 		<div class="clearfix">
-			<button type="submit" class="submitbtn">회원가입</button>
-			<button type="reset" class="cancelbtn">돌아가기</button>
+			<button type="submit" class="btn btn-primary mr-2 submitbtn">회원가입</button>
+			<button type="reset" class="btn btn-outline-secondary mr-2 cancelbtn">돌아가기</button>
 		</div>
 		</form>
 </body>

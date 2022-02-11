@@ -64,6 +64,10 @@ div.gallery>img{border:1px solid #e3dfdf;}
 textarea{
     resize:none;/* 크기고정 */ 
 }
+
+#liner { 
+	text-decoration:none 
+} 
 </style>
 </head>
 <body>
@@ -73,16 +77,26 @@ textarea{
 <img src="hotel/img/${img}" alt="호텔메인사진" width="100%" height="400px">
 </div>
 
-<c:if test="${temp.user_grant==0}">
+<c:if test='${temp.user_grant==0}'>
 <button type="button" class="btn btn-outline-danger" id="jjim"
 	style="
-    position: absolute;
+	position: absolute;
     right: 30px;
     top: 0px;
-    background: white;"><a href="jjim.co?hotel_no=${hotelinfo.hi_no}&user_no=${temp.user_no}">찜하기</a>    
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-</svg></button>
+    background: white;">
+    
+  <!--  0일때 -->
+  <c:if test="${empty wish}">
+    <a id="liner" href="javascript:add(${hotelinfo.hi_no},${temp.user_no})"><span>찜하기</span>   
+     <img src="hotel/img/jjimheartbefore.png" width="18" height="17" style="position: relative; top: -3px;" >
+    </a> 
+    </c:if>
+     <c:if test="${!empty wish}">
+   <!--  1이상 -->
+    <a id="liner" href="javascript:del(${wish.wish_no})"><span>찜해제</span>  
+    <img src="hotel/img/jjimheartafter.png" width="18" height="17" style="position: relative; top: -3px;" ></a> 
+    </c:if>
+</button>
 </c:if>
 
 <hr>
@@ -100,10 +114,6 @@ textarea{
   <tr>
     <th>몸무게</th>
     <th>호텔 이용요금</th>
-  </tr>
-  <tr>
-    <td>찜할 유저번호=${temp.user_no}</td>
-    <td>찜할 호텔번호=${hotelinfo.hi_no}</td>
   </tr>
   <tr>
     <td>~5kg</td>
@@ -147,6 +157,33 @@ $("button.review").click(function(){
 	//location.href="BoardList.bo?hotel_no=${hotelinfo.hi_no}&hotel_name=${hotelinfo.hotel_name}&img=${hotelinfo.hotel_photofile}"; (주소가 길어져서 세션에 담았음)
 	location.href="BoardList.bo";
 })
+
+function add(hi_no, user_no) {
+	$.ajax({
+		url:'jjim.co',
+		data:{hotel_no:hi_no,user_no:user_no},
+		success:function(rdata){
+			console.log("찜등록 성공");
+			$("#liner > img").attr("src","hotel/img/jjimheartafter.png");
+			$("#liner > span").text("찜해제");
+			$("#liner").attr("href","javascript:del("+rdata+")");
+		}
+	})
+}
+
+
+function del(wish_no) {
+	$.ajax({
+		url:'jjim_del.co',
+		data:{wish_no:wish_no},
+		success:function(rdata){
+			console.log("찜해제");
+			$("#liner > img").attr("src","hotel/img/jjimheartbefore.png");
+			$("#liner > span").text("찜하기");
+			$("#liner").attr("href","javascript:add(${hotelinfo.hi_no},${temp.user_no})");
+		}
+	})
+}
 </script>
 </body>
 </html>

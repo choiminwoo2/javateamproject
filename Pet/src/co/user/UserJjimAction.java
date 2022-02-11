@@ -25,9 +25,10 @@ public class UserJjimAction implements Action {
 		 int user_no = Integer.parseInt(request.getParameter("user_no"));
 		 System.out.println("유저번호="+user_no);
 		
-		 udao.Jjiminsert(hotel_no, user_no);
+		 int wish_no = udao.Jjiminsert(hotel_no, user_no);
 	    
-	     return null;
+		 response.getWriter().print(wish_no);
+		 return null;
 	}
 
 }
