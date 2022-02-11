@@ -92,7 +92,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDd">
                             <a class="dropdown-item px-2" href="usermodifyview.co?id=${temp.id}&user_no=${temp.user_no}">회원 정보 수정</a>
-                            <a class="dropdown-item px-2" href="userdeleteview.co">회원 탈퇴</a>
+                            <a class="dropdown-item px-2" href="userdeletecheckview.co?id=${temp.id}">회원 탈퇴</a>
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item px-2" href="#more">All</a>
                         </div>

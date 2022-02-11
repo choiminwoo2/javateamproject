@@ -11,6 +11,7 @@
 		text-decoration:none;
 		
 }
+
 #d1 {
 	width:100%;
 	text-align:center;
@@ -18,9 +19,16 @@
 }
 	.w-25 {
 		text-align:center;
+		
+	}
+	.a1, .a2{
+		height:30px;
 	}
 	tr {
-		height:50px;
+		height:70px;
+	}
+	tr> th {
+		height:5px;
 	}
 	table {
 		width:400px;
@@ -30,17 +38,16 @@
 <body>
  <jsp:include page="../template/nav.jsp"/>
 	<div class="container">
-	<br><br><br><br>
+	<br>
 		<h3 style="font-weight: bold" align="center">회원 상세 정보</h3>
 		<br>
 		<div class="table-responsive">
 		<table class="table table-hover table-sm">
 		<tbody>
-			<tr>
-				<th colspan="2" class="table-primary w-25">　</th>
-				
+			<tr class="a1">
+				<td colspan="2" class="table-primary w-25">　</td>
 			</tr>
-			<tr>
+			<tr height="1">
 				<td>아이디</td>
 				<td>${userinfo.id}</td>
 			</tr>
@@ -68,6 +75,9 @@
 			<tr>
 				<td>가입날짜</td>
 				<td>${userinfo.regdate}</td>
+			</tr>
+			<tr class="a2">
+				<td colspan="2" class="table-primary w-25">　</td>
 			</tr>
 		</tbody>
 	</table>
