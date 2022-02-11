@@ -19,6 +19,30 @@ body {
 * {
 	box-sizing: border-box
 }
+
+.clearfix{
+ 	width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding-left: 2rem;
+   
+}
+
+.b1 {
+	paddig-left:1.0rem;
+	margin-left: 0.6rem !important;
+	
+}
+.b2 {
+	margin-left: 0.6rem !important;
+	
+}
+
+.b1{
+	
+	margin-right: 0.6rem !important;
+}
+
 </style>
 <script>
 $(document).ready(function() {
@@ -36,7 +60,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-
+	<div id="square">
 	<form name="loginform" action="loginProcess.co" method="post"><h1>로그인</h1>
 	<hr>
 		<b>ID</b>
@@ -46,11 +70,18 @@ $(document).ready(function() {
 		
 		<input type="checkbox" id="remember" name="remember" value="store">
 		<span>ID 기억하기</span><br><br>
-		<div class="clearfix">
-			<button type="submit" class="btn btn-primary mr-2 submitbtn">로그인</button>
-			<button type="reset" class="btn btn-outline-secondary mr-2 cancelbtn">돌아가기</button>
+		<div style="width:100%" align="center">
+			<div class="clearfix">
+				<div>
+					<button type="submit" class="btn btn-primary b1 mr-2 submitbtn">로그인</button>
+				</div>
+				<div>
+					<button type="reset" class="btn btn-outline-secondary b2 mr-2 cancelbtn">돌아가기</button>
+				</div>	
+			</div>
 		</div>
 		<input type="hidden" value="index.jsp">
 	</form>
+	</div>
 </body>
 </html>

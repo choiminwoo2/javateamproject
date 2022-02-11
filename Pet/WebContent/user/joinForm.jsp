@@ -23,7 +23,7 @@ function setDisplay(){
  <style>
 span {
 	font-size:15px;
-}
+} 
 </style>
 </head>
 <body>

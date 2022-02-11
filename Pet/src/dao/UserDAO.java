@@ -545,4 +545,33 @@ public class UserDAO {
 		}
 		
 	}
+
+
+	public int deletecheck(String password) {
+		User m = null;
+		Connection con = db.getConnect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result= 0;
+		
+		try {
+			
+			String sql = "select id from userdata where password=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, password);
+			rs = pstmt.executeQuery();
+			
+			System.out.println("password="+password);
+			if(rs.next()) {
+				result = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			db.close(con, pstmt, rs);
+		}
+		return result;
+	}
+
 }
