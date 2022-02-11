@@ -1,4 +1,4 @@
-drop table UserData;
+drop table UserData cascade constraints purge;
 
 create table UserData (
 	user_no number primary key,
