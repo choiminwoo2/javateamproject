@@ -48,6 +48,7 @@ public class BoardListAction implements Action {
 		//리스트를 받아옵니다.
 		boardlist = boarddao.getBoardList(page, limit,no);
 		
+		//별점 평균을 받아옵니다.
 		float star_avg=boarddao.getStaravg(no);
 		
 		/*
@@ -106,10 +107,11 @@ public class BoardListAction implements Action {
 			//해당 페이지의 글 목록을 갖고있는 리스트
 			request.setAttribute("boardlist",  boardlist);
 		
+			//한 페이지에 보여줄 게시판 목록의 수
 			request.setAttribute("limit",  limit);
+			
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
-			
 			//글 목록 페이지로 이동하기 위해 경로를 설정합니다.
 			forward.setPath("reviewboard/boardList.jsp");
 			return forward; //BoardFrontController.java로 리턴됩니다.

@@ -17,8 +17,8 @@
 <!-- <script src="js/jquery-3.6.0.js"></script> -->
   <script src="star/js/star-rating.js"></script>  
 <style>
-
-h1{font-size:1.5em; text-align:center; color:#1a92b9}
+h1{font-size:2em; text-align:center; color:#1a92b9}
+label{font-size:1.2em;font-weight:bold}
 </style>
 
 </head>
@@ -36,12 +36,12 @@ h1{font-size:1.5em; text-align:center; color:#1a92b9}
    </div>
 
    <hr>
-   <h3>&nbsp;이용은 만족하셨나요?</h3>
+   <label>&nbsp;이용은 만족하셨나요?</label>
    <jsp:include page="../NewFile2.jsp"/>
   <!--  <input name="rating" id="rating-system" type="text" class="rating rating-loading" data-size="xs"> -->
    <hr>
 
-<h3>&nbsp;반려동물 신체정보</h3>
+<label>&nbsp;반려동물 신체정보</label>
 <br>
   ▶반려동물 종류&nbsp;&nbsp;&nbsp;
   <div class="btn-group">

@@ -25,7 +25,7 @@
 <td><div>${review.ev_score}</div></td>
 </tr>
 <tr>
-<td><div>반려동물 종류/무게(kg)</div></td>
+<td><div>반려동물 종류/무게</div></td>
 <td><div>${review.animal_info}</div></td>
 </tr>
 
@@ -53,7 +53,7 @@
    data-target="#myModal">삭제</button>
    </a>
    </c:if>
-   <a href="BoardList.bo?hotel_no=${review.hotel_no}">
+   <a href="BoardList.bo">
    <button class="btn btn-warning">목록</button>
    </a>
 
@@ -61,6 +61,7 @@
    </tr>
 </table>
 <%--게시판 view end --%>
+
 <%--modal 시작 --%>
 <div class="modal" id="myModal">
 	<div class="modal-dialog">
@@ -74,11 +75,6 @@
 <%-- Modal body --%>
 
  <form name="deleteForm" action="BoardDeleteAction.bo" method="post">
-<%--http://localhost:8088/Board/BoardDetailAction.bo?num=22
-    주소를 보면 num을 파라미터로 넘기고 있습니다.
-    이 값을 가져와서 ${param.num}를 사용
-    또는 ${boarddata.board_num}
-     --%>
      <input type="hidden" name="review_no" value="${review.review_no}" >
      <div class="modal-body">
 	     <div style="text-align:center;font-weight:bold;font-size:1.5rem;color:#686666">
@@ -94,11 +90,7 @@
 </form>
 </div>
 </div>
+</div><%--modal end--%>
 </div>
-</div>
-
-
-</div>
-
 </body>
 </html>
