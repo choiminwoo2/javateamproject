@@ -37,7 +37,7 @@ p {
       <div class="main" align="center">
        <div class="cotent" align="left">
         <h2 align="left">회원 탈퇴</h2>
-        <hr align="left" width="800px">
+        <hr align="left" width="50%">
         <br>
         <p>회원 탈퇴후 재가입이 가능합니다</p>
 		<br><br>

@@ -57,7 +57,7 @@ td:nth-child(1) {
 				</tr>
 				<tr>
 					<td id="t2">비밀번호</td>
-					<td><input type="text" name="password" class="form-control f1" placeholder="Enter Password" size="10" required></td>
+					<td><input type="password" name="password" class="form-control f1" placeholder="Enter Password" size="10" required></td>
 			
 			</table>
 				<div class="clear">
