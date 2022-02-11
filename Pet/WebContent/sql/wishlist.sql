@@ -16,7 +16,3 @@ CREATE SEQUENCE wish_seq
        NOCYCLE
        NOCACHE
        NOORDER;
-
-select wish_no
-from wishlist 
-where hotel_no = 2 and user_no = 10;
