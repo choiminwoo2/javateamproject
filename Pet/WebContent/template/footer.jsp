@@ -16,21 +16,18 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-3 mb-2">
-                    <h6 class="text-uppercase">Tools</h6>
+                    <h6 class="text-uppercase">홈페이지 사용 라이브러리</h6>
                     <ul class="nav flex-column">
-                        <li><a class="text-white" target="ext" rel="nofollow" href="https://themestr.app" title="Bootstrap theme builder">Themestr.app</a></li>
-                        <li><a class="text-white" target="ext" rel="nofollow" href="http://themes.guide" title="Bootstrap free and pro themes">Themes.guide</a></li>
-                        <li><a class="text-white" target="ext" rel="nofollow" href="http://codeply.com" title="Prototype and edit code for Bootstrap and other responsive frameworks">Codeply</a></li>
-                        <li><a class="text-white" target="ext" rel="nofollow" href="http://bootply.com">Bootply</a></li>
+                        <li><a class="text-white" target="ext" rel="nofollow" href="https://jquery.com/" title="Bootstrap theme builder">Jquery</a></li>
+                        <li><a class="text-white" target="ext" rel="nofollow" href="https://getbootstrap.com/docs/4.3/getting-started/download/" title="Bootstrap free and pro themes">BootStrap 4.3.1</a></li>
+                        <li><a class="text-white" target="ext" rel="nofollow" href="https://commons.apache.org/" title="Prototype and edit code for Bootstrap and other responsive frameworks">Apach commons</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md-6 col-lg-3 mb-2">
-                    <h6 class="text-uppercase">More</h6>
+                    <h6 class="text-uppercase">사용한 기술과 참고문서</h6>
                     <ul class="nav flex-column">
-                        <li><a class="text-white" target="_new" href="http://wdstack.com" title="The top projects, tools and apps for Web developers">WDStack</a></li>
-                        <li><a class="text-white" target="_new" href="http://theme.cards">Theme.cards</a></li>
-                        <li><a class="text-white" target="_new" href="http://www.bootbundle.com">BootBundle</a></li>
-                        <li><a class="text-white" target="_new" title="Learn about Bootstrap 4 using this free theme" href="http://bootstrap4.guide">Bootstrap4.guide</a></li>
+                        <li><a class="text-white" target="_new" href="https://developer.mozilla.org/ko/" title="The top projects, tools and apps for Web developers">HTML,CSS,JavaScript with MDN</a></li>
+                        <li><a class="text-white" target="_new" href="https://docs.oracle.com/javase/8/docs/api/">Oracle Java JDK 8 </a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-12 col-lg-6 mb-2 text-right">

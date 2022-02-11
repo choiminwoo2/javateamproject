@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/hoteladddetail.css">
+<style>
+	.hidden{
+		display:none;
+	}
+	.show{
+	display:block;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="../template/nav.jsp"/>
@@ -25,28 +33,32 @@
                 <img src="hotel/img/image.png">
                 <img src="hotel/img/image.png">
               </div>
+              <span class="file_size_span text-danger hidden">파일 용량이 20MB를 초과할 수 없습니다.</span>
             </label>
               <div class="description-form">
                 <p>사진 등록시 주의 사항</p>
                 <p>1.사진을 순서에 맞춰 등록해주세요.</p>
                 <p>2.사용자에게 보이는 호텔 내부 사진을 등록해주세요.</p>
+                <p>3.사진은 4장까지 등록 가능합니다.</p>
               </div>
               <input type="submit" value="다음으로" id="filelistbtn" class="btn btn-primary btn-lg">
-              
-            </div>
-
-              
+            </div>    
           </div>
         </form>
         </div>
      </section>
      <script defer>
+     	FILE_MAX_SIZE = 20 * 1024 * 1024;
+     	filelist_size = 0;
      	const files = document.querySelector('input[type="file"]');
      	window.onload = function(){
      		const el = document.querySelector('.before_file');
      		el.style.display = "block";
      	}
      	files.onchange= function(e){
+     		const change_file_span = document.querySelector('.file_size_span');
+ 			change_file_span.classList.add('hidden');
+ 			change_file_span.classList.remove('show');
      		var img = document.querySelectorAll('img');
      		img.forEach(item => item.remove());
      		const fileList = e.target.files;
@@ -59,6 +71,7 @@
      	}
      	function loadFile(fileNode){
      		var file = fileNode;
+     		filelist_size += file.size;
      		var pattern = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
      		if(pattern.test(file.name)){
      			var fileReader = new FileReader();
@@ -78,6 +91,16 @@
      			file.value = "";
      		}
      	}
+     	document.querySelector('form').addEventListener('submit',(e)=>{
+     		e.preventDefault();
+     		const change_file_span = document.querySelector('.file_size_span');
+     		if(FILE_MAX_SIZE < filelist_size){
+     			change_file_span.classList.add('show');
+     			change_file_span.classList.remove('hidden');
+     			return;
+     		}
+     		document.querySelector('form').submit();
+     	});
      	
      </script>
 </body>

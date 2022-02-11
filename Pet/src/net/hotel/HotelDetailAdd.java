@@ -23,7 +23,7 @@ public class HotelDetailAdd implements Action {
 	
 	private static final String CHARSET = "utf-8";
 	private static final String SAVE_DIR = "hotel/img";
-	private static final int LIMIT_SIZE_BYTES = 5 * 1024 * 1024;
+	private static final int LIMIT_SIZE_BYTES = 20 * 1024 * 1024;
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -80,7 +80,6 @@ public class HotelDetailAdd implements Action {
 			}
 		System.out.println("==========리드 폴더===========");
 		System.out.println("readFolder=" +readFolder);
-		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

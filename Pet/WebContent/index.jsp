@@ -63,28 +63,28 @@
             <div class="row vh-auto photoSection">
                 <div class="col-12 my-auto">
                     <div class="row">
-                    <h1 class="text-center w-100  h-25 photoTitle">PhtoGralley</h1>
+                    <h1 class="text-center w-100  h-25 photoTitle">PhotoGralley</h1>
                      <span class="text-center w-100  h-25 photoTitle">여러분의 반려동물의 정보를 나눌 수 있습니다.</span>
                         <div class="col-lg-3 mb-3 ">
                           	<div class="card col-centered" style="width: 15rem;">
-							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
+							  <img src="hotel/img/hotel1.jpg" style="min-height: 357px;" class="card-img-top"  alt="...">
 							</div>
                         </div>
                         <div class="col-lg-3 mb-3 ">
                            	<div class="card col-centered" style="width: 15rem;">
-							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
+							  <img src="hotel/img/photo1.jpg" style="min-height: 357px;" class="card-img-top" alt="...">
 
 							</div>
                         </div>
                         <div class="col-lg-3 mb-3">
                            	<div class="card col-centered" style="width: 15rem;">
-							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
+							  <img src="hotel/img/photo2.png" style="min-height: 357px;" class="card-img-top" alt="...">
 
 							</div>
                         </div>
                          <div class="col-lg-3 mb-3">
                            	<div class="card col-centered" style="width: 15rem;">
-							  <img src="hotel/img/hotel1.jpg" class="card-img-top" alt="...">
+							  <img src="hotel/img/thoto3.jpg" style="min-height: 357px;" class="card-img-top" alt="...">
 
 							</div>
                         </div>
