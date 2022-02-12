@@ -81,7 +81,7 @@ public class HotelDAO {
 		int result = 0;
 		Connection conn = db.getConnect();
 		int num = -1;
-		String num_sql = "select nvl(max(hotel_no),0)+1 from hotel_info";
+		String num_sql = "select nvl(max(hi_no),0)+1 from hotel_info";
 		PreparedStatement pstmt =null;
 		ResultSet rs  = null;
 		try {
